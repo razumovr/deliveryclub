@@ -7,7 +7,7 @@ from .forms import PersonForm,FirstForm
 from .conecttosheets import Connection,UTMtable,PSP
 from django.http import HttpResponseRedirect
 import psycopg2
-
+import os
 
 
 def insertinsql():
@@ -29,7 +29,9 @@ def insertinsql():
     utm.getSheets()
     #Connect to bd
     #con = lite.connect('postgresql-aerodynamic-82180')
-    con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
+    #con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
+    DATABASE_URL = os.environ['DATABASE_URL']
+    con = psycopg2.connect(DATABASE_URL, sslmode='require')
     j=1
     p = 1
     with con:
