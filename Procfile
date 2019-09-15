@@ -1,0 +1,1 @@
+web: gunicorn Changellenge.wsgi --log-file -
