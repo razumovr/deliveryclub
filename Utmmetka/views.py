@@ -28,22 +28,16 @@ def insertinsql():
     utm = UTMtable(gs.service)
     utm.getSheets()
     #Connect to bd
-    con = lite.connect('db.sqlite3')
+    con = lite.connect('postgresql-aerodynamic-82180')
     j=1
     p = 1
     with con:
         cur = con.cursor()
         for i in utm.tables.keys():
-            try:
-                cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
-            except:
-                pass
+            cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
 
             for jj in utm.tables[i][1:]:
-                try:
-                    cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
-                except:
-                    pass
+                cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
             j+=1
 
