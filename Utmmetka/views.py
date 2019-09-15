@@ -31,6 +31,8 @@ def insertinsql():
     #con = lite.connect('postgresql-aerodynamic-82180')
     #con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
     DATABASE_URL = os.environ['DATABASE_URL']
+    print("HEY"*100)
+    print(DATABASE_URL)
     con = psycopg2.connect(DATABASE_URL, sslmode='require')
     print('!'*1000)
     print(con)
