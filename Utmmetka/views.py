@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from .models import Person, City,Country
 from .forms import PersonForm,FirstForm
 from .conecttosheets import Connection,UTMtable,PSP
-import sqlite3 as lite
 from django.http import HttpResponseRedirect
+import psycopg2
 
 
 
@@ -28,7 +28,8 @@ def insertinsql():
     utm = UTMtable(gs.service)
     utm.getSheets()
     #Connect to bd
-    con = lite.connect('postgresql-aerodynamic-82180')
+    #con = lite.connect('postgresql-aerodynamic-82180')
+    con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
     j=1
     p = 1
     with con:
