@@ -45,7 +45,7 @@ def insertinsql():
             )
     print(con)
     cur = con.cursor()
-    cur.execute("SELECT * FROM Utmmetka_Citys;")
+    cur.execute("SELECT * FROM Citys;")
     print(cur.description)
     '''DATABASE_URL = os.environ['DATABASE_URL']
     print("HEY"*100)
