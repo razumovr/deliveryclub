@@ -37,6 +37,7 @@ def insertinsql():
     j=1
     p = 1
     cur = con.cursor()
+    cur.execute("SELECT * FROM Utmmetka;")
     print(cur.description)
     print("HOPHEY"*100)
     rows=cur.fetchall()
