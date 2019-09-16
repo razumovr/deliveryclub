@@ -49,11 +49,13 @@ def insertinsql():
     print(con)
     con.set_session(readonly=False)
     cur = con.cursor()
-    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(120);")
+    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(500);")
+    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(500);")
+
     #for table in cur.fetchall():
     #    print(table)
     
-    '''j=1
+    j=1
     p = 1
     with con:
         cur = con.cursor()
@@ -64,7 +66,7 @@ def insertinsql():
                 print("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1'''
+            j+=1
 
 
 class PersonListView(ListView):
