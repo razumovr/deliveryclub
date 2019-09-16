@@ -47,7 +47,7 @@ def insertinsql():
             port=port
             )
     print(con)
-    con.set_session(readonly=True)
+    con.set_session(readonly=False)
     cur = con.cursor()
     cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(120);")
     #for table in cur.fetchall():
