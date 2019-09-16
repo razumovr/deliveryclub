@@ -30,7 +30,7 @@ def insertinsql():
     DATABASE_URL = os.environ['DATABASE_URL']
     print("HEY"*100)
     print(DATABASE_URL)
-    con = psycopg2.connect(dbname=DATABASE_URL)
+    con = psycopg2.connect(dbname=DATABASE_URL, sslmode='require')
     print('!'*1000)
     print(con)
     j=1
