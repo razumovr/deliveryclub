@@ -48,8 +48,8 @@ def insertinsql():
             )
     print(con)
     con.set_session(readonly=True)
-    #cur = con.cursor()
-    #cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
+    cur = con.cursor()
+    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(120);")
     #for table in cur.fetchall():
     #    print(table)
     
