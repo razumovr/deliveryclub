@@ -47,6 +47,7 @@ def insertinsql():
             port=port
             )
     print(con)
+    con.set_session(readonly=True)
     #cur = con.cursor()
     #cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
     #for table in cur.fetchall():
