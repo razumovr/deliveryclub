@@ -35,6 +35,11 @@ def insertinsql():
     print(con)
     j=1
     p = 1
+    cur = con.cursor()
+    rows=cur.fetchall()
+    for r in rows:
+        print("LOOK"*100)
+        print(r)
     with con:
         cur = con.cursor()
         rows=cur.fetchall()
