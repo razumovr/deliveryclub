@@ -58,7 +58,7 @@ def insertinsql():
             print(table)
         for i in utm.tables.keys():
             print("INSERT INTO Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
-            cur.execute("INSERT INTO ('Utmmetka_country',) VALUES("+str(j)+", '"+str(i)+"')" )
+            cur.execute("INSERT INTO 'Utmmetka_country' VALUES("+str(j)+", '"+str(i)+"')" )
 
             for jj in utm.tables[i][1:]:
                 cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
