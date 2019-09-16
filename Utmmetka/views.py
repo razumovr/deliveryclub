@@ -60,6 +60,7 @@ def insertinsql():
             cur.execute("INSERT INTO \"Utmmetka_country\" VALUES("+str(j)+", '"+str(i)+"')" )
 
             for jj in utm.tables[i][1:]:
+                print("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
             j+=1
