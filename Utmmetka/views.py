@@ -53,6 +53,9 @@ def insertinsql():
     p = 1
     with con:
         cur = con.cursor()
+        cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
+        for table in cur.fetchall():
+            print(table)
         for i in utm.tables.keys():
             cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
 
