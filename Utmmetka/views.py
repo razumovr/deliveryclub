@@ -30,7 +30,7 @@ def insertinsql():
     DATABASE_URL = os.environ['DATABASE_URL']
     print("HEY"*100)
     print(DATABASE_URL)
-    con = psycopg2.connect(dbname="/var/run/postgresql/.s.PGSQL.5432", user="razumovr", password="123456789qQ", sslmode='require')
+    con = psycopg2.connect(dbname=DATABASE_URL, user="raxx.97@mail.ru", password="isitximeez1!", sslmode='require')
     print('!'*1000)
     print(con)
     j=1
