@@ -51,20 +51,8 @@ def insertinsql():
     
     j=1
     p = 1
-    cur = con.cursor()
-    cur.execute("SELECT * FROM Utmmetka_City;")
-    print(cur.description)
-    print("HOPHEY"*100)
-    rows=cur.fetchall()
-    for r in rows:
-        print("LOOK"*100)
-        print(r)
     with con:
         cur = con.cursor()
-        rows=cur.fetchall()
-        for r in rows:
-            print("LOOK"*100)
-            print(r)
         for i in utm.tables.keys():
             cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
 
