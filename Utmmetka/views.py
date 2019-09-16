@@ -44,21 +44,15 @@ def insertinsql():
             port=port
             )
     print(con)
-    cur = con.cursor()
-    cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
-    for table in cur.fetchall():
-        print(table)
-    '''DATABASE_URL = os.environ['DATABASE_URL']
-    print("HEY"*100)
-    print(DATABASE_URL)
-    con = psycopg2.connect(DATABASE_URL, sslmode='require')
-    print('!'*1000)
-    print(con)
+    #cur = con.cursor()
+    #cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
+    #for table in cur.fetchall():
+    #    print(table)
     
     j=1
     p = 1
     cur = con.cursor()
-    cur.execute("SELECT * FROM Utmmetka_Citys;")
+    cur.execute("SELECT * FROM Utmmetka_City;")
     print(cur.description)
     print("HOPHEY"*100)
     rows=cur.fetchall()
