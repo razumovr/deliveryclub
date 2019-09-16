@@ -125,9 +125,7 @@ def index2(request):
 
 
 def index3(request):
-    print("ZAHHHHHOD"*20)
     if(request.method=='POST'):
         forminlist=FirstForm(request.POST)
         forminlist.save()
-    return render(request, 'hr/person_list.html')
-    #return render(request,a.success_url)
+    return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
