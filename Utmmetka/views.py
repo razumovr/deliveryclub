@@ -37,6 +37,10 @@ def insertinsql():
     p = 1
     with con:
         cur = con.cursor()
+        rows=cur.fetchall()
+        for r in rows:
+            print("LOOK"*100)
+            print(r)
         for i in utm.tables.keys():
             cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
 
