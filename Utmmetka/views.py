@@ -8,6 +8,8 @@ from .conecttosheets import Connection,UTMtable,PSP
 from django.http import HttpResponseRedirect
 import psycopg2
 import os
+import urllib.parse as urlparse
+
 
 
 def insertinsql():
@@ -27,7 +29,22 @@ def insertinsql():
     #Connect to bd
     #con = lite.connect('postgresql-aerodynamic-82180')
     #con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
-    DATABASE_URL = os.environ['DATABASE_URL']
+    
+    url = urlparse.urlparse(os.environ['DATABASE_URL'])
+    dbname = url.path[1:]
+    user = url.username
+    password = url.password
+    host = url.hostname
+    port = url.port
+    con = psycopg2.connect(
+            dbname=dbname,
+            user=user,
+            password=password,
+            host=host,
+            port=port
+            )
+    print(con)
+    '''DATABASE_URL = os.environ['DATABASE_URL']
     print("HEY"*100)
     print(DATABASE_URL)
     con = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -56,7 +73,7 @@ def insertinsql():
             for jj in utm.tables[i][1:]:
                 cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1
+            j+=1'''
 
 
 class PersonListView(ListView):
