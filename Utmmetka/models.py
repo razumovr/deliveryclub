@@ -10,7 +10,7 @@ class Country(models.Model):
 
 class City(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    name = models.CharField(max_length=300)
+    name = models.SlugField(max_length=300)
 
     def __str__(self):
         return self.name
