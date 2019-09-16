@@ -52,20 +52,12 @@ def insertinsql():
     j=1
     p = 1
     with con:
-        massiv=[]
         cur = con.cursor()
-        cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
-        for table in cur.fetchall():
-            massiv.append(table)
-        cur.execute("""SELECT * FROM "Utmmetka_country" """)
-        print("OBRATI"*200)
-        print(massiv)
         for i in utm.tables.keys():
-            print("INSERT INTO Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
-            cur.execute("INSERT INTO Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')" )
+            cur.execute("INSERT INTO "Utmmetka_country" VALUES("+str(j)+", '"+str(i)+"')" )
 
             for jj in utm.tables[i][1:]:
-                cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
+                cur.execute("INSERT INTO  "Utmmetka_city" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
             j+=1
 
