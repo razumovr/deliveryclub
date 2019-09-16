@@ -45,8 +45,9 @@ def insertinsql():
             )
     print(con)
     cur = con.cursor()
-    cur.execute("SELECT * FROM Citys;")
-    print(cur.description)
+    cursor.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
+    for table in cursor.fetchall():
+        print(table)
     '''DATABASE_URL = os.environ['DATABASE_URL']
     print("HEY"*100)
     print(DATABASE_URL)
