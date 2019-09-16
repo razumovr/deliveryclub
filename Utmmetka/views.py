@@ -33,9 +33,11 @@ def insertinsql():
     con = psycopg2.connect(DATABASE_URL, sslmode='require')
     print('!'*1000)
     print(con)
+    
     j=1
     p = 1
     cur = con.cursor()
+    print(cur.description)
     rows=cur.fetchall()
     for r in rows:
         print("LOOK"*100)
