@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 import psycopg2
 import os
 import urllib.parse as urlparse
+from django.shortcuts import redirect
 
 
 
