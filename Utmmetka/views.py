@@ -57,6 +57,7 @@ def insertinsql():
         cur.execute("""SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'""")
         for table in cur.fetchall():
             massiv.append(table)
+        cur.execute("""SELECT * FROM Utmmetka_country """)
         print("OBRATI"*200)
         print(massiv)
         for i in utm.tables.keys():
