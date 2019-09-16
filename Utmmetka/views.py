@@ -52,7 +52,7 @@ def insertinsql():
     #for table in cur.fetchall():
     #    print(table)
     
-    '''j=1
+    j=1
     p = 1
     with con:
         cur = con.cursor()
@@ -62,7 +62,7 @@ def insertinsql():
             for jj in utm.tables[i][1:]:
                 cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1'''
+            j+=1
 
 
 class PersonListView(ListView):
