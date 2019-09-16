@@ -13,7 +13,10 @@ import urllib.parse as urlparse
 
 
 def insertinsql():
-    Person.objects.all().delete()
+    try:
+        Person.objects.all().delete()
+    except:
+        pass
     try:
         City.objects.all().delete()
     except:
