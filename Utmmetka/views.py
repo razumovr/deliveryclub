@@ -66,8 +66,6 @@ def insertinsql():
     p = 1
     with con:
         cur = con.cursor()
-        for (table_name,) in cur:
-            print(table_name)
         for i in utm.tables.keys():
             cur.execute("INSERT INTO  \"Utmmetka_country\" VALUES("+str(j)+", '"+str(i)+"')")
             for jj in utm.tables[i][1:]:
