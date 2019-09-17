@@ -73,11 +73,10 @@ def insertinsql():
                 p+=1
             j+=1
 class PersonListView(ListView):
-    model = Person
+    model = Firstvar
     template_name = 'hr/person_list.html'
     context_object_name = 'people'
     insertinsql()
-    print("PROVERKA")
 
 
 class PersonCreateView(CreateView):
