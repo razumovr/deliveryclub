@@ -22,7 +22,9 @@ class Person(models.Model):
 
 
 class Firstvar(models.Model):
-    name=models.CharField(max_length=300)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    name=models.CharField(max_length=100)
+    utmname=models.CharField(max_length=300)
     def __str__(self):
         return self.name
 
