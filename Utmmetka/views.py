@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 
-from .models import Person, City,Country
+from .models import Person, City,Country,Firstvar
 from .forms import PersonForm,FirstForm
 from .conecttosheets import Connection,UTMtable,PSP
 from django.http import HttpResponseRedirect
