@@ -121,4 +121,4 @@ def index3(request):
     if(request.method=='POST'):
         person = Person.objects.last()
         Firstvar.objects.create(name=request.POST['name'], person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
-    return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
+    return redirect('https://changellenge.herokuapp.com/utmgenerator')
