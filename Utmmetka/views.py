@@ -56,8 +56,8 @@ def insertinsql():
     print(con)
     con.set_session(readonly=False)
     cur = con.cursor()
-    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(500);")
-    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(500);")
+    '''cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(500);")
+    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(500);")'''
 
     #for table in cur.fetchall():
     #    print(table)
