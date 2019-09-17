@@ -26,6 +26,12 @@ def insertinsql():
         Country.objects.all().delete()
     except:
         pass
+    try:
+        Firstvar.objects.all().delete()
+    except:
+        pass
+        
+
     gs = Connection()
     gs.connect()
     utm = UTMtable(gs.service)
