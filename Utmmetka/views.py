@@ -64,14 +64,14 @@ def insertinsql():
     
     j=1
     p = 1
-    with con:
+    '''with con:
         cur = con.cursor()
         for i in utm.tables.keys():
             cur.execute("INSERT INTO  \"Utmmetka_country\" VALUES("+str(j)+", '"+str(i)+"')")
             for jj in utm.tables[i][1:]:
                 cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1
+            j+=1'''
 class PersonListView(ListView):
     model = Person
     template_name = 'hr/person_list.html'
