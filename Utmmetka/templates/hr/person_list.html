@@ -20,9 +20,9 @@
       {% for person in people %}
         <tr>
           <td><a href="{% url 'person_change' person.pk %}">{{ person.name }}</a></td>
-          <td>{{ person.birthdate }}</td>
-          <td>{{ person.country.name }}</td>
-          <td>{{ person.city.name }}</td>
+          <td>{{ person.person.country }}</td>
+          <td>{{ person.person.city }}</td>
+          <td>{{ person.utmname }}</td>
         </tr>
       {% empty %}
         <tr>
