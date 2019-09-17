@@ -12,7 +12,6 @@ import urllib.parse as urlparse
 from django.shortcuts import redirect
 
 
-
 def insertinsql():
     try:
         Person.objects.all().delete()
