@@ -7,43 +7,31 @@ class LangingForm(ModelForm):
         fields=['land','success','start','end','complete','heshteg',]
 
 
-        widgets={'land':TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+        widgets={'land':TextInput(attrs={'class': '',
                                          'name':'компания',
-                                         'placeholder':"Введите лендинг",
-                                         'data - tilda - req' : "1",
-                                         'style' : "color:#000000; border:1px solid #000000;  ",
+                                         'placeholder':"Введите лендинг"
                                          }
                                   ),
-                 'success': TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                 'success': TextInput(attrs={'class': '',
                                           'name': 'компания',
-                                          'placeholder': "Введите success",
-                                          'data - tilda - req': "1",
-                                          'style': "color:#000000; border:1px solid #000000;  ",
+                                          'placeholder': "Введите success"
                                           }),
-                 'start': TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                 'start': TextInput(attrs={'class': '',
                                           'name': 'компания',
-                                          'placeholder': "Введите начальную дату",
-                                          'data - tilda - req': "1",
-                                          'style': "color:#000000; border:1px solid #000000;  ",
+                                          'placeholder': "Введите начальную дату"
                                           }
                                    ),
-                 'end': TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                 'end': TextInput(attrs={'class': '',
                                              'name': 'компания',
-                                             'placeholder': "Введите конечную дату",
-                                             'data - tilda - req': "1",
-                                             'style': "color:#000000; border:1px solid #000000;  ",
+                                             'placeholder': "Введите конечную дату"
                                              }),
-                 'complete': TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                 'complete': TextInput(attrs={'class': '',
                                           'name': 'компания',
-                                          'placeholder': "Введите completesheet",
-                                          'data - tilda - req': "1",
-                                          'style': "color:#000000; border:1px solid #000000;  ",
+                                          'placeholder': "Введите completesheet"
                                           }
                                    ),
-                 'heshteg': TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                 'heshteg': TextInput(attrs={'class': '',
                                              'name': 'компания',
-                                             'placeholder': "Введите хештег",
-                                             'data - tilda - req': "1",
-                                             'style': "color:#000000; border:1px solid #000000;  ",
-                                             }),
+                                             'placeholder': "Введите хештег"
+                                             })
                  }
