@@ -117,7 +117,6 @@ def index2(request):
     print(request.POST['country'])
     return render(request,'hr/pagenext.html',d)
 
-
 def index3(request):
     if(request.method=='POST'):
         person = Person.objects.last()
