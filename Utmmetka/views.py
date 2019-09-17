@@ -112,21 +112,12 @@ def index2(request):
     if(request.method=='POST'):
         forminlist=PersonForm(request.POST)
         forminlist.save()
-    '''if(request.method=='POST'):
-        print(request.POST)
-        forminlist=FirstForm(request.POST)
-        forminlist.save()'''
-    '''print('!'*100)
-    print(request.POST)
-    print('!'*100)'''
-    print('HEEEEEEy')
-    print(d)
     print(request.POST['country'])
     return render(request,'hr/pagenext.html',d)
 
 
 def index3(request):
     if(request.method=='POST'):
-        forminlist=FirstForm(request.POST)
-        forminlist.save()
+        person = Person.objects.last()
+        Firstvar.objects.create(name=request.POST['name'], person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
     return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
