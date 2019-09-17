@@ -5,18 +5,13 @@
     <title>Funnel!</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-    <form action="/page2" role="form" method="POST"
-          data-formactiontype="2">
-            {% csrf_token %}
-            {{ form }}
-            <div class="t-input-error"></div>
-            <button type="submit" class="t-submit">
-                Отправить &gt;&gt;
-            </button>
+    <form action="/page2" role="form" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Отправить &gt;&gt;</button>
     </form>
 </div>
 </body>
