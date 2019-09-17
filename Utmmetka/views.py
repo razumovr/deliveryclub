@@ -58,17 +58,20 @@ def insertinsql():
     
     j=1
     p = 1
-    with con:
-        cur = con.cursor()
-        for i in utm.tables.keys():
-            cur.execute("INSERT INTO \"Utmmetka_country\" VALUES("+str(j)+", '"+str(i)+"')" )
-
-            for jj in utm.tables[i][1:]:
-                print("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
-                cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
-                p+=1
-            j+=1
-
+    try:
+         with con:
+             cur = con.cursor()
+             for (table_name,) in cur:
+                 print(table_name)
+             for i in utm.tables.keys():
+                 cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
+                 for jj in utm.tables[i][1:]:
+                     cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
+                     p+=1
+                 j+=1
+     except:
+         pass
+ 
 
 class PersonListView(ListView):
     model = Person
