@@ -26,14 +26,69 @@ class PersonForm(forms.ModelForm):
 class FirstForm(forms.ModelForm):
     class Meta:
         model=Firstvar
-        fields=['name']
+        fields=['utm_campaign']
 
 
-        widgets={'name':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+        widgets={'utm_campaign':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                          'name':'компания',
                                          'placeholder':"Введите лендинг",
                                          'data - tilda - req' : "1",
                                          'style' : "color:#000000; border:1px solid #000000;  ",
                                          }
                                   ),
+                 }
+
+
+class SecondForm(forms.ModelForm):
+    class Meta:
+        model=Firstvar
+        fields=['utm_campaign','utm_term']
+
+
+        widgets={'utm_campaign':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                                         'name':'компания',
+                                         'placeholder':"Введите лендинг",
+                                         'data - tilda - req' : "1",
+                                         'style' : "color:#000000; border:1px solid #000000;  ",
+                                         }
+                                  ),
+                 'utm_term': forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                                                        'name': 'компания',
+                                                        'placeholder': "Введите лендинг",
+                                                        'data - tilda - req': "1",
+                                                        'style': "color:#000000; border:1px solid #000000;  ",
+                                                        }
+                                                 ),
+                 }
+
+
+
+class ThirdForm(forms.ModelForm):
+    class Meta:
+        model=Firstvar
+        fields=['utm_campaign','utm_term','utm_content']
+
+
+
+        widgets={'utm_campaign':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                                         'name':'компания',
+                                         'placeholder':"Введите лендинг",
+                                         'data - tilda - req' : "1",
+                                         'style' : "color:#000000; border:1px solid #000000;  ",
+                                         }
+                                  ),
+                 'utm_term': forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                                                    'name': 'компания',
+                                                    'placeholder': "Введите лендинг",
+                                                    'data - tilda - req': "1",
+                                                    'style': "color:#000000; border:1px solid #000000;  ",
+                                                    }
+                                             ),
+                 'utm_content': forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                                                    'name': 'компания',
+                                                    'placeholder': "Введите лендинг",
+                                                    'data - tilda - req': "1",
+                                                    'style': "color:#000000; border:1px solid #000000;  ",
+                                                    }
+                                             ),
                  }
