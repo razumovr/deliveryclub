@@ -39,6 +39,5 @@ def index2(request):
 
     return render(request,'mainpage/page2.html',d)
 
-
 def index3(request):
     return render(request,'mainpage/styles/style.css')
