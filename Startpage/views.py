@@ -38,3 +38,7 @@ def index2(request):
     Langing.objects.all().delete()
 
     return render(request,'mainpage/page2.html',d)
+
+
+def index3(request):
+    return render(request,'mainpage/styles/style.css')
