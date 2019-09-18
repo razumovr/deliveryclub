@@ -5,25 +5,25 @@ class LangingForm(ModelForm):
     class Meta:
         model=Langing
         fields=['land','success','start','end','complete','heshteg',]
-        widgets={'land':TextInput(attrs={'class': '',
+        widgets={'land':TextInput(attrs={'class': 'form-input',
                                          'name':'компания'
                                          }
                                   ),
-                 'success': TextInput(attrs={'class': '',
+                 'success': TextInput(attrs={'class': 'form-input',
                                           'name': 'компания'
                                           }),
-                 'start': TextInput(attrs={'class': '',
+                 'start': TextInput(attrs={'class': 'form-input',
                                           'name': 'компания'
                                           }
                                    ),
-                 'end': TextInput(attrs={'class': '',
+                 'end': TextInput(attrs={'class': 'form-input',
                                              'name': 'компания'
                                              }),
-                 'complete': TextInput(attrs={'class': '',
+                 'complete': TextInput(attrs={'class': 'form-input',
                                           'name': 'компания'
                                           }
                                    ),
-                 'heshteg': TextInput(attrs={'class': '',
+                 'heshteg': TextInput(attrs={'class': 'form-input',
                                              'name': 'компания'
                                              })
                  }

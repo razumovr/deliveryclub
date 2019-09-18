@@ -2,46 +2,111 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Funnel!</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Funnel!</title>
 </head>
 <body>
 <div class="container">
     <form action="/page2" role="form" method="POST">
         {% csrf_token %}
         <div class="form-item">
-            <label for="">Введите ссылку на лендинг</label>
+            <label for="id_land">Введите ссылку на лендинг</label>
             {{ form.land }}
-            <span>Ввести URL - лендинга</span>
+            <span class="form-label">Ввести URL - лендинга</span>
         </div>
         <div class="form-item">
-            <label for="">Введите ссылку на Success Page</label>
+            <label for="id_success">Введите ссылку на Success Page</label>
             {{ form.success }}
-            <span>Ввести URL - Success Page</span>
+            <span class="form-label">Ввести URL - Success Page</span>
         </div>
         <div class="form-item">
-            <label for="">Введите дату старта промо</label>
+            <label for="id_start">Введите дату старта промо</label>
             {{ form.start }}
-            <span>15.08.2019</span>
         </div>
         <div class="form-item">
-            <label for="">Введите дату окончания промо</label>
+            <label for="id_end">Введите дату окончания промо</label>
             {{ form.end }}
-            <span>15.08.2019</span>
         </div>
         <div class="form-item">
-            <label for="">Введите ссылку на таблицу регистраций complete</label>
+            <label for="id_complete">Введите ссылку на таблицу регистраций complete</label>
             {{ form.complete }}
-            <span>Ввести ссылку на complete</span>
+            <span class="form-label">Ввести ссылку на complete</span>
         </div>
         <div class="form-item">
-            <label for="">Введите хештег</label>
+            <label for="id_heshteg">Введите хештег</label>
             {{ form.heshteg }}
-            <span>Ввести хештег</span>
+            <span class="form-label">Ввести хештег</span>
         </div>
-        <button type="submit">Отправить &gt;&gt;</button>
+        <button type="submit" class="btn">Отправить &gt;&gt;</button>
     </form>
 </div>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    function isValidUrl(url)
+    {
+        var objRE = /^(ftp|http|https):\/\/[^ "]+$/;
+        return objRE.test(url);
+    }
+
+    $('#id_land, #id_success, #id_complete').on('input', function() {
+        if ($(this).val() === '') {
+            $(this).removeClass('success')
+        }
+        if ($(this).val().length > 15) {
+            if (isValidUrl($(this).val())) {
+                $(this).addClass('success')
+            } else {
+                $(this).removeClass('success')
+            }
+        }
+    })
+
+    $('#id_heshteg').on('input', function() {
+        if ($(this).val() === '') {
+            $(this).removeClass('success')
+        } else {
+            $(this).addClass('success')
+        }
+    })
+
+    $(function(){
+        $('#id_start, #id_end').daterangepicker({
+            singleDatePicker: true,
+            locale: {
+                format: 'YYYY-MM-DD',
+                "daysOfWeek": [
+                    "Вс",
+                    "Пн",
+                    "Вт",
+                    "Ср",
+                    "Чт",
+                    "Пт",
+                    "Сб"
+                ],
+                "monthNames": [
+                    "Январь",
+                    "Феварль",
+                    "Март",
+                    "Апрель",
+                    "Май",
+                    "Июнь",
+                    "Июль",
+                    "Август",
+                    "Сентябрь",
+                    "Октябрь",
+                    "Ноябрь",
+                    "Декабрь"
+                ],
+                "firstDay": 1
+            }
+        });
+    });
+</script>
 </body>
 </html>
