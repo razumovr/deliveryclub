@@ -104,7 +104,7 @@ def index2(request):
         d['form'] = form
     else:
         Firstvar.objects.create(person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
-        return redirect('http://127.0.0.1:8000/utmgenerator')
+        return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
     return render(request,'hr/pagenext.html',d)
 
 
@@ -118,7 +118,7 @@ def index3(request):
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
         elif a == 3:
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
-    return redirect('http://127.0.0.1:8000/utmgenerator')
+    return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
 
 
 
