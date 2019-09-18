@@ -51,8 +51,13 @@ def insertinsql():
 	            )
     con.set_session(readonly=False)
     cur = con.cursor()
-    '''cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(500);")
-    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(500);")
+    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_campaign\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")
+
     with con:
         cur = con.cursor()
         global c
@@ -62,7 +67,7 @@ def insertinsql():
             for jj in k[i][1:]:
                 cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1'''
+            j+=1
 
 
 
