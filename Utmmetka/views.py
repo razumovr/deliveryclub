@@ -6,6 +6,7 @@ from .models import Person, City,Country,Firstvar
 from .forms import PersonForm,FirstForm,SecondForm,ThirdForm
 from .conecttosheets import Connection,UTMtable,PSP
 import urllib.parse as urlparse
+import os
 from django.shortcuts import redirect
 
 import pandas as pd
