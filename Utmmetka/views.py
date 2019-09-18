@@ -3,76 +3,50 @@ from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 
 from .models import Person, City,Country,Firstvar
-from .forms import PersonForm,FirstForm
+from .forms import PersonForm,FirstForm,SecondForm,ThirdForm
 from .conecttosheets import Connection,UTMtable,PSP
-from django.http import HttpResponseRedirect
-import psycopg2
-import os
-import urllib.parse as urlparse
+import sqlite3 as lite
 from django.shortcuts import redirect
 
+import pandas as pd
+
+gs = Connection()
+gs.connect()
+utm = UTMtable(gs.service)
+b=utm.getSheets()
+c=utm.tables.keys()
+k=utm.tables
 
 def insertinsql():
-    try:
-        Person.objects.all().delete()
-    except:
-        pass
-    try:
-        City.objects.all().delete()
-    except:
-        pass
-    try:
-        Country.objects.all().delete()
-    except:
-        pass
-    try:
-        Firstvar.objects.all().delete()
-    except:
-        pass
-        
+    '''Person.objects.all().delete()
+    City.objects.all().delete()
+    Country.objects.all().delete()
+    Firstvar.objects.all().delete()'''
 
-    gs = Connection()
-    gs.connect()
-    utm = UTMtable(gs.service)
-    utm.getSheets()
     #Connect to bd
-    #con = lite.connect('postgresql-aerodynamic-82180')
     #con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
-    
-    url = urlparse.urlparse(os.environ['DATABASE_URL'])
-    dbname = url.path[1:]
-    user = url.username
-    password = url.password
-    host = url.hostname
-    port = url.port
-    con = psycopg2.connect(
-            dbname=dbname,
-            user=user,
-            password=password,
-            host=host,
-            port=port
-            )
-    print(con)
-    con.set_session(readonly=False)
-    cur = con.cursor()
-    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(500);")
-    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(500);")
-
-    #for table in cur.fetchall():
-    #    print(table)
-    
+    con = lite.connect('db.sqlite3')
     j=1
     p = 1
-    with con:
+    '''with con:
         cur = con.cursor()
-        for i in utm.tables.keys():
-            cur.execute("INSERT INTO  \"Utmmetka_country\" VALUES("+str(j)+", '"+str(i)+"')")
-            for jj in utm.tables[i][1:]:
-                cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
+        for (table_name,) in cur:
+            print(table_name)
+        global c
+        for i in c:
+            cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
+            global k
+            for jj in k[i][1:]:
+                cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1
+            j+=1'''
+
+
+
+
 class PersonListView(ListView):
-    model = Firstvar
+    model =Firstvar
+    print(type(model))
     template_name = 'hr/person_list.html'
     context_object_name = 'people'
     insertinsql()
@@ -89,34 +63,63 @@ class PersonCreateView(CreateView):
 class PersonUpdateView(UpdateView):
     model = Person
     form_class = PersonForm
-
     success_url = reverse_lazy('person_changelist')
 
 
 
 def load_cities(request):
     country_id = request.GET.get('country')
-    print("HEYYYYY")
-    print(request.POST)
-    print(country_id)
     cities = City.objects.filter(country_id=country_id).order_by('name')
     return render(request, 'hr/city_dropdown_list_options.html', {'cities': cities})
 
 
 
-def index2(request):
 
+def checkform(country,city):
+    global k
+    dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
+    checkform = str(dataframe.loc[dataframe['Название'] == city, 'utm_campaign']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_term']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_content'])
+    countchekform = checkform.count('введите')
+    return countchekform
+
+
+
+
+
+def index2(request):
     d={}
-    form=FirstForm
-    d['form']=form
     if(request.method=='POST'):
         forminlist=PersonForm(request.POST)
         forminlist.save()
-    print(request.POST['country'])
+    person = Person.objects.last()
+    a=checkform(str(Person.objects.last().country),str(Person.objects.last().city))
+    if a==1:
+        form = FirstForm
+        d['form'] = form
+    elif a==2:
+        form = SecondForm
+        d['form'] = form
+    elif a==3:
+        form = ThirdForm
+        d['form'] = form
+    else:
+        Firstvar.objects.create(person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+        return redirect('http://127.0.0.1:8000/utmgenerator')
     return render(request,'hr/pagenext.html',d)
+
 
 def index3(request):
     if(request.method=='POST'):
         person = Person.objects.last()
-        Firstvar.objects.create(name=request.POST['name'], person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
-    return redirect('https://changellenge.herokuapp.com/utmgenerator')
+        a = checkform(str(Person.objects.last().country), str(Person.objects.last().city))
+        if a == 1:
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+        elif a == 2:
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+        elif a == 3:
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+    return redirect('http://127.0.0.1:8000/utmgenerator')
+
+
+
+
