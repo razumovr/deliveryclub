@@ -7,6 +7,7 @@ from .forms import PersonForm,FirstForm,SecondForm,ThirdForm
 from .conecttosheets import Connection,UTMtable,PSP
 import urllib.parse as urlparse
 import os
+import psycopg2
 from django.shortcuts import redirect
 
 import pandas as pd
