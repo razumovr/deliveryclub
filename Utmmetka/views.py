@@ -57,7 +57,8 @@ def insertinsql():
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")
-
+    j=1
+    p = 1
     with con:
         cur = con.cursor()
         global c
