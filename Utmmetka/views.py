@@ -18,29 +18,50 @@ c=utm.tables.keys()
 k=utm.tables
 
 def insertinsql():
-    '''Person.objects.all().delete()
-    City.objects.all().delete()
-    Country.objects.all().delete()
-    Firstvar.objects.all().delete()'''
-
-    #Connect to bd
-    #con = psycopg2.connect(dbname='postgresql-aerodynamic-82180', user='razumovr',password='123456789qQ')
-    con = lite.connect('db.sqlite3')
-    j=1
-    p = 1
-    '''with con:
-        cur = con.cursor()
-        for (table_name,) in cur:
-            print(table_name)
-        global c
-        for i in c:
-            cur.execute("INSERT INTO  Utmmetka_country VALUES("+str(j)+", '"+str(i)+"')")
-            global k
-            for jj in k[i][1:]:
-                cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
-                p+=1
-            j+=1'''
-
+    try:
+	        Person.objects.all().delete()
+	    except:
+	        pass
+	    try:
+	        City.objects.all().delete()
+	    except:
+	        pass
+	    try:
+	        Country.objects.all().delete()
+	    except:
+	        pass
+	    try:
+	        Firstvar.objects.all().delete()
+	    except:
+	        pass
+        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+	    dbname = url.path[1:]
+	    user = url.username
+	    password = url.password
+	    host = url.hostname
+	    port = url.port
+	    con = psycopg2.connect(
+	            dbname=dbname,
+	            user=user,
+	            password=password,
+	            host=host,
+	            port=port
+	            )
+	    print(con)
+	    con.set_session(readonly=False)
+	    cur = con.cursor()
+	    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(500);")
+	    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(500);")
+        with con:
+	        cur = con.cursor()
+            global c
+	        for i in c:
+	            cur.execute("INSERT INTO  \"Utmmetka_country\" VALUES("+str(j)+", '"+str(i)+"')")
+                global k
+	            for jj in k[i][1:]::
+	                cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
+                    p+=1
+                j+=1
 
 
 
