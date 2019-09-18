@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from .models import Person, City,Country,Firstvar
 from .forms import PersonForm,FirstForm,SecondForm,ThirdForm
 from .conecttosheets import Connection,UTMtable,PSP
-import sqlite3 as lite
+import urllib.parse as urlparse
 from django.shortcuts import redirect
 
 import pandas as pd
