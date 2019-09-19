@@ -11,19 +11,13 @@
 
   <table border="1">
     <thead>
-      <tr>
-        <th>Country</th>
-        <th>City</th>
-      </tr>
     </thead>
     <tbody>
       {% for person in people %}
         <tr>
-          <td><a href="{% url 'person_change' person.pk %}">{{ person.name }}</a></td>
           <td>{{ person.person.country }}</td>
           <td>{{ person.person.city }}</td>
           <td>{{ person.utmname }}</td>
-          <td>{{ person }}</td>
         </tr>
       {% empty %}
         <tr>
