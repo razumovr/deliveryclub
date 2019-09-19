@@ -56,7 +56,11 @@ def insertinsql():
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_campaign\" type character varying(300);")
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")    
+    cur.execute("alter table \"Startpage_langing\" alter column \"land\" type character varying(300);")
+    cur.execute("alter table \"Startpage_langing\" alter column \"success\" type character varying(300);")
+    cur.execute("alter table \"Startpage_langing\" alter column \"complete\" type character varying(300);")
+	
     j=1
     p = 1
     with con:
