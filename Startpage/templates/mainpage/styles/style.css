@@ -5,6 +5,7 @@ body {
 .container {
   width: 960px;
   margin: 0 auto;
+  padding: 35px 0;
 }
 
 .form {

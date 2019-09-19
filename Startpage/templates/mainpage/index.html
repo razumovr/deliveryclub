@@ -17,6 +17,7 @@
     .container {
         width: 960px;
         margin: 0 auto;
+        padding: 35px 0;
     }
 
     .form {
@@ -98,7 +99,7 @@
 
 
 <div class="container">
-    <form action="/page2" role="form" method="POST">
+    <form action="/page2" role="form" method="POST" class="form">
         {% csrf_token %}
         <div class="form-item">
             <label for="id_land">Введите ссылку на лендинг</label>
