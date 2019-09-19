@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('page2', views.index2),
-    path('cssindex', views.index3)
+    path('cssindex/stylecss', views.index3)
 ]
