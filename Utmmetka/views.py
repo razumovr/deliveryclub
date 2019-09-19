@@ -11,6 +11,7 @@ import psycopg2
 from django.shortcuts import redirect
 
 import pandas as pd
+import re
 
 gs = Connection()
 gs.connect()
@@ -110,10 +111,57 @@ def load_cities(request):
 def checkform(country,city):
     global k
     dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
-    checkform = str(dataframe.loc[dataframe['Название'] == city, 'utm_campaign']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_term']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_content'])
+    checkform = str(dataframe.loc[dataframe['Название'] == city, 'utm_source']) + ' '+str(dataframe.loc[dataframe['Название'] == city, 'utm_medium']) + ' '+str(dataframe.loc[dataframe['Название'] == city, 'utm_campaign']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_term']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_content'])
     countchekform = checkform.count('введите')
     return countchekform
 
+
+def deleteNO(query,stopwords):
+    querywords = query.split('&')
+    resultwords = [word for word in querywords if word.lower() not in stopwords]
+    result = '&'.join(resultwords)
+    return result
+
+
+def utmnamecreate(country,city,countvvod,utm_campaign,utm_term,utm_content):
+    global k
+    dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
+    print(dataframe.loc[dataframe['Название'] == city, 'utm_source'])
+    utmname = '?' + 'utm_source=' + str(
+        dataframe.loc[dataframe['Название'] == city, 'utm_source'].item()) + '&utm_medium=' + str(
+        dataframe.loc[dataframe['Название'] == city, 'utm_medium'].item()) + '&utm_campaign=' + str(
+        dataframe.loc[dataframe['Название'] == city, 'utm_campaign'].item()) + '&utm_term=' + str(
+        dataframe.loc[dataframe['Название'] == city, 'utm_term'].item()) + '&utm_content=' + str(
+        dataframe.loc[dataframe['Название'] == city, 'utm_content'].item()) + '&'
+    if countvvod==1:
+        find = re.findall(r'введите.*?[&]', utmname)
+        newline = utmname.replace(find[0], utm_campaign+'&')
+        itog=deleteNO(newline[:-1],re.findall(r'[^&]*нет', newline[:-1]))
+        return itog
+
+    elif countvvod==2:
+        find = re.findall(r'введите.*?[&]', utmname)
+        newline = utmname.replace(find[0], utm_campaign+'&')
+        newline1 = newline.replace(find[1], utm_term+'&')
+        itog=deleteNO(newline1[:-1],re.findall(r'[^&]*нет', newline1[:-1]))
+        return itog
+
+    elif countvvod==3:
+        find = re.findall(r'введите.*?[&]', utmname)
+        newline = utmname.replace(find[0], utm_campaign+'&')
+        newline1 = newline.replace(find[1], utm_term+'&')
+        newline2 = newline1.replace(find[2], utm_content+'&')
+        itog = deleteNO(newline2[:-1], re.findall(r'[^&]*нет', newline2[:-1]))
+        return itog
+    else:
+        utmname = '?' + 'utm_source=' + str(
+            dataframe.loc[dataframe['Название'] == city, 'utm_source'].item()) + '&utm_medium=' + str(
+            dataframe.loc[dataframe['Название'] == city, 'utm_medium'].item()) + '&utm_campaign=' + str(
+            dataframe.loc[dataframe['Название'] == city, 'utm_campaign'].item()) + '&utm_term=' + str(
+            dataframe.loc[dataframe['Название'] == city, 'utm_term'].item()) + '&utm_content=' + str(
+            dataframe.loc[dataframe['Название'] == city, 'utm_content'].item())
+        itog=deleteNO(utmname,re.findall(r'[^&]*нет', utmname))
+        return itog
 
 
 
@@ -135,7 +183,8 @@ def index2(request):
         form = ThirdForm
         d['form'] = form
     else:
-        Firstvar.objects.create(person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+        utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,None, None, None)
+        Firstvar.objects.create(person=person,utmname=utmname)
         return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
     return render(request,'hr/pagenext.html',d)
 
@@ -145,12 +194,16 @@ def index3(request):
         person = Person.objects.last()
         a = checkform(str(Person.objects.last().country), str(Person.objects.last().city))
         if a == 1:
-            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+            utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],None,None)
+            print(utmname)
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],person=person,utmname=utmname)
+
         elif a == 2:
-            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+            utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],None)
+            print(utmname)
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],person=person,utmname=utmname)
         elif a == 3:
-            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname='?utm_source=email&utm_medium=segment&utm_campaign=fin&utm_term=123&utm_content=1488')
+            utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],request.POST['utm_content'])
+            print(utmname)
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname=utmname)
     return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
-
-
-
