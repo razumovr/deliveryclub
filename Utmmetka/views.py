@@ -93,11 +93,6 @@ class PersonCreateView(CreateView):
 
 
 
-class PersonUpdateView(UpdateView):
-    model = Person
-    form_class = PersonForm
-    success_url = reverse_lazy('person_changelist')
-
 
 
 def load_cities(request):
