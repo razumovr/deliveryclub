@@ -429,7 +429,10 @@ def main():
     else:
         pass
     print('!!!!!!')
+    print(start)
+    print(type(start))
     print(stop)
+    print(type(stop))
     df = return_ga_data(
         start_date=start,
         end_date=stop,
