@@ -50,6 +50,86 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
+    $(document).ready(function() {
+        var formHeight = $('.form-item').outerHeight(true);
+        var customHeight = formHeight
+        var tmp_1 = false
+        var tmp_2 = false
+        var tmp_3 = false
+        var tmp_4 = false
+        var tmp_5 = false
+        $('#id_land').on('input', function () {
+            if ($(this).hasClass('success')) {
+                if (tmp_1 === false) {
+                    formHeight += customHeight
+                    $('.form').height(formHeight)
+                    tmp_1 = true
+                }
+            }
+        })
+        $('#id_success').on('input', function () {
+            if ($(this).hasClass('success')) {
+                if (tmp_2 === false) {
+                    formHeight += (customHeight * 2)
+                    $('.form').height(formHeight)
+                    tmp_2 = true
+                }
+            }
+        })
+        $('#id_start').on('change', function () {
+            var start = new Date($('#id_start').val())
+            var end = new Date($('#id_end').val())
+            if (start < end) {
+                $('#id_start').addClass('success')
+                $('#id_end').addClass('success')
+                if (tmp_3 === false) {
+                    formHeight += customHeight
+                    $('.form').height(formHeight)
+                    tmp_3 = true
+                }
+            } else {
+                $('#id_start').removeClass('success')
+                $('#id_end').removeClass('success')
+                console.log('Ошибка дат')
+            }
+        })
+        $('#id_end').on('change', function () {
+            var start = new Date($('#id_start').val())
+            var end = new Date($('#id_end').val())
+            if (start < end) {
+                $('#id_start').addClass('success')
+                $('#id_end').addClass('success')
+                if (tmp_3 === false) {
+                    formHeight += customHeight
+                    $('.form').height(formHeight)
+                    tmp_3 = true
+                }
+            } else {
+                $('#id_start').removeClass('success')
+                $('#id_end').removeClass('success')
+                console.log('Ошибка дат')
+            }
+        })
+        $('#id_complete').on('input', function () {
+            if ($(this).hasClass('success')) {
+                if (tmp_4 === false) {
+                    formHeight += customHeight
+                    $('.form').height(formHeight)
+                    tmp_4 = true
+                }
+            }
+        })
+        $('#id_heshteg').on('input', function () {
+            if ($(this).hasClass('success')) {
+                if (tmp_5 === false) {
+                    formHeight += customHeight
+                    $('.form').height(formHeight)
+                    tmp_5 = true
+                }
+            }
+        })
+    })
+
     function isValidUrl(url)
     {
         var objRE = /^(ftp|http|https):\/\/[^ "]+$/;
@@ -109,6 +189,7 @@
             }
         });
     });
+
 </script>
 </body>
 </html>
