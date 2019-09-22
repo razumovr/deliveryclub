@@ -11,19 +11,21 @@
 
   <table border="1">
     <thead>
+
     </thead>
     <tbody>
-      {% for person in people %}
+    {% if people.last is not None %}
         <tr>
-          <td>{{ person.person.country }}</td>
-          <td>{{ person.person.city }}</td>
-          <td>{{ person.utmname }}</td>
+          <td>{{  people.last.person.country }}</td>
+          <td>{{  people.last.person.city }}</td>
+          <td>{{  people.last.utmname }}</td>
         </tr>
-      {% empty %}
+    {% else %}
         <tr>
           <td colspan="4">No person in the database. <a href="{% url 'person_add' %}">Add the first person</a>.</td>
         </tr>
-      {% endfor %}
+    {% endif %}
+
     </tbody>
   </table>
 
