@@ -50,6 +50,7 @@
 
 
 
+
 <div id="rec77738328" class="r t-rec t-rec_pt_45 t-rec_pb_105" style="padding-top:45px;padding-bottom:105px;background-color:#dfe3e4; " data-animationappear="off" data-record-type="678" data-bg-color="#dfe3e4">
 <!-- t678 -->
 <div class="t678 ">
@@ -58,7 +59,7 @@
     <div class="t-container">
         <div class="t-col t-col_8 t-prefix_2">
         <div>
-    <form  action="https://deliveryclub.herokuapp.com/utmgenerator/hr/add/utmupdate" id="personForm" name="form77738328" role="form"  method="POST"  data-formactiontype="2" data-inputbox=".t-input-group">
+    <form action="http://127.0.0.1:8000/utmgenerator/hr/add/utmupdate" id="personForm" name="form77738328" role="form"  method="POST"  data-formactiontype="2" data-inputbox=".t-input-group">
 
 	  			        	            	                <input type="hidden" name="formservices[]" value="1be168af8a85a264fd9ec3577b14281e" class="js-formaction-services">
 
@@ -71,7 +72,17 @@
             <div class="t-input-group t-input-group_nm" data-input-lid="1494858943227">
                               <div class="t-input-block" style="position: relative; overflow: hidden;">
                                       {% csrf_token %}
-                                  {{ form }}
+
+                                  {{ nameinsertfirst }}
+                                  {{ form.utm_campaign }}
+
+                                  {{ nameinsertsecond }}
+                                  {{ form.utm_term }}
+
+                                  {{ nameinsertthird }}
+                                  {{ form.utm_content }}
+
+
                     <div class="t-input-error"></div>
           </div>
       </div>
