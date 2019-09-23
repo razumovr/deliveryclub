@@ -192,7 +192,7 @@ def index2(request):
     else:
         utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,None, None, None)
         Firstvar.objects.create(person=person,utmname=utmname)
-        return redirect('http://127.0.0.1:8000/utmgenerator')
+        return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
 
     return render(request,'hr/pagenext.html',d)
 
@@ -211,7 +211,7 @@ def index3(request):
         elif a == 3:
             utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],request.POST['utm_content'])
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname=utmname)
-    return redirect('http://127.0.0.1:8000/utmgenerator')
+    return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
 
 
 
@@ -227,7 +227,7 @@ def inserturl2(request):
         form=UrlForm(request.POST)
         form.save()
 
-    return redirect('http://127.0.0.1:8000/utmgenerator/hr/add/')
+    return redirect('https://deliveryclub.herokuapp.com/utmgenerator/hr/add/')
 
 
 
