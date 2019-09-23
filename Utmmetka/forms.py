@@ -1,7 +1,25 @@
 from django import forms
-#from django.forms import ModelForm,TextInput
 
-from .models import Person, City,Firstvar
+from .models import Person, City,Firstvar,Urlname
+
+
+
+
+
+class UrlForm(forms.ModelForm):
+    class Meta:
+        model=Urlname
+        fields=['name']
+
+
+        widgets={'name':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
+                                         'name':'компания',
+                                         'placeholder':"Введите лендинг",
+                                         'data - tilda - req' : "1",
+                                         'style' : "color:#000000; border:1px solid #000000;  ",
+                                         }
+                                  ),}
+
 
 class PersonForm(forms.ModelForm):
     class Meta:
@@ -31,7 +49,7 @@ class FirstForm(forms.ModelForm):
 
         widgets={'utm_campaign':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                          'name':'компания',
-                                         'placeholder':"Введите лендинг",
+
                                          'data - tilda - req' : "1",
                                          'style' : "color:#000000; border:1px solid #000000;  ",
                                          }
@@ -47,14 +65,14 @@ class SecondForm(forms.ModelForm):
 
         widgets={'utm_campaign':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                          'name':'компания',
-                                         'placeholder':"Введите лендинг",
+
                                          'data - tilda - req' : "1",
                                          'style' : "color:#000000; border:1px solid #000000;  ",
                                          }
                                   ),
                  'utm_term': forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                                         'name': 'компания',
-                                                        'placeholder': "Введите лендинг",
+
                                                         'data - tilda - req': "1",
                                                         'style': "color:#000000; border:1px solid #000000;  ",
                                                         }
@@ -69,24 +87,23 @@ class ThirdForm(forms.ModelForm):
         fields=['utm_campaign','utm_term','utm_content']
 
 
-
         widgets={'utm_campaign':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                          'name':'компания',
-                                         'placeholder':"Введите лендинг",
+
                                          'data - tilda - req' : "1",
                                          'style' : "color:#000000; border:1px solid #000000;  ",
                                          }
                                   ),
                  'utm_term': forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                                     'name': 'компания',
-                                                    'placeholder': "Введите лендинг",
+
                                                     'data - tilda - req': "1",
                                                     'style': "color:#000000; border:1px solid #000000;  ",
                                                     }
                                              ),
                  'utm_content': forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                                     'name': 'компания',
-                                                    'placeholder': "Введите лендинг",
+
                                                     'data - tilda - req': "1",
                                                     'style': "color:#000000; border:1px solid #000000;  ",
                                                     }
