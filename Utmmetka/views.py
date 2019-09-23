@@ -37,7 +37,7 @@ def insertinsql():
         Firstvar.objects.all().delete()
     except:
         pass
-    url = urlparse.urlparse(os.environ['DATABASE_URL'])
+    '''url = urlparse.urlparse(os.environ['DATABASE_URL'])
     dbname = url.path[1:]
     user = url.username
     password = url.password
@@ -57,7 +57,8 @@ def insertinsql():
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_campaign\" type character varying(300);")
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
     cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")    
+    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"name\" type character varying(300);")
+    cur.execute("alter table \"Utmmetka_urlname\" alter column \"utm_term\" type character varying(300);")
     cur.execute("alter table \"Startpage_langing\" alter column \"land\" type character varying(300);")
     cur.execute("alter table \"Startpage_langing\" alter column \"success\" type character varying(300);")
     cur.execute("alter table \"Startpage_langing\" alter column \"complete\" type character varying(300);")
@@ -74,7 +75,7 @@ def insertinsql():
                 cur.execute("INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
             j+=1
-
+'''
 
 
 class PersonListView(ListView):
@@ -103,13 +104,22 @@ def load_cities(request):
 
 
 
+
 def checkform(country,city):
     global k
     dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
-    checkform = str(dataframe.loc[dataframe['Название'] == city, 'utm_source']) + ' '+str(dataframe.loc[dataframe['Название'] == city, 'utm_medium']) + ' '+str(dataframe.loc[dataframe['Название'] == city, 'utm_campaign']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_term']) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_content'])
+    checkform = str(dataframe.loc[dataframe['Название'] == city, 'utm_source'].item()) + ' '+str(dataframe.loc[dataframe['Название'] == city, 'utm_medium'].item()) + ' '+str(dataframe.loc[dataframe['Название'] == city, 'utm_campaign'].item()) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_term'].item()) + ' ' + str(dataframe.loc[dataframe['Название'] == city, 'utm_content'].item())
     countchekform = checkform.count('введите')
     return countchekform
 
+def nameinsert(country,city):
+    allinsert=[]
+    global k
+    dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
+    for i in [dataframe.loc[dataframe['Название'] == city,'utm_source'].item(),dataframe.loc[dataframe['Название'] == city,'utm_medium'].item(),dataframe.loc[dataframe['Название'] == city,'utm_campaign'].item(),dataframe.loc[dataframe['Название'] == city,'utm_term'].item(),dataframe.loc[dataframe['Название'] == city,'utm_content'].item()]:
+        if 'введите' in i:
+            allinsert.append(i)
+    return allinsert
 
 def deleteNO(query,stopwords):
     querywords = query.split('&')
@@ -119,10 +129,11 @@ def deleteNO(query,stopwords):
 
 
 def utmnamecreate(country,city,countvvod,utm_campaign,utm_term,utm_content):
+    url = str(Urlname.objects.last().name)
     global k
     dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
     print(dataframe.loc[dataframe['Название'] == city, 'utm_source'])
-    utmname = '?' + 'utm_source=' + str(
+    utmname = url+'?' + 'utm_source=' + str(
         dataframe.loc[dataframe['Название'] == city, 'utm_source'].item()) + '&utm_medium=' + str(
         dataframe.loc[dataframe['Название'] == city, 'utm_medium'].item()) + '&utm_campaign=' + str(
         dataframe.loc[dataframe['Название'] == city, 'utm_campaign'].item()) + '&utm_term=' + str(
@@ -149,13 +160,7 @@ def utmnamecreate(country,city,countvvod,utm_campaign,utm_term,utm_content):
         itog = deleteNO(newline2[:-1], re.findall(r'[^&]*нет', newline2[:-1]))
         return itog
     else:
-        utmname = '?' + 'utm_source=' + str(
-            dataframe.loc[dataframe['Название'] == city, 'utm_source'].item()) + '&utm_medium=' + str(
-            dataframe.loc[dataframe['Название'] == city, 'utm_medium'].item()) + '&utm_campaign=' + str(
-            dataframe.loc[dataframe['Название'] == city, 'utm_campaign'].item()) + '&utm_term=' + str(
-            dataframe.loc[dataframe['Название'] == city, 'utm_term'].item()) + '&utm_content=' + str(
-            dataframe.loc[dataframe['Название'] == city, 'utm_content'].item())
-        itog=deleteNO(utmname,re.findall(r'[^&]*нет', utmname))
+        itog=deleteNO(utmname[:-1],re.findall(r'[^&]*нет', utmname[:-1]))
         return itog
 
 
@@ -168,19 +173,27 @@ def index2(request):
         forminlist.save()
     person = Person.objects.last()
     a=checkform(str(Person.objects.last().country),str(Person.objects.last().city))
+    b=nameinsert(str(Person.objects.last().country),str(Person.objects.last().city))
     if a==1:
         form = FirstForm
         d['form'] = form
+        d['nameinsertfirst']=b[0]
     elif a==2:
         form = SecondForm
         d['form'] = form
+        d['nameinsertfirst']=b[0]
+        d['nameinsertsecond']=b[1]
     elif a==3:
         form = ThirdForm
         d['form'] = form
+        d['nameinsertfirst']=b[0]
+        d['nameinsertsecond']=b[1]
+        d['nameinsertthird'] = b[2]
     else:
         utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,None, None, None)
         Firstvar.objects.create(person=person,utmname=utmname)
-        return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
+        return redirect('http://127.0.0.1:8000/utmgenerator')
+
     return render(request,'hr/pagenext.html',d)
 
 
@@ -190,15 +203,31 @@ def index3(request):
         a = checkform(str(Person.objects.last().country), str(Person.objects.last().city))
         if a == 1:
             utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],None,None)
-            print(utmname)
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],person=person,utmname=utmname)
 
         elif a == 2:
             utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],None)
-            print(utmname)
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],person=person,utmname=utmname)
         elif a == 3:
             utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],request.POST['utm_content'])
-            print(utmname)
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname=utmname)
-    return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
+    return redirect('http://127.0.0.1:8000/utmgenerator')
+
+
+
+def inserturl(request):
+    d={}
+    form=UrlForm()
+    d['form']=form
+
+    return render(request,'hr/urlname.html',d)
+
+def inserturl2(request):
+    if (request.method == 'POST'):
+        form=UrlForm(request.POST)
+        form.save()
+
+    return redirect('http://127.0.0.1:8000/utmgenerator/hr/add/')
+
+
+
