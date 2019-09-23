@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Human Resources Module{% endblock %}
 
 {% block content %}
-  <h2>Human Resources Module » People Management</h2>
-
   <p>
-    <a href="{% url 'person_add' %}">Add person</a>
+    <a href="{% url 'url_add' %}">Add person</a>
   </p>
 
   <table border="1">
@@ -22,7 +19,7 @@
         </tr>
     {% else %}
         <tr>
-          <td colspan="4">No person in the database. <a href="{% url 'person_add' %}">Add the first person</a>.</td>
+          <td colspan="4">No person in the database. <a href="{% url 'url_add' %}">Add the first person</a>.</td>
         </tr>
     {% endif %}
 
