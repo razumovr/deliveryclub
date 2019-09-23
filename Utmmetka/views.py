@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 
 from .models import Person, City,Country,Firstvar
-from .forms import PersonForm,FirstForm,SecondForm,ThirdForm
+from .forms import PersonForm,FirstForm,SecondForm,ThirdForm,UrlForm
 from .conecttosheets import Connection,UTMtable,PSP
 import urllib.parse as urlparse
 import os
