@@ -1,92 +1,22 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-
-  <title>Funnel!</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-  <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-
-<body>
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">Воронка по проектам</h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="#">Добро пожаловать</a>
-
-  </nav>
-</div>
-<div class="container">
+{% extends 'base.html' %}
 
 
-<!--<TILDA ver="2.0.5">--><link rel="stylesheet" type="text/css" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css"><link rel="stylesheet" type="text/css" href="https://tilda.ws/project842811/tilda-blocks-2.12.css"><link rel="stylesheet" type="text/css" href="https://static.tildacdn.com/css/tilda-animation-1.0.min.css"><link rel="stylesheet" type="text/css" href="https://static.tildacdn.com/css/tilda-slds-1.4.min.css"><link rel="stylesheet" type="text/css" href="https://static.tildacdn.com/css/tilda-zoom-2.0.min.css"><!--allrecords-->
-
-
-
-
-
-</div>
-
-          </div>
-
-
-
-
-
-
-
-
-<div id="rec77738327" class="r t-rec t-rec_pt_60 t-rec_pb_30" style="padding-top:60px;padding-bottom:30px;background-color:#dfe3e4; "  data-record-type="33"   data-bg-color="#dfe3e4">
-<!-- T017 http://127.0.0.1:8000/page2/-->
-<div class="t017">
-  <div class="t-container t-align_center">
-    <div class="t-col t-col_10 t-prefix_1">
-      <div class="t017__uptitle t-uptitle t-uptitle_md" field="subtitle" style=""><div style="font-family:'FuturaPT';" data-customstyle="yes"></div></div>      <div class="t017__title t-title t-title_xxs" field="title" style="font-family:'FuturaPT';"><strong>Ввведите все данные</strong></div>      <div class="t017__descr t-descr t-descr_xs" field="descr" style="font-family:'FuturaPT';"><div style="font-size:18px;" data-customstyle="yes">После заполнения нажмите кнопку отправить </div></div>    </div>
-  </div>
-</div>
-</div>
-
-
-
-
-
-<div id="rec77738328" class="r t-rec t-rec_pt_45 t-rec_pb_105" style="padding-top:45px;padding-bottom:105px;background-color:#dfe3e4; " data-animationappear="off" data-record-type="678" data-bg-color="#dfe3e4">
-<!-- t678 -->
-<div class="t678 ">
-
-
-    <div class="t-container">
-        <div class="t-col t-col_8 t-prefix_2">
-        <div>
+{% block content %}
     <form action="update" id="personForm" name="form77738328" role="form"  method="POST"  data-formactiontype="2" data-inputbox=".t-input-group">
 
 	  			        	            	                <input type="hidden" name="formservices[]" value="1be168af8a85a264fd9ec3577b14281e" class="js-formaction-services">
 
 
-            <div class="js-successbox t-form__successbox t-text t-text_md" style="display:none;"></div>
-
-            <div class="t-form__inputsbox">
-
-
             <div class="t-input-group t-input-group_nm" data-input-lid="1494858943227">
                               <div class="t-input-block" style="position: relative; overflow: hidden;">
+
                                       {% csrf_token %}
                                   {{ form.name }}
+
+
                     <div class="t-input-error"></div>
           </div>
       </div>
-
-
-
-<!-- <form  method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" novalidate>
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    <button type="submit">Save</button>
-     <a href="{% url 'person_changelist' %}">Nevermind</a>
-  </form>-->
 
 
 
@@ -100,34 +30,5 @@
 
 
 
-
-
-
-
-	        </div>
-
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
 </form>
-
-</body>
-</html>
+{% endblock %}
