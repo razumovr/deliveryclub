@@ -151,7 +151,7 @@ def utmnamecreate(country,city,countvvod,utm_campaign,utm_term,utm_content):
         find = re.findall(r'введите.*?[&]', utmname)
         newline = utmname.replace(find[0], utm_campaign+'&')
         newline1 = newline.replace(find[1], utm_term+'&')
-        itogfirst=deleteNO(newline[:-1],re.findall(r'[^&]*нет', newline[:-1]))
+        itogfirst=deleteNO(newline1[:-1],re.findall(r'[^&]*нет', newline1[:-1]))
         itog=cyrtranslit.to_latin(itogfirst, 'ru').replace(" ", "")
         return itog
 
@@ -160,7 +160,7 @@ def utmnamecreate(country,city,countvvod,utm_campaign,utm_term,utm_content):
         newline = utmname.replace(find[0], utm_campaign+'&')
         newline1 = newline.replace(find[1], utm_term+'&')
         newline2 = newline1.replace(find[2], utm_content+'&')
-        itogfirst=deleteNO(newline[:-1],re.findall(r'[^&]*нет', newline[:-1]))
+        itogfirst=deleteNO(newline2[:-1],re.findall(r'[^&]*нет', newline2[:-1]))
         itog=cyrtranslit.to_latin(itogfirst, 'ru').replace(" ", "")
         return itog
     else:
