@@ -130,7 +130,7 @@ def deleteNO(query,stopwords):
 
 
 def utmnamecreate(country,city,countvvod,utm_campaign,utm_term,utm_content):
-    url = str(Urlname.objects.last().name)
+    url = cyrtranslit.to_latin(str(Urlname.objects.last().name), 'ru').replace(" ", "")
     global k
     dataframe = pd.DataFrame(k[country][1:], columns=k[country][0])
     print(dataframe.loc[dataframe['Название'] == city, 'utm_source'])
