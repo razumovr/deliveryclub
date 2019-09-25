@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Startpage',
     'Utmmetka',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+LOGIN_URL = '/users/login/'
 
 BOOTSTRAP3 = {'include_jquery': True,}
 cwd = os.getcwd()
