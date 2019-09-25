@@ -235,4 +235,3 @@ def inserturl2(request):
     return redirect('https://deliveryclub.herokuapp.com/utmgenerator/hr/add/')
 
 
-
