@@ -70,7 +70,10 @@
             <div class="t-form__inputsbox">
 
 <table class="table table-hover table-condensed table-striped table-bordered table-sm">
-
+     {% if user.is_authenticated %}
+     <a href="{% url 'users:logout' %}">log out</a>
+     {% else %}
+     {% endif %}
   <thead>
     <tr>
       <th>#</th>
