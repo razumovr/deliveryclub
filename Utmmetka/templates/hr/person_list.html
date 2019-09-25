@@ -3,7 +3,7 @@
 
 {% block content %}
   <p>
-    <a href="{% url 'url_add' %}">Add person</a>
+    <a href="{% url 'url_add' %}">Add utm</a>
   </p>
 
   <table border="1">
@@ -19,7 +19,7 @@
         </tr>
     {% else %}
         <tr>
-          <td colspan="4">No person in the database. <a href="{% url 'url_add' %}">Add the first person</a>.</td>
+          <td colspan="4">No person in the database. <a href="{% url 'url_add' %}">Add the first utm</a>.</td>
         </tr>
     {% endif %}
 
