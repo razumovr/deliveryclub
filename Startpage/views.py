@@ -4,11 +4,8 @@ from .forms import LangingForm
 from .project import main
 
 
-'''def index2(request):
-    d=main()
-    Langing.objects.all().delete()
-
-    return render(request,'mainpage/pagenext.html',d)'''
+def indexstartpage(request):
+    return render(request,'start.html')
 
 
 def index(request):
