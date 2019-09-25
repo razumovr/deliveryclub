@@ -6,45 +6,78 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://kit.fontawesome.com/8b80a9f534.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
     <title>Document</title>
 </head>
 <body>
 <div class="container">
-    <h1>Я нихуя не помню какое тут должно быть название</h1>
+    <h1>Составление воронки</h1>
     <form action="/page2" role="form" method="POST" class="form">
         <input type="hidden" name="csrfmiddlewaretoken" value="4NqqsonHyAczXH8zkUBNCAKbEY0nXM9GyBTgq3211KqvNLsDWUvGDBqD3BkunHBS">
         <div class="form-item">
             <label for="id_land">Введите ссылку на лендинг</label>
+            <i class="fas fa-link"></i>
             <input type="text" name="land" class="form-input" maxlength="300" required="" id="id_land">
+            <i class="fas fa-info-circle">
+                <p><b>Например:</b> https://1.changellenge.com/company/bain</p>
+            </i>
             <span class="form-label">Ввести URL - лендинга</span>
         </div>
         <div class="form-item">
             <label for="id_success">Введите ссылку на Success Page</label>
+            <i class="fas fa-link"></i>
             <input type="text" name="success" class="form-input" maxlength="300" required="" id="id_success">
+            <i class="fas fa-info-circle">
+                <p><b>Например:</b> https://1.changellenge.com/company/bain</p>
+            </i>
             <span class="form-label">Ввести URL - Success Page</span>
         </div>
         <div class="form-item">
             <label for="id_start">Введите дату старта промо</label>
+            <i class="far fa-calendar-alt"></i>
             <input type="text" name="start" class="form-input" maxlength="300" required="" id="id_start">
         </div>
         <div class="form-item">
             <label for="id_end">Введите дату окончания промо</label>
+            <i class="far fa-calendar-alt"></i>
             <input type="text" name="end" class="form-input" maxlength="300" required="" id="id_end">
         </div>
         <div class="form-item">
             <label for="id_complete">Введите ссылку на таблицу регистраций complete</label>
+            <i class="fas fa-link"></i>
             <input type="text" name="complete" class="form-input" maxlength="300" required="" id="id_complete">
+            <i class="fas fa-info-circle">
+                <p><b>Например:</b> https://1.changellenge.com/company/bain</p>
+            </i>
             <span class="form-label">Ввести ссылку на complete</span>
         </div>
         <div class="form-item">
             <label for="id_heshteg">Введите хештег</label>
+            <i class="fas fa-hashtag"></i>
             <input type="text" name="heshteg" class="form-input" maxlength="300" required="" id="id_heshteg">
+            <i class="fas fa-info-circle more">
+                <p><b>Например:</b> #changellenge</p>
+            </i>
             <span class="form-label">Ввести хештег</span>
         </div>
         <button type="submit" class="btn">Отправить &gt;&gt;</button>
     </form>
 </div>
+<div class="alert">
+    <h2>Ошибка</h2>
+    <p>Проверьте корректность заполнения всех полей</p>
+    <button type="button" class="btn">Зарыть &gt;&gt;</button>
+</div>
+<div class="loader">
+    <div class="l_main">
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+        <div class="l_square"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<div class="bg"></div>
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -79,7 +112,7 @@
         $('#id_start').on('change', function () {
             var start = new Date($('#id_start').val())
             var end = new Date($('#id_end').val())
-            if (start < end) {
+            if (start.getTime() < end.getTime()) {
                 $('#id_start').addClass('success')
                 $('#id_end').addClass('success')
                 if (tmp_3 === false) {
@@ -96,7 +129,7 @@
         $('#id_end').on('change', function () {
             var start = new Date($('#id_start').val())
             var end = new Date($('#id_end').val())
-            if (start < end) {
+            if (start.getTime() < end.getTime()) {
                 $('#id_start').addClass('success')
                 $('#id_end').addClass('success')
                 if (tmp_3 === false) {
@@ -189,6 +222,27 @@
             }
         });
     });
+
+    $('.alert button').click(function() {
+        $('.bg, .alert').removeClass('show')
+    })
+
+    $('form button.btn').click(function() {
+        var nextTmp = true
+        $('.bg').addClass('show')
+        $('.form-item').each(function() {
+            if (!$(this).find('.form-input').hasClass('success')) {
+                nextTmp = false
+            }
+        })
+        if (nextTmp) {
+            $('.loader').addClass('show')
+        } else {
+            $('.alert').addClass('show')
+        }
+
+        return nextTmp
+    })
 
 </script>
 </body>
