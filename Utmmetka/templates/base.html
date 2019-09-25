@@ -20,6 +20,12 @@
     </style>
   </head>
   <body>
+
+        {% if user.is_authenticated %}
+       Hello, {{ user.username }}.
+       <a href="{% url 'users:logout' %}">log out</a>
+     {% else %}
+     {% endif %}
     <hr>
     {% block content %}
     {% endblock %}
