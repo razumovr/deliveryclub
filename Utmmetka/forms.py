@@ -14,9 +14,8 @@ class UrlForm(forms.ModelForm):
 
         widgets={'name':forms.TextInput(attrs={'class': 't-input js-tilda-rule   t-input_pvis',
                                          'name':'компания',
-                                         'placeholder':"Введите лендинг",
-                                         'data - tilda - req' : "1",
-                                         'style' : "color:#000000; border:1px solid #000000;  ",
+                                         'class': 'form-input',
+                                         'id': 'id_land'
                                          }
                                   ),}
 
