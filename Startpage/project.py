@@ -439,14 +439,16 @@ def main():
     print(type(start))
     print(stop)
     print(type(stop))
-    df = return_ga_data(
+    df = q.enqueue(return_ga_data(
         start_date=start,
         end_date=stop,
         view_id='129196190',
         metrics=[{"expression": "ga:uniquePageviews"}, ],
         dimensions=[{'name': 'ga:pagePath'}, {'name': 'ga:sourceMedium'}, ],
         service=service,
-    )
+    ), 'http://heroku.com')
+    print("Hellow2"*1000)
+    print(df)
 
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
@@ -460,10 +462,10 @@ def main():
     #/toolkit / excel
     set_data_valuestraf = set(data_namestraf)
     try:
-        data = q.enqueue(googlesheets(slovartraf,str(landing[0].complete)), 'http://heroku.com')
+        data = googlesheets(slovartraf,str(landing[0].complete))
         print('1')
     except:
-        data = q.enqueue(googleapi(slovartraf,df,urltoSuccess), 'http://heroku.com')
+        data = googleapi(slovartraf,df,urltoSuccess)
         print('2')
 
     vuz = 0
