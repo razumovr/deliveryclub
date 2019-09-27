@@ -17,8 +17,13 @@
         background: #dfe3e4;
     }
 
+    h1 {
+        font-size: 30px;
+        margin-top: 0;
+    }
+
     .container {
-        width: 960px;
+        width: 700px;
         margin: 80px auto 40px auto;
         background: #ffffff;
         padding: 25px;
@@ -51,18 +56,18 @@
     }
     .form-item label {
         color: #44484b;
-        font-size: 20px;
+        font-size: 17px;
         padding-left: 5px;
     }
     .form-item i {
         position: absolute;
-        bottom: 18px;
-        left: 20px;
-        font-size: 25px;
+        bottom: 12px;
+        left: 15px;
+        font-size: 20px;
     }
     .form-item i.fa-info-circle {
         left: auto;
-        right: 20px;
+        right: 15px;
         cursor: pointer;
     }
     .form-item i.fa-info-circle p {
@@ -70,13 +75,13 @@
         font-family: "Helvetica", sans-serif;
         top: -48px;
         margin: 0;
-        left: -301px;
+        left: -315px;
+        right: 40px;
         background: #dfe3e4;
         font-size: 13px;
         padding: 10px;
         line-height: 18px;
         font-weight: 100;
-        white-space: nowrap;
         display: none;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;
@@ -92,8 +97,13 @@
         border-right: 10px solid transparent;
         border-top: 12px solid #dfe3e4;
         position: absolute;
-        right: 15px;
-        bottom: -11px;
+        right: -15px;
+        bottom: 30px;
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
     }
     .form-item i.fa-info-circle:hover p {
         display: block;
@@ -104,13 +114,16 @@
         transition: 0.3s;
     }
     .form-item i.fa-info-circle.more p {
-        left: -143px;
+        left: -195px;
+    }
+    .form-item i.fa-info-circle.fas-complete p {
+        left: -340px;
     }
     .form-input {
-        width: calc(100% - 70px);
-        height: 45px;
-        padding: 5px 15px 5px 50px;
-        border: 2px solid #9f9f9f;
+        width: calc(100% - 60px);
+        height: 30px;
+        padding: 5px 15px 5px 40px;
+        border: 1px solid #9f9f9f;
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         border-radius: 15px;
@@ -141,9 +154,9 @@
     .form-label {
         position: absolute;
         pointer-events: none;
-        left: 45px;
-        top: 59px;
-        font-size: 17px;
+        left: 35px;
+        top: 49px;
+        font-size: 15px;
         color: #b4b4b4;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;
@@ -186,6 +199,12 @@
         z-index: 11;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+    }
+    .loader p {
+        margin-top: -100px;
+        font-size: 33px;
+        color: #ffffff;
     }
 
     .alert {
@@ -401,18 +420,18 @@
             <i class="fas fa-link"></i>
             {{ form.land }}
             <i class="fas fa-info-circle">
-                <p><b>Например:</b> https://1.changellenge.com/company/bain</p>
+                <p><b>Скопируйте</b> из адресной строки URL лендинга проекта без utm-разметки. <b>Внимание</b>, пока инструмент работает только с 1.changellenge.com и с changellenge.com</p>
             </i>
-            <span class="form-label">Ввести URL - лендинга</span>
+            <span class="form-label">В поле ввода впишите «https://domain.com/pageurl»</span>
         </div>
         <div class="form-item">
             <label for="id_success">Введите ссылку на Success Page</label>
             <i class="fas fa-link"></i>
             {{ form.success }}
             <i class="fas fa-info-circle">
-                <p><b>Например:</b> https://1.changellenge.com/company/bain</p>
+                <p><b>Скопируйте</b> из адресной строки URL лендинга проекта без utm-разметки. <b>Внимание</b>, пока инструмент работает только с 1.changellenge.com и с changellenge.com</p>
             </i>
-            <span class="form-label">Ввести URL - Success Page</span>
+            <span class="form-label">В поле ввода впишите «https://domain.com/pageurl»</span>
         </div>
         <div class="form-item">
             <label for="id_start">Введите дату старта промо</label>
@@ -428,19 +447,19 @@
             <label for="id_complete">Введите ссылку на таблицу регистраций complete</label>
             <i class="fas fa-link"></i>
             {{ form.complete }}
-            <i class="fas fa-info-circle">
-                <p><b>Например:</b> https://1.changellenge.com/company/bain</p>
+            <i class="fas fa-info-circle fas-complete">
+                <p><b>Скопируйте</b> ссылку на базу регистраций Complete. <b>Внимание</b>, чтобы инструмент работал, убедитесь, что вы раздали доступ к таблице регистраций на почту r.razumov@changellenge.ru</p>
             </i>
-            <span class="form-label">Ввести ссылку на complete</span>
+            <span class="form-label">В поле ввода впишите «https://domain.com/pageurl»</span>
         </div>
         <div class="form-item">
             <label for="id_heshteg">Введите хештег</label>
             <i class="fas fa-hashtag"></i>
             {{ form.heshteg }}
-            <i class="fas fa-info-circle">
-                <p><b>Например:</b> #changellenge</p>
+            <i class="fas fa-info-circle more">
+                <p><b>Скопируйте</b> точное написание хештега поста из группы Вконтакте вместе со значком <b>#</b></p>
             </i>
-            <span class="form-label">Ввести хештег</span>
+            <span class="form-label">#cupmoscow</span>
         </div>
         <button type="submit" class="btn">Отправить &gt;&gt;</button>
     </form>
@@ -457,6 +476,7 @@
         <div class="l_square"><span></span><span></span><span></span></div>
         <div class="l_square"><span></span><span></span><span></span></div>
     </div>
+    <p>Пожалуйста подождите,<br> идет загрузка данных...</p>
 </div>
 <div class="bg"></div>
 

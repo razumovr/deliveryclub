@@ -3,8 +3,12 @@ body
   margin: 0
   background: #dfe3e4
 
+h1
+  font-size: 30px
+  margin-top: 0
+
 .container
-  width: 960px
+  width: 700px
   margin: 80px auto 40px auto
   background: #ffffff
   padding: 25px
@@ -34,29 +38,29 @@ body
     width: 100%
     label
       color: #44484b
-      font-size: 20px
+      font-size: 17px
       padding-left: 5px
     i
       position: absolute
-      bottom: 18px
-      left: 20px
-      font-size: 25px
+      bottom: 12px
+      left: 15px
+      font-size: 20px
     i.fa-info-circle
       left: auto
-      right: 20px
+      right: 15px
       cursor: pointer
       p
         position: absolute
         font-family: "Helvetica", sans-serif
         top: -48px
         margin: 0
-        left: -301px
+        left: -315px
+        right: 40px
         background: #dfe3e4
         font-size: 13px
         padding: 10px
         line-height: 18px
         font-weight: 100
-        white-space: nowrap
         display: none
         -webkit-transition: 0.3s
         -moz-transition: 0.3s
@@ -71,8 +75,13 @@ body
           border-right: 10px solid transparent
           border-top: 12px solid #dfe3e4
           position: absolute
-          right: 15px
-          bottom: -11px
+          right: -15px
+          bottom: 30px
+          -webkit-transform: rotate(-90deg)
+          -moz-transform: rotate(-90deg)
+          -ms-transform: rotate(-90deg)
+          -o-transform: rotate(-90deg)
+          transform: rotate(-90deg)
       &:hover
         p
           display: block
@@ -83,12 +92,15 @@ body
           transition: 0.3s
     i.fa-info-circle.more
       p
-        left: -143px
+        left: -195px
+    i.fa-info-circle.fas-complete
+      p
+        left: -340px
   &-input
-    width: calc(100% - 70px)
-    height: 45px
-    padding: 5px 15px 5px 50px
-    border: 2px solid #9f9f9f
+    width: calc(100% - 60px)
+    height: 30px
+    padding: 5px 15px 5px 40px
+    border: 1px solid #9f9f9f
     -webkit-border-radius: 15px
     -moz-border-radius: 15px
     border-radius: 15px
@@ -114,9 +126,9 @@ body
   &-label
     position: absolute
     pointer-events: none
-    left: 45px
-    top: 59px
-    font-size: 17px
+    left: 35px
+    top: 49px
+    font-size: 15px
     color: #b4b4b4
     -webkit-transition: 0.3s
     -moz-transition: 0.3s
@@ -156,6 +168,11 @@ body
   z-index: 11
   justify-content: center
   align-items: center
+  flex-direction: column
+  p
+    margin-top: -100px
+    font-size: 33px
+    color: #ffffff
 
 .alert
   position: fixed
