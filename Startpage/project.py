@@ -439,21 +439,21 @@ def main():
     print(type(start))
     print(stop)
     print(type(stop))
-    df = q.enqueue(return_ga_data(
+    df = return_ga_data(
         start_date=start,
         end_date=stop,
         view_id='129196190',
         metrics=[{"expression": "ga:uniquePageviews"}, ],
         dimensions=[{'name': 'ga:pagePath'}, {'name': 'ga:sourceMedium'}, ],
         service=service,
-    ), 'http://heroku.com')
+    )
     print("Hellow2"*1000)
     print(df)
 
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
-    data_namestraf = list(
-        itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values))
+    data_namestraf = q.enqueue(list(
+        itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values)), 'http://heroku.com')
     data_valuestraf = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:uniquePageviews']].values))
     slovartraf = dict(zip(data_namestraf, data_valuestraf))
