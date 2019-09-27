@@ -1,2 +1,2 @@
 web: gunicorn Changellenge.wsgi --log-file -
-worker: lein run -m Changellenge.worker
+worker: lein run -m Startpage.worker
