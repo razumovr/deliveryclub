@@ -412,6 +412,12 @@ def main():
     heshteg=models.CharField(max_length=50)
 '''
     q = Queue(connection=conn)
+    import requests
+
+    def count_words_at_url(url):
+        resp = requests.get(url)
+        return len(resp.text.split())
+    result = q.enqueue(count_words_at_url, 'http://heroku.com')
     print("Helow"*100)
     print(q)
     landing = Langing.objects.all()
@@ -481,7 +487,7 @@ def main():
          'Бюджетфакт': ['?' for x in data_values]}
     d['Количество'][5] = vuz
 
-    colvodneylist=q.enqueue(colvodneyforday(start,stop,service,urltoLanding), 'http://heroku.com')
+    colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
     print(colvodneylist)
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
