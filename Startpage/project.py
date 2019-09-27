@@ -460,7 +460,7 @@ def main():
         data = q.enqueue(googlesheets(slovartraf,str(landing[0].complete)), 'http://heroku.com')
         print('1')
     except:
-        data = googleapi(slovartraf,df,urltoSuccess)
+        data = q.enqueue(googleapi(slovartraf,df,urltoSuccess), 'http://heroku.com')
         print('2')
 
     vuz = 0
