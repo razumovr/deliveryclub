@@ -31,7 +31,10 @@ import numpy as np
 import re
 
 
+from rq import Queue
+from worker import conn
 
+q = Queue(connection=conn)
 #join google analitycs
 #START
 def return_ga_data(start_date, end_date, view_id, metrics, dimensions,service):
@@ -454,7 +457,7 @@ def main():
     #/toolkit / excel
     set_data_valuestraf = set(data_namestraf)
     try:
-        data = googlesheets(slovartraf,str(landing[0].complete))
+        data = q.enqueue(googlesheets(slovartraf,str(landing[0].complete)), 'http://heroku.com')
         print('1')
     except:
         data = googleapi(slovartraf,df,urltoSuccess)
