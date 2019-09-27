@@ -40,4 +40,5 @@ vk-api==11.5.0
 zope.interface==4.6.0
 cyrtranslit==0.4
 rq==1.1.0
+redis==3.3.8
 psycopg2>=2.8.3
