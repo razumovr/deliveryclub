@@ -452,8 +452,8 @@ def main():
 
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
-    data_namestraf = q.enqueue(list(
-        itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values)), 'http://heroku.com')
+    data_namestraf = list(
+        itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values))
     data_valuestraf = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:uniquePageviews']].values))
     slovartraf = dict(zip(data_namestraf, data_valuestraf))
@@ -481,7 +481,8 @@ def main():
          'Бюджетфакт': ['?' for x in data_values]}
     d['Количество'][5] = vuz
 
-    colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
+    colvodneylist=q.enqueue(colvodneyforday(start,stop,service,urltoLanding), 'http://heroku.com')
+    print(colvodneylist)
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
     d['Количество'][9] = colvodneylist[2]
