@@ -34,7 +34,7 @@ import re
 from rq import Queue
 from worker import conn
 
-q = Queue(connection=conn)
+
 #join google analitycs
 #START
 def return_ga_data(start_date, end_date, view_id, metrics, dimensions,service):
@@ -411,6 +411,9 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
+    q = Queue(connection=conn)
+    print("Helow"*100)
+    print(q)
     landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
