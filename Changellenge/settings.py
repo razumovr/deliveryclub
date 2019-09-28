@@ -124,6 +124,10 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = '/users/login/'
 
+if not settings.configured:
+    settings.configure(**locals()
+
+
 BOOTSTRAP3 = {'include_jquery': True,}
 cwd = os.getcwd()
 if cwd == '/app' or cwd[:4] == '/tmp':
