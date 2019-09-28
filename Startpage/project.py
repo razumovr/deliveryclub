@@ -410,7 +410,7 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
-    '''q = Queue(connection=conn)
+    q = Queue(connection=conn)
     import requests
 
     def count_words_at_url(url):
@@ -418,7 +418,7 @@ def main():
         return len(resp.text.split())
     result = q.enqueue(count_words_at_url, 'http://heroku.com')
     print("Helow"*100)
-    print(q)'''
+    print(result)
     landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
