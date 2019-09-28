@@ -10,6 +10,7 @@ from oauth2client.client import OAuth2WebServerFlow, GoogleCredentials
 import httplib2
 from googleapiclient.discovery import build
 import datetime
+import pandas as pd
 
 
 
@@ -57,13 +58,10 @@ def print_response(response):
             list.append(dict)
     df = pd.DataFrame(list)
     return df
+def main():
+    landing = Langing.objects.all()
 
-landing = Langing.objects.all()
 
-    flow = OAuth2WebServerFlow(client_id=client_id,
-                               client_secret=client_secret,
-                               scope='https://www.googleapis.com/auth/analytics',
-                               redirect_uri=redirect_uri)
 
     credentials = GoogleCredentials(access_token, client_id, client_secret, refresh_token, 3920,
                                     'https://accounts.google.com/o/oauth2/token', 'test')
