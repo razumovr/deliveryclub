@@ -456,8 +456,8 @@ def main():
         service=service,
     )
     
-    print("Hellow2"*1000)
-    print(result.result)
+    '''print("Hellow2"*1000)
+    print(result.result)'''
 
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
