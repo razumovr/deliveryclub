@@ -32,6 +32,8 @@ import re
 
 from rq import Queue
 from worker import conn
+from django.conf import settings
+
 
 
 #join google analitycs
@@ -409,6 +411,7 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
+    settings.configure()
     q = Queue(connection=conn)
     import requests
 
