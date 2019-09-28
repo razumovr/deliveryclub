@@ -410,13 +410,13 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
-    q = Queue(connection=conn)
+    '''q = Queue(connection=conn)
     result = q.enqueue(main)
     print("Helow"*100)
     print(result.result)
     time.sleep(15)
     print(result.result)  
-
+'''
     landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
