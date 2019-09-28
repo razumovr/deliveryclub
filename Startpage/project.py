@@ -417,7 +417,7 @@ def main():
     time.sleep(15)
     print(result.result)  
 
-    '''landing = Langing.objects.all()
+    landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
                                client_secret=client_secret,
@@ -449,10 +449,10 @@ def main():
         metrics=[{"expression": "ga:uniquePageviews"}, ],
         dimensions=[{'name': 'ga:pagePath'}, {'name': 'ga:sourceMedium'}, ],
         service=service,
-    )'''
+    )
     
   
-'''
+
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
     data_namestraf = list(
@@ -483,7 +483,7 @@ def main():
          'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['?' for x in data_values],
          'Бюджетфакт': ['?' for x in data_values]}
     d['Количество'][5] = vuz
-    '''
+    
 
     '''colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
 
@@ -535,10 +535,10 @@ def main():
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
     d['Количество'][6] = kolvopics[2]'''
-    '''panda=pd.DataFrame(data=d)
+    panda=pd.DataFrame(data=d)
     pd.set_option('display.max_columns', 700)
     print(panda)
-    return d'''
+    return d
 
 
 if __name__ == "__main__":
