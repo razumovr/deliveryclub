@@ -485,14 +485,14 @@ def main():
     d['Количество'][5] = vuz
     
 
-    '''colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
+    colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
 
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
-    d['Количество'][9] = colvodneylist[2]'''
+    d['Количество'][9] = colvodneylist[2]
 
 
-    '''sheet=tabletargeting(start)
+    sheet=tabletargeting(start)
     for i in range(len(sheet['Проект'])):
         if sheet['Ссылка на лендинг'][i] == str(landing[0].land):
             d['Трафикфакт'][7] = sheet['Клики факт'][i]
@@ -502,7 +502,7 @@ def main():
         else:
             pass
     #d['Конверсия'][7] = str(int(int(d['Регистрациифакт'][7]) / float(d['Трафикфакт'][7] * 100))) + '%'
-    '''
+    
 
     '''if str(df['Клики факт'][12])[0] == '=':
         d['Трафикфакт'][7] = eval(df['Клики факт'][12][1:])
@@ -520,21 +520,21 @@ def main():
         d['Бюджетфакт'][7] = df['Бюджет факт'][12]
     d['Конверсия'][7] = str(int(d['Регистрациифакт'][7] / d['Трафикфакт'][7] * 100)) + '%'''
 
-    '''try:
+    try:
         infopartenrilist=infopartnerip(str(landing[0].land))
         d['Количество'][3] = infopartenrilist[0]
         d['Бюджетфакт'][3] = infopartenrilist[1]
     except:
-        pass'''
+        pass
 
 
-    '''SMMcount=SMMcountfunct(start,stop,str(landing[0].heshteg))
-    d['Количество'][2] =SMMcount'''
+    SMMcount=SMMcountfunct(start,stop,str(landing[0].heshteg))
+    d['Количество'][2] =SMMcount
 
-    '''kolvopics=kolvopicsfunct(colvodneylist[3])
+    kolvopics=kolvopicsfunct(colvodneylist[3])
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
-    d['Количество'][6] = kolvopics[2]'''
+    d['Количество'][6] = kolvopics[2]
     panda=pd.DataFrame(data=d)
     pd.set_option('display.max_columns', 700)
     print(panda)
