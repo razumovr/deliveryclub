@@ -411,13 +411,13 @@ def main():
     heshteg=models.CharField(max_length=50)
 '''
     q = Queue(connection=conn)
-    result = q.enqueue(count_words_at_url, 'http://heroku.com')
+    result = q.enqueue(main)
     print("Helow"*100)
     print(result.result)
     time.sleep(15)
     print(result.result)  
 
-    landing = Langing.objects.all()
+    '''landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
                                client_secret=client_secret,
@@ -449,11 +449,10 @@ def main():
         metrics=[{"expression": "ga:uniquePageviews"}, ],
         dimensions=[{'name': 'ga:pagePath'}, {'name': 'ga:sourceMedium'}, ],
         service=service,
-    )
+    )'''
     
-    '''print("Hellow2"*1000)
-    print(result.result)'''
-
+  
+'''
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
     data_namestraf = list(
@@ -484,6 +483,7 @@ def main():
          'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['?' for x in data_values],
          'Бюджетфакт': ['?' for x in data_values]}
     d['Количество'][5] = vuz
+    '''
 
     '''colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
 
@@ -520,25 +520,25 @@ def main():
         d['Бюджетфакт'][7] = df['Бюджет факт'][12]
     d['Конверсия'][7] = str(int(d['Регистрациифакт'][7] / d['Трафикфакт'][7] * 100)) + '%'''
 
-    try:
+    '''try:
         infopartenrilist=infopartnerip(str(landing[0].land))
         d['Количество'][3] = infopartenrilist[0]
         d['Бюджетфакт'][3] = infopartenrilist[1]
     except:
-        pass
+        pass'''
 
 
-    SMMcount=SMMcountfunct(start,stop,str(landing[0].heshteg))
-    d['Количество'][2] =SMMcount
+    '''SMMcount=SMMcountfunct(start,stop,str(landing[0].heshteg))
+    d['Количество'][2] =SMMcount'''
 
     '''kolvopics=kolvopicsfunct(colvodneylist[3])
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
     d['Количество'][6] = kolvopics[2]'''
-    panda=pd.DataFrame(data=d)
+    '''panda=pd.DataFrame(data=d)
     pd.set_option('display.max_columns', 700)
     print(panda)
-    return d
+    return d'''
 
 
 if __name__ == "__main__":
