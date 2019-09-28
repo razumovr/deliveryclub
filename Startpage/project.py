@@ -33,7 +33,7 @@ import re
 
 from rq import Queue
 from worker import conn
-
+from utils import count_words_at_url
 
 #join google analitycs
 #START
@@ -410,17 +410,12 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
-    '''q = Queue(connection=conn)
-    import requests
-
-    def count_words_at_url(url):
-        resp = requests.get(url)
-        return len(resp.text.split())
+    q = Queue(connection=conn)
     result = q.enqueue(count_words_at_url, 'http://heroku.com')
     print("Helow"*100)
     print(result.result)
-    time.sleep(25)
-    print(result.result)  '''
+    time.sleep(15)
+    print(result.result)  
 
     landing = Langing.objects.all()
 
