@@ -272,7 +272,6 @@ def colvodneyforday(start,stop,service,urlland):
                 break
             else:
                 pass
-    print(k)
     return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,k]
 
 def tabletargeting(datastart):
@@ -489,14 +488,14 @@ def main():
          'Бюджетфакт': ['?' for x in data_values]}
     d['Количество'][5] = vuz
 
-    colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
-    print(colvodneylist)
+    '''colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
+
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
-    d['Количество'][9] = colvodneylist[2]
+    d['Количество'][9] = colvodneylist[2]'''
 
 
-    sheet=tabletargeting(start)
+    '''sheet=tabletargeting(start)
     for i in range(len(sheet['Проект'])):
         if sheet['Ссылка на лендинг'][i] == str(landing[0].land):
             d['Трафикфакт'][7] = sheet['Клики факт'][i]
@@ -506,6 +505,7 @@ def main():
         else:
             pass
     #d['Конверсия'][7] = str(int(int(d['Регистрациифакт'][7]) / float(d['Трафикфакт'][7] * 100))) + '%'
+    '''
 
     '''if str(df['Клики факт'][12])[0] == '=':
         d['Трафикфакт'][7] = eval(df['Клики факт'][12][1:])
