@@ -413,50 +413,14 @@ def main():
     q = Queue(connection=conn)
     import requests
 
-    def count_words_at_url(url):
-        resp = requests.get(url)
-        return len(resp.text.split())
-    result = q.enqueue(count_words_at_url, 'http://heroku.com')
+    def count_words_at_url(a,b):
+        resp = a*b
+        return resp
+    result = q.enqueue(count_words_at_url, 2,3)
     print("Helow"*100)
     print(result.result)
-    print(result.result)
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)
-    print(result.result)
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)
-    print(result.result)
-    print(result.result)
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)
-    print(result.result)
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)  
-    print(result.result)
-    
+ 
+
     landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
