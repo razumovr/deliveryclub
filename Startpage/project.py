@@ -454,8 +454,9 @@ def main():
         dimensions=[{'name': 'ga:pagePath'}, {'name': 'ga:sourceMedium'}, ],
         service=service,
     )
+    
     print("Hellow2"*1000)
-    print(df)
+    print(result.result)
 
     urltoLanding=uelgenerator(str(landing[0].land))
     urltoSuccess = uelgenerator(str(landing[0].success))
