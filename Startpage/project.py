@@ -33,8 +33,6 @@ import re
 
 from rq import Queue
 from worker import conn
-from django.conf import settings
-
 
 
 #join google analitycs
@@ -412,7 +410,7 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
-    q = Queue(connection=conn)
+    '''q = Queue(connection=conn)
     import requests
 
     def count_words_at_url(url):
@@ -422,7 +420,7 @@ def main():
     print("Helow"*100)
     print(result.result)
     time.sleep(25)
-    print(result.result)  
+    print(result.result)  '''
 
     landing = Langing.objects.all()
 
