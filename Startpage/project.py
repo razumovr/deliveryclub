@@ -419,6 +419,8 @@ def main():
     result = q.enqueue(count_words_at_url, 'http://heroku.com')
     print("Helow"*100)
     print(result.result)
+    time.sleep(8)
+    print(result.result)  
     landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
