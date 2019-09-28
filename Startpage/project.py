@@ -411,14 +411,14 @@ def main():
     heshteg=models.CharField(max_length=50)
 '''
     q = Queue(connection=conn)
-    '''import requests
+    import requests
 
     def count_words_at_url(url):
         resp = requests.get(url)
         return len(resp.text.split())
     result = q.enqueue(count_words_at_url, 'http://heroku.com')
     print("Helow"*100)
-    print(result)'''
+    print(result.result)
     landing = Langing.objects.all()
 
     flow = OAuth2WebServerFlow(client_id=client_id,
@@ -444,14 +444,14 @@ def main():
     print(type(start))
     print(stop)
     print(type(stop))
-    df = q.enqueue(return_ga_data(
+    df = return_ga_data(
         start_date=start,
         end_date=stop,
         view_id='129196190',
         metrics=[{"expression": "ga:uniquePageviews"}, ],
         dimensions=[{'name': 'ga:pagePath'}, {'name': 'ga:sourceMedium'}, ],
         service=service,
-    ))
+    )
     print("Hellow2"*1000)
     print(df)
 
