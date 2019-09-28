@@ -412,7 +412,6 @@ def main():
     complete=models.CharField(max_length=50)
     heshteg=models.CharField(max_length=50)
 '''
-    settings.configure()
     q = Queue(connection=conn)
     import requests
 
@@ -422,7 +421,7 @@ def main():
     result = q.enqueue(count_words_at_url, 'http://heroku.com')
     print("Helow"*100)
     print(result.result)
-    time.sleep(4)
+    time.sleep(25)
     print(result.result)  
 
     landing = Langing.objects.all()
