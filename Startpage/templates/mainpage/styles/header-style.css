@@ -16,6 +16,10 @@ body {
   justify-content: space-between;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
 .logo a {
   display: block;
   background: url(https://changellenge.com/local/templates/main/assets/images/svg/logo.svg) center no-repeat;
@@ -27,6 +31,12 @@ body {
   outline: none;
   margin-left: 0;
 }
+.logo p {
+  margin: 0 0 0 30px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 23px;
+}
 
 .menu a:last-child {
   margin-left: 50px;
@@ -37,6 +47,89 @@ a {
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
+}
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.services {
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-between;
+}
+.services__single {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+  width: 43%;
+  display: flex;
+  padding: 20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.services__single-content {
+  margin-left: 20px;
+  width: 80%;
+}
+.services__single-img {
+  width: 20%;
+  background: url(https://changellenge.com/local/templates/main/assets/images/service/funnel.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.services__single h3, .services__single p {
+  margin: 0;
+  font-size: 15px;
+}
+.services__single h3 {
+  margin-bottom: 15px;
+  font-size: 17px;
+}
+.services__single a {
+  background: #be1c18;
+  display: inline-block;
+  padding: 7px 50px;
+  margin-top: 20px;
+  border-radius: 55px;
+  font-weight: 100;
+}
+.services__single:hover {
+  background: #be1c18;
+}
+.services__single:hover h3, .services__single:hover p {
+  color: #ffffff;
+}
+.services__single:hover a {
+  background: #ffffff;
+  color: #be1c18;
+}
+.services__single:hover a:hover {
+  -webkit-box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+}
+.services__single:hover .services__single-img {
+  background: url(https://changellenge.com/local/templates/main/assets/images/service/funnel-white.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.services__single:hover:last-child .services__single-img {
+  background: url(https://changellenge.com/local/templates/main/assets/images/service/link-white.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.services__single:last-child .services__single-img {
+  background: url(https://changellenge.com/local/templates/main/assets/images/service/link.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
 }
 
 /*# sourceMappingURL=header-style.css.map */

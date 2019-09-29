@@ -3,9 +3,98 @@
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
-<form method="post" action="{% url 'users:login' %}"> {% csrf_token %}
-{{ form.as_p }}
-<button name="submit">log in</button>
-<input type="hidden" name="next" value="{% url 'start' %}" />
-</form>
+<div class="container">
+    <style>
+        body {
+            margin: 0;
+            font-family: "pfsquaresanspro", Arial;
+        }
+
+        .container {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        .login-form {
+            -webkit-box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+            box-shadow: 0 0 14px -1px rgba(0, 0, 0, 0.75);
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            width: 50%;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        .login-form h3, .login-form p {
+            margin: 0;
+        }
+        .login-form h3 {
+            text-align: center;
+            font-weight: 100;
+            color: #be1c18;
+        }
+        .login-form > p {
+            text-align: center;
+            font-size: 13px;
+            color: gray;
+        }
+        .login-form__inputs p {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+        .login-form__inputs p input {
+            margin-top: 5px;
+            border: 1px solid #be1c18;
+            height: 40px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            font-size: 20px;
+            padding: 0 25px;
+            color: #be1c18;
+        }
+        .login-form button[name=submit] {
+            background: #be1c18;
+            color: #ffffff;
+            border: 1px solid #be1c18;
+            font-size: 20px;
+            display: block;
+            margin: 20px auto;
+            padding: 10px 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            -ms-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+        .login-form button[name=submit]:hover {
+            background: transparent;
+            color: #be1c18;
+            border: 1px solid #be1c18;
+            -webkit-box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.75);
+            box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+
+
+    <form method="post" class="login-form" action="{% url 'users:login' %}">
+        <h3>Авторизация</h3>
+        {% csrf_token %}
+        <div class="login-form__inputs">
+            {{ form.as_p }}
+        </div>
+        <button name="submit">Войти >></button>
+        <input type="hidden" name="next" value="{% url 'start' %}" />
+        <p>Для получения логина и пароля, обратитесь
+            к Руслану Разумову по почте <a href="mailto:r.razumov@changellenge.ru">r.razumov@changellenge.ru</a>
+        </p>
+    </form>
+</div>
 {% endblock content %}

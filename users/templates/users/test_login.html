@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/login-style.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <form method="post" class="login-form" action="/users/login/"> <input type="hidden" name="csrfmiddlewaretoken" value="gq5CUf59EdyIzDTMt35zSyhS0Nrk4X7vG0vVamuCsm7jgmoHFp8Ye2hegTC9Mtee">
+        <h3>Авторизация</h3>
+        <div class="login-form__inputs">
+            <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus="" required="" id="id_username"></p>
+            <p><label for="id_password">Password:</label> <input type="password" name="password" required="" id="id_password"></p>
+        </div>
+        <button name="submit">Войти >></button>
+        <input type="hidden" name="next" value="/">
+        <p>Для получения логина и пароля, обратитесь
+            к Руслану Разумову по почте <a href="mailto:r.razumov@changellenge.ru">r.razumov@changellenge.ru</a>
+        </p>
+    </form>
+</div>
+</body>
+</html>
