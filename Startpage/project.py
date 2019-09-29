@@ -1,6 +1,6 @@
 from .models import Langing
 from .conecttosheets import connect,connectsheet,connectIP
-from utils import analitica
+from utils import analitica,hellow
 
 
 
@@ -128,7 +128,7 @@ def main():
     #d=analitica(landing)
 
     q = Queue(connection=conn)
-    result = q.enqueue(analitica,landing)
+    result = q.enqueue(hellow,2,8)
     print("Helow"*100)
     print(result.result)
     time.sleep(15)
