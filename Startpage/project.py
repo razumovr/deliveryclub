@@ -485,11 +485,11 @@ def main():
     d['Количество'][5] = vuz
     
 
-    '''colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
+    colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
 
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
-    d['Количество'][9] = colvodneylist[2]'''
+    d['Количество'][9] = colvodneylist[2]
 
 
     '''sheet=tabletargeting(start)
