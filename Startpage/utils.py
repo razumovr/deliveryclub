@@ -387,7 +387,7 @@ def analitica(landing):
          'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['?' for x in data_values],
          'Бюджетфакт': ['?' for x in data_values]}
 
-    colvodneylist = colvodneyforday(start, stop, service, urltoLanding)
+    '''colvodneylist = colvodneyforday(start, stop, service, urltoLanding)
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
     d['Количество'][9] = colvodneylist[2]
@@ -395,7 +395,7 @@ def analitica(landing):
     kolvopics = kolvopicsfunct(colvodneylist[3])
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
-    d['Количество'][6] = kolvopics[2]
+    d['Количество'][6] = kolvopics[2]'''
 
 
     panda=pd.DataFrame(data=d)
