@@ -14,7 +14,8 @@ from gspread_dataframe import get_as_dataframe
 import vk_api
 import time
 
-
+from rq import Queue
+from worker import conn
 
 
 
@@ -124,8 +125,14 @@ def main():
     #Langing.objects.all()
     #from .models import Langing
 
-    analitica(landing)
+    #d=analitica(landing)
 
+    q = Queue(connection=conn)
+    result = q.enqueue(analitica,landing)
+    print("Helow"*100)
+    print(result.result)
+    time.sleep(15)
+    print(result.result)  
 
 
 
@@ -187,7 +194,7 @@ def main():
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
     d['Количество'][6] = kolvopics[2]'''
-
+    return d
 if __name__ == "__main__":
     # execute only if run as a script
     main()
