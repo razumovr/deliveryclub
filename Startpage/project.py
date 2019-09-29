@@ -125,7 +125,7 @@ def main():
     #d=analitica(landing)
 
     q = Queue(connection=conn)
-    result = q.enqueue(analitica,landing)
+    result = q.enqueue(analitica,str(landing[0].start))
     print("Helow"*100)
     print(result.result)
     time.sleep(15)
