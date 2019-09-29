@@ -1,9 +1,5 @@
 from .models import Langing
 from .conecttosheets import connect,connectsheet,connectIP
-from utils import analitica
-
-
-
 
 import pandas as pd
 
@@ -16,6 +12,7 @@ import time
 
 from rq import Queue
 from worker import conn
+from utils import analitica
 
 
 
