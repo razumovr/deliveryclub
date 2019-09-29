@@ -12,7 +12,7 @@ import time
 
 from rq import Queue
 from worker import conn
-from utils import analitica
+from utils import analitica,hellow
 
 
 
