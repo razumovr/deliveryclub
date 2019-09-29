@@ -1,6 +1,6 @@
 from .models import Langing
 from .conecttosheets import connect,connectsheet,connectIP
-from utils import hellow
+from utils import analitica
 
 
 
