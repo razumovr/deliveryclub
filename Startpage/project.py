@@ -125,7 +125,7 @@ def main():
     #d=analitica(landing)
 
     q = Queue(connection=conn)
-    result = q.enqueue(hellow,2,8)
+    result = q.enqueue(analitica,landing)
     print("Helow"*100)
     print(result.result)
     time.sleep(15)
@@ -191,7 +191,7 @@ def main():
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
     d['Количество'][6] = kolvopics[2]'''
-    return d
+    return result
 if __name__ == "__main__":
     # execute only if run as a script
     main()
