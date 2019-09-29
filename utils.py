@@ -19,9 +19,10 @@ from datetime import date, timedelta
 import scipy.signal as sg
 import numpy as np
 
-def hellow(a,b):
-    c=a**b
-    return c
+def analitica(a):
+    print("HEllowWORLTZ")
+    print(a)
+    return a
 
 #ANALITIKA
 def get_report(analytics, start_date, end_date, view_id, metrics, dimensions):
@@ -338,7 +339,7 @@ def kolvopicsfunct(k):
 
     return [len(lenUNIKALKA),len(lenDIGEST),len(lenTELEGA)]
 
-def analitica(landing):
+def hellow(landing):
 
 
     credentials = GoogleCredentials(access_token, client_id, client_secret, refresh_token, 3920,
