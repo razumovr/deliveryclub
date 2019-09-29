@@ -19,7 +19,9 @@ from datetime import date, timedelta
 import scipy.signal as sg
 import numpy as np
 
-
+def hellow(a,b)
+    c=a**b
+    return c
 
 #ANALITIKA
 def get_report(analytics, start_date, end_date, view_id, metrics, dimensions):
