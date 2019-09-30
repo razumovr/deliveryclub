@@ -5,7 +5,6 @@
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <!--<link rel="stylesheet" type="text/css" href="https://deliveryclub.herokuapp.com/cssindex/style.css">-->
     <script src="https://kit.fontawesome.com/8b80a9f534.js" crossorigin="anonymous"></script>
     <title>Funnel!</title>
 </head>
@@ -409,12 +408,9 @@
         display: flex;
     }
 
-
-
     .header {
         background: #27272c;
         height: 80px;
-        font-family: "pfsquaresanspro", Arial;
     }
     .header .container {
         width: 1270px;
@@ -423,16 +419,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: inherit;
-        padding: 0;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
     }
 
+    .logo {
+        display: flex;
+        align-items: center;
+    }
     .logo a {
         display: block;
         background: url(https://changellenge.com/local/templates/main/assets/images/svg/logo.svg) center no-repeat;
@@ -444,16 +436,79 @@
         outline: none;
         margin-left: 0;
     }
-
-    .menu a:last-child {
-        margin-left: 50px;
+    .logo p {
+        margin: 0 0 0 30px;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 23px;
     }
 
-    a {
-        color: #ffffff;
+    .big-container {
+        width: 1270px;
+        margin: 0 auto;
+    }
+
+    .links {
+        display: flex;
+        margin-top: 50px;
+    }
+    .links a {
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
         text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
+    }
+    .links a:hover {
+        width: 150px;
+        justify-content: left;
+    }
+    .links__home a {
+        background: #be1c18;
+        border-radius: 200px;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        border: 1px solid #be1c18;
+    }
+    .links__home a img {
+        margin: 4px 0 0 5px;
+    }
+    .links__home a p {
+        margin: 8px 0 0 10px;
+        color: #ffffff;
+        white-space: nowrap;
+    }
+    .links__return a {
+        background: transparent;
+        border-radius: 200px;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        border: 1px solid #be1c18;
+        margin-left: 10px;
+        -webkit-background-size: 25px;
+        background-size: 25px;
+        background-position: 6px 5px;
+    }
+    .links__return a img {
+        margin: 5px 0 0 6px;
+    }
+    .links__return a p {
+        margin: 8px 0 0 10px;
+        color: #ffffff;
+        white-space: nowrap;
+    }
+    .links__return a:hover {
+        background: #be1c18 url(https://changellenge.com/local/templates/main/assets/images/service/back-arrow-white.png) no-repeat 6px 5px;
+        -webkit-background-size: 25px;
+        background-size: 25px;
+    }
+    .links__return a:hover img {
+        opacity: 0;
     }
 </style>
 
@@ -461,13 +516,29 @@
     <div class="container">
         <div class="logo">
             <a href="/"></a>
+            <p>Marketing Automation Lab</p>
         </div>
-        <div class="menu"></div>
         <div class="logout">
             {% if user.is_authenticated %}
             <a href="{% url 'users:logout' %}">Выход</a>
             {% else %}
             {% endif %}
+        </div>
+    </div>
+</div>
+<div class="big-container">
+    <div class="links">
+        <div class="links__home">
+            <a href="/">
+                <img src="https://changellenge.com/local/templates/main/assets/images/service/home.png" alt="Home" width="25" height="25">
+                <p>На главную</p>
+            </a>
+        </div>
+        <div class="links__return">
+            <a href="#">
+                <img src="https://changellenge.com/local/templates/main/assets/images/service/back-arrow.png" alt="Home" width="25" height="25">
+                <p>Вернуться</p>
+            </a>
         </div>
     </div>
 </div>
