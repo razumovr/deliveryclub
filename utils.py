@@ -19,7 +19,7 @@ from datetime import date, timedelta
 import scipy.signal as sg
 import numpy as np
 
-def analitica(a):
+def helow(a):
     print("HEllowWORLTZ")
     print(a)
     return a
@@ -339,7 +339,7 @@ def kolvopicsfunct(k):
 
     return [len(lenUNIKALKA),len(lenDIGEST),len(lenTELEGA)]
 
-def hellow(landing):
+def analitica(land,success,start,end,complete,):
 
 
     credentials = GoogleCredentials(access_token, client_id, client_secret, refresh_token, 3920,
@@ -350,8 +350,8 @@ def hellow(landing):
     service = build('analytics', 'v4', http=http, cache_discovery=False,
                     discoveryServiceUrl='https://analyticsreporting.googleapis.com/$discovery/rest?version=v4')
     #POMENYAT
-    start = str(landing[0].start)
-    stop = str(landing[0].end)
+    start = start
+    stop = end
     if datetime.date(int(stop[:4]), int(stop[5:7]), int(stop[8:10]))>datetime.datetime.now().date():
         stop=str(datetime.datetime.now().date())
     else:
@@ -367,8 +367,8 @@ def hellow(landing):
         service=service,
     )
     #POMENYAT
-    urltoLanding=uelgenerator(str(landing[0].land))
-    urltoSuccess = uelgenerator(str(landing[0].success))
+    urltoLanding=uelgenerator(land)
+    urltoSuccess = uelgenerator(success)
     data_namestraf = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values))
     data_valuestraf = list(
@@ -377,7 +377,7 @@ def hellow(landing):
     slovartraf = dict(zip(data_namestraf, data_valuestraf))
     try:
         # POMENYAT
-        data = googlesheets(slovartraf,str(landing[0].complete))
+        data = googlesheets(slovartraf,complete)
         print('1')
     except:
         data = googleapi(slovartraf,df,urltoSuccess)
