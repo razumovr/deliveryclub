@@ -1,5 +1,5 @@
 from .models import Langing
-from .conecttosheets import connect,connectsheet,connectIP
+
 
 import pandas as pd
 
@@ -15,22 +15,12 @@ from worker import conn
 from utils import analitica,hellow,colvodneyforday
 
 
+from conecttosheets import connect,connectsheet,connectIP
 
 
 
 
 
-def tabletargeting(datastart):
-    '''scope = ['https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        '/Users/ruslan/Downloads/My Project-fe4805e9d102.json', scope)
-    gc = gspread.authorize(credentials)
-    targetsht = gc.open_by_url(
-        'https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384').get_worksheet(
-        17)
-    df = get_as_dataframe(targetsht, header=0)'''
-    df=connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',datastart)
-    return df
 
 def infopartnerip(urlland):
     '''scope = ['https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds']
@@ -126,12 +116,19 @@ def main():
 
     q = Queue(connection=conn)
     q1 = Queue(connection=conn)
+    q2targeting = Queue(connection=conn)
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
     result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
-    print(result.result)
+    result2 = q2targeting.enqueue(connectsheet,'https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start,str(landing[0].land)
+    
+    #df=connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',datastart)
+
     time.sleep(25)
     print(result.result)
     print(result1.result)
+    print(result2.result)
+                                 
+                         
     
     '''time.sleep(2)
     print(result.result)
