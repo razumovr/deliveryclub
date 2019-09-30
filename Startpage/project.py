@@ -125,16 +125,19 @@ def main():
     #d=analitica(landing)
 
     q = Queue(connection=conn)
+    q1 = Queue(connection=conn)
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].start))
-    result = q.enqueue(hellow,"PRIVET MIR")
+    result1 = q1.enqueue(hellow,"PRIVET MIR")
+    print(result.result)
+    time.sleep(15)
+    print(result.result)
+    print(result1.result)
+    
+    '''time.sleep(2)
     print(result.result)
     time.sleep(2)
     print(result.result) 
     time.sleep(2)
-    print(result.result)
-    time.sleep(2)
-    print(result.result) 
-    time.sleep(2)
     print(result.result) 
     time.sleep(2)
     print(result.result)
@@ -147,7 +150,7 @@ def main():
     time.sleep(2)
     print(result.result) 
     time.sleep(2)
-    print(result.result)
+    print(result.result)'''
 
 
 
