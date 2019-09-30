@@ -71,16 +71,65 @@ def main():
     except:
         pass
     SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
-    time.sleep(5)
+    #time.sleep(5)
     print("REZULT"*100)
     print(result.result)
     print(result1.result)
     print(result2)
     print(infopartenrilist)
     print(SMMcount)
-                                 
-                        
-    return result.result
+    
+    dictItog=result.result
+    try:
+    dictItog['Количество'][7]=result1.result[0]
+    except:
+        pass
+    try:
+    dictItog['Количество'][8]=result1.result[1]
+    except:
+        pass
+    try:
+    dictItog['Количество'][9]=result1.result[2]
+    except:
+        pass
+    try:
+    dictItog['Количество'][0]=result1.result[3]
+    except:
+        pass
+    try:
+    dictItog['Количество'][1]=result1.result[4]
+    except:
+        pass
+    try:
+    dictItog['Количество'][6]=result1.result[5]
+    except:
+        pass
+    try:
+    dictItog['Трафикфакт'][7]=result2['Трафикфакт']
+    except:
+        pass
+    try:
+    dictItog['Бюджетплан'][7]=result2['Бюджетплан']
+    except:
+        pass
+    try:
+    dictItog['Бюджетфакт'][7]=result2['Бюджетфакт']
+    except:
+        pass
+    try:
+    dictItog['Количество'][3]=infopartenrilist[0]
+    except:
+        pass
+    try:
+    dictItog['Бюджетфакт'][3]=infopartenrilist[1]
+    except:
+        pass
+    try:
+    dictItog['Количество'][2]=SMMcount
+    except:
+        pass
+                           
+    return dictItog
 if __name__ == "__main__":
     # execute only if run as a script
     main()
