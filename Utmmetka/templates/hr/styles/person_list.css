@@ -1,0 +1,32 @@
+table {
+  table-layout: fixed;
+  margin-bottom: 30px;
+}
+table thead {
+  background: #be1c18;
+  color: #ffffff;
+}
+table thead tr {
+  height: 50px;
+}
+table tbody {
+  background: #e2e2e2;
+}
+table td, table th {
+  width: 20%;
+}
+table td:last-child, table th:last-child {
+  width: 60%;
+}
+table td:last-child p, table th:last-child p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100% - 30px);
+}
+table td p, table th p {
+  margin: 0;
+  padding: 10px 15px;
+}
+
+/*# sourceMappingURL=person_list.css.map */

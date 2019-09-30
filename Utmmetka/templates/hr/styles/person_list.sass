@@ -1,0 +1,22 @@
+table
+  table-layout: fixed
+  margin-bottom: 30px
+  thead
+    background: #be1c18
+    color: #ffffff
+    tr
+      height: 50px
+  tbody
+    background: #e2e2e2
+  td, th
+    width: 20%
+    &:last-child
+      width: 60%
+      p
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        width: calc(100% - 30px)
+    p
+      margin: 0
+      padding: 10px 15px
