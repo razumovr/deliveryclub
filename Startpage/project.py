@@ -46,7 +46,7 @@ def main():
         d['Бюджетфакт'][3] = infopartenrilist[1]'''
     except:
         pass
-    time.sleep(20)
+    time.sleep(15)
     print("REZULT"*100)
     print(result.result)
     print(result1.result)
