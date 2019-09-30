@@ -9,6 +9,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from gspread_dataframe import get_as_dataframe
 import vk_api
 import time
+import datetime
 
 from rq import Queue
 from worker import conn
