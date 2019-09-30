@@ -19,7 +19,7 @@ from datetime import date, timedelta
 import scipy.signal as sg
 import numpy as np
 
-def helow(a):
+def hellow(a):
     print("HEllowWORLTZ")
     print(a)
     return a
