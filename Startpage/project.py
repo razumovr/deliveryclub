@@ -128,7 +128,7 @@ def main():
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].start))
     print("Helow"*100)
     print(result.result)
-    time.sleep(15)
+    time.sleep(10)
     print(result.result)  
 
 
