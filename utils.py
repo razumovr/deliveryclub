@@ -284,10 +284,7 @@ def colvodneyforday(start,stop,urlland):
                 break
             else:
                 pass
-
-    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,k]
-
-def kolvopicsfunct(k):
+    #PICS
     unikalkarry = []
     digestarray = []
     telegaarray = []
@@ -344,9 +341,10 @@ def kolvopicsfunct(k):
         lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, int(max_value)),
                                       max_distances=np.arange(1, int(max_value)))
 
+    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,len(lenUNIKALKA), len(lenDIGEST), len(lenTELEGA)]
 
 
-    return [len(lenUNIKALKA),len(lenDIGEST),len(lenTELEGA)]
+
 
 def analitica(land,success,start,end,complete):
 
