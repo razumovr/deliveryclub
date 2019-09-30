@@ -28,6 +28,29 @@ def infopartnerip(urlland):
         sumcostdf += int(costdf[i])
     return [ipKOLICHESTVO,sumcostdf]
 
+def SMMcountfunct(start,stop,heshteg):
+    s1 = start[-2:] + '/' + start[-5:-3] + '/' + start[0:4]
+    unixtime1 = time.mktime(datetime.datetime.strptime(s1, "%d/%m/%Y").timetuple())
+    s2 = stop[-2:] + '/' + stop[-5:-3] + '/' + stop[0:4]
+    unixtime2 = time.mktime(datetime.datetime.strptime(s2, "%d/%m/%Y").timetuple())
+    vk_session = vk_api.VkApi('+79055106387', '#rr7363446909250797rr##')
+    vk_session.auth()
+
+    vk = vk_session.get_api()
+    SMMM = vk.wall.search(owner_id=-25758, query=heshteg, count=100)
+    newwww = []
+    for i in range(len(SMMM['items'])):
+        if SMMM['items'][i]['date'] > int(unixtime1) and SMMM['items'][i]['date'] < int(unixtime2):
+            newwww.append(SMMM['items'][i]['id'])
+    idreposts = []
+    for i in newwww:
+        slova = vk.wall.getReposts(owner_id=-25758, post_id=i, count=1000)
+        for i in range(len(slova['items'])):
+            if slova['items'][i]['from_id'] < 0:
+                idreposts.append(slova['items'][i]['from_id'])
+
+    return len(idreposts)
+
 def main():
     landing = Langing.objects.all()
 
@@ -46,94 +69,16 @@ def main():
         d['Бюджетфакт'][3] = infopartenrilist[1]'''
     except:
         pass
+    SMMcount=SMMcountfunct(start,stop,str(landing[0].heshteg))
     time.sleep(15)
     print("REZULT"*100)
     print(result.result)
     print(result1.result)
     print(result2)
     print(infopartenrilist)
+    print(SMMcount)
                                  
-                         
-    
-    '''time.sleep(2)
-    print(result.result)
-    time.sleep(2)
-    print(result.result) 
-    time.sleep(2)
-    print(result.result) 
-    time.sleep(2)
-    print(result.result)
-    time.sleep(2)
-    print(result.result) 
-    time.sleep(2)
-    print(result.result) 
-    time.sleep(2)
-    print(result.result)
-    time.sleep(2)
-    print(result.result) 
-    time.sleep(2)
-    print(result.result)'''
-
-
-
-
-
-
-    '''vuz = 0
-    set_data_valuestraf = set(data_namestraf)
-    for i in set_data_valuestraf:
-        if 'vuz-' in i or 'vuz_' in i:
-            vuz += 1'''
-    '''
-    d['Количество'][5] = vuz'''
-
-    '''colvodneylist=colvodneyforday(start,stop,service,urltoLanding)
-    d['Количество'][7] = colvodneylist[0]
-    d['Количество'][8] = colvodneylist[1]
-    d['Количество'][9] = colvodneylist[2]
-
-
-    sheet=tabletargeting(start)
-    for i in range(len(sheet['Проект'])):
-        if sheet['Ссылка на лендинг'][i] == str(landing[0].land):
-            d['Трафикфакт'][7] = sheet['Клики факт'][i]
-            d['Бюджетплан'][7] = sheet['Бюджет план'][i]
-            d['Бюджетфакт'][7] = sheet['Бюджет факт'][i]
-            d['Конверсия'][7] = str(int((int(d['Регистрациифакт'][7]) / int(d['Трафикфакт'][7])* 100)))+'%'
-        else:
-            pass'''
-    #d['Конверсия'][7] = str(int(int(d['Регистрациифакт'][7]) / float(d['Трафикфакт'][7] * 100))) + '%'
-
-    '''if str(df['Клики факт'][12])[0] == '=':
-        d['Трафикфакт'][7] = eval(df['Клики факт'][12][1:])
-    else:
-        d['Трафикфакт'][7] = df['Клики факт'][12]
-
-    if str(df['Бюджет план'][12])[0] == '=':
-        d['Бюджетплан'][7] = eval(df['Бюджет план'][12][1:])
-    else:
-        d['Бюджетплан'][7] = df['Бюджет план'][12]
-
-    if str(df['Бюджет факт'][12])[0] == '=':
-        d['Бюджетфакт'][7] = eval(df['Бюджет факт'][12][1:])
-    else:
-        d['Бюджетфакт'][7] = df['Бюджет факт'][12]
-    d['Конверсия'][7] = str(int(d['Регистрациифакт'][7] / d['Трафикфакт'][7] * 100)) + '%'''
-
-    '''try:
-        infopartenrilist=infopartnerip(str(landing[0].land))
-        d['Количество'][3] = infopartenrilist[0]
-        d['Бюджетфакт'][3] = infopartenrilist[1]
-    except:
-        pass'''
-
-
-
-
-    '''kolvopics=kolvopicsfunct(colvodneylist[3])
-    d['Количество'][0] = kolvopics[0]
-    d['Количество'][1] = kolvopics[1]
-    d['Количество'][6] = kolvopics[2]'''
+                        
     return result.result
 if __name__ == "__main__":
     # execute only if run as a script
