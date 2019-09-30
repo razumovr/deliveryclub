@@ -294,9 +294,9 @@ def colvodneyforday(start,stop,urlland):
             if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
                 unikalkarry.append(int(k[i][j - 2]))
             elif 'digest' in str(k[i][j]) or 'Digest' in str(k[i][j]):
-                digestarray.append(k[i][j + 1])
+                digestarray.append(int(k[i][j - 2]))
             elif 'tg /' in str(k[i][j]) or 'Tg /' in str(k[i][j]):
-                telegaarray.append(k[i][j + 1])
+                telegaarray.append(int(k[i][j - 2]))
             else:
                 pass
     #  if 'generalbase' in ii or 'mailchimp' in ii:
@@ -311,42 +311,42 @@ def colvodneyforday(start,stop,urlland):
     print(max_value)
     print(type(max_value))
     if max_value == 1:
-        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, float(max_value + 1)),
-                                        max_distances=np.arange(1, float(max_value + 1)))
+        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value + 1),
+                                        max_distances=np.arange(1, max_value + 1))
     elif max_value == 0:
         lenUNIKALKA = []
     else:
-        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, int(max_value)),
-                                        max_distances=np.arange(1, int(max_value)))
- '''
+        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value),
+                                        max_distances=np.arange(1, max_value))
+
     max_value = 0
     for n in digestarray:
-        if float(n) > max_value:
-            max_value = float(n)
+        if n > max_value:
+            max_value = n
     if max_value == 1:
-        lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, int(max_value + 1)),
-                                      max_distances=np.arange(1, int(max_value + 1)))
+        lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, max_value + 1),
+                                      max_distances=np.arange(1, max_value + 1))
     elif max_value == 0:
         lenDIGEST = []
     else:
-        lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, int(max_value)),
-                                      max_distances=np.arange(1, int(max_value)))'''
+        lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, max_value),
+                                      max_distances=np.arange(1,max_value))
     print("LOOK2"*100)
     print(lenDIGEST)
     print(len(lenDIGEST))
 
     max_value = 0
     for n in telegaarray:
-        if float(n) > max_value:
-            max_value = float(n)
+        if n > max_value:
+            max_value = n
     if max_value == 1:
-        lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, int(max_value + 1)),
-                                      max_distances=np.arange(1, int(max_value + 1)))
+        lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, max_value + 1),
+                                      max_distances=np.arange(1, max_value + 1))
     elif max_value == 0:
         lenTELEGA = []
     else:
-        lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, int(max_value)),
-                                      max_distances=np.arange(1, int(max_value)))
+        lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, max_value),
+                                      max_distances=np.arange(1, max_value))
 
     return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,len(lenUNIKALKA), len(lenDIGEST), len(lenTELEGA)]
 
