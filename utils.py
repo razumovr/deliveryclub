@@ -215,7 +215,16 @@ def googleapi(slovartraf,df,successurl):
 
 
 
-def colvodneyforday(start,stop,service,urlland):
+
+def colvodneyforday(start,stop,urlland):
+    credentials = GoogleCredentials(access_token, client_id, client_secret, refresh_token, 3920,
+                                    'https://accounts.google.com/o/oauth2/token', 'test')
+
+    http = httplib2.Http()
+    http = credentials.authorize(http)
+    service = build('analytics', 'v4', http=http, cache_discovery=False,
+                    discoveryServiceUrl='https://analyticsreporting.googleapis.com/$discovery/rest?version=v4')
+    urltoLanding=uelgenerator(urlland)
     datedelta = []
     d1 = date(int(start[:4]), int(start[5:7]), int(start[8:10]))
     d2 = date(int(stop[:4]), int(stop[5:7]), int(stop[8:10]))
@@ -233,7 +242,7 @@ def colvodneyforday(start,stop,service,urlland):
         service=service,
     )
 
-    data_namestraf = list(itertools.chain.from_iterable(df[df['ga:pagePath'] == urlland].values))
+    data_namestraf = list(itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding].values))
     print(data_namestraf)
     kolvodneyWEB = 0
     qqq = []
