@@ -98,7 +98,7 @@ def googlesheets(slovartraf,completeurl):
     slovaritog = {'Уникальная': [0, 0], 'Дайджест': [0, 0], 'SMM репостов': [0, 0],
                   'Инфопартнеры': [0, 0], 'Рассылка из юнисендера': [0, 0], 'Промо в вузах': [0, 0], 'Телеграм': [0, 0],
                   'Таргетинг': [0, 0],
-                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Пока все остальное': [0, 0]}
+                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Органика и неопознанный трафик': [0, 0]}
     for i in list(newdf['new_col']):
         ii = str(i)
         if 'generalbase' in ii or 'mailchimp' in ii:
@@ -160,7 +160,7 @@ def googleapi(slovartraf,df,successurl):
     slovaritog = {'Уникальная': [0, 0], 'Дайджест': [0, 0], 'SMM репостов': [0, 0],
                   'Инфопартнеры': [0, 0], 'Рассылка из юнисендера': [0, 0], 'Промо в вузах': [0, 0], 'Телеграм': [0, 0],
                   'Таргетинг': [0, 0],
-                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Пока все остальное': [0, 0]}
+                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Органика и неопознанный трафик': [0, 0]}
     for i in slovar:
         if 'generalbase' in i or 'mailchimp' in i:
             slovaritog['Уникальная'][1] += slovar[i]
@@ -392,7 +392,7 @@ def analitica(land,success,start,end,complete):
     data_names = list(data.keys())
     data_values = list(data.values())
 
-    d = {'Источник': data_names, 'Количество': ['—' for x in data_values], 'Трафикфакт': [x[0] for x in data_values],
+    d = {'Источник': data_names, 'Количество': ['—' for x in data_values],'Сила': ['—' for x in data_values], 'Трафикфакт': [x[0] for x in data_values],
          'Конверсия': [str(int(x[1] / x[0] * 100)) + '%' if x[0] > 0 else x[0] for x in data_values],
          'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['—' for x in data_values],
          'Бюджетфакт': ['—' for x in data_values]}
