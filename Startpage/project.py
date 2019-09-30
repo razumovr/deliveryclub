@@ -128,6 +128,13 @@ def main():
         dictItog['Количество'][2]=SMMcount
     except:
         pass
+    a=[]
+    for i in range(len(d['Трафикфакт'])):
+        if int(d['Количество'][i])!=0:
+            a.append(int(int(d['Трафикфакт'][i]) / int(d['Количество'][i])))
+        else:
+            a.append('-')
+    dictItog["Сила"]=a
                            
     return dictItog
 if __name__ == "__main__":
