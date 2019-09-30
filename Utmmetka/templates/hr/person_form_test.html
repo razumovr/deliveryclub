@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/8b80a9f534.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <form action="pagenext" method="post" id="personForm" data-cities-url="/utmgenerator/hr/ajax/load-cities/"
+          novalidate="">
+        <input type="hidden" name="csrfmiddlewaretoken"
+               value="cwzVYq9LZ9kQBq68hyb5x6OolB53XNeGV9jepomZrmW7ZOluNSZz631nndTSHjE3">
+        <div class="options">
+            <div class="options__single">
+                <i class="fas fa-globe"></i>
+                <select name="country" required="" id="id_country">
+                    <option value="" selected="">---------</option>
+                    <option value="1">Уникальный пакет промо</option>
+                    <option value="2">Рассылки</option>
+                    <option value="3">Таргетинг</option>
+                    <option value="4">Группа ВК</option>
+                    <option value="5">Телеграм-канал СЛ</option>
+                    <option value="6">Сайт СЛ</option>
+                    <option value="7">Ютуб-канал</option>
+                    <option value="8">Группа ФБ</option>
+                    <option value="9">Твиттер СЛ</option>
+                    <option value="10">Страница в Инстаграм</option>
+                    <option value="11">Инфопартнеры</option>
+                    <option value="12">Амбассадоры</option>
+                    <option value="13">Вузы</option>
+                    <option value="14">PR-активности</option>
+                    <option value="15">Телемаркетинг</option>
+                    <option value="16">Контекстная реклама</option>
+                    <option value="17">Виртуальный рекрутер</option>
+                </select>
+                <i class="fas fa-arrow-up"></i>
+            </div>
+            <div class="options__single">
+                <i class="fas fa-city"></i>
+                <select name="city" required="" id="id_city">
+                    <option value="">---------</option>
+                    HZZZZZZ
+                    <option value="98">Прозвон по partials с отправкой рассылки</option>
+                    HZZZZZZ
+                    <option value="99">Прозвон по базам прошлых лет с отправкой рассылки</option>
+                    HZZZZZZ
+                    <option value="97">прозвон по базе hh с отправкой рассылки</option>
+                    HZZZZZZ
+                    <option value="100">Прозвон по каким-либо базам с отправкой рассылки</option>
+                    HZZZZZZ
+                    <option value="101">Прозвон с регистрацией на звонке</option>
+                </select>
+                <i class="fas fa-arrow-up"></i>
+            </div>
+        </div>
+        <div class="buttons-group">
+            <a href="#" onclick="history.back();" class="prev">Назад</a>
+            <button type="submit" class="next">Далее</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

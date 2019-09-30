@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  background: #dfe3e4;
+}
+
+.container {
+  width: 700px;
+  margin: 80px auto 40px auto;
+  background: #ffffff;
+  padding: 25px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+.options__single {
+  position: relative;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.options__single select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  padding: 0 20px 0 55px;
+  font-size: 20px;
+  border: 1px solid #9f9f9f;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  height: 42px;
+  width: 100%;
+  outline: none;
+}
+.options__single i.fas {
+  font-size: 20px;
+  position: absolute;
+  bottom: 12px;
+  left: 15px;
+}
+.options__single i.fa-arrow-up {
+  left: auto;
+  right: 15px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: -1;
+}
+
+.buttons-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+}
+.buttons-group a {
+  display: inline-block;
+  text-decoration: none;
+  color: #be1c18;
+  border: 1px solid #be1c18;
+  padding: 5px 50px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.buttons-group a:hover {
+  color: #ffffff;
+  background: #be1c18;
+}
+.buttons-group button {
+  font-size: 20px;
+  border: 1px solid #be1c18;
+  padding: 5px 50px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  background: #be1c18;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
