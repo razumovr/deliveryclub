@@ -306,7 +306,7 @@ def colvodneyforday(start,stop,urlland):
         if float(n) > max_value:
             max_value = float(n)
     print("LOK at me"*100)
-    print(max_value)
+    print(unikalkarry)
     if max_value == 1:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, int(max_value + 1)),
                                         max_distances=np.arange(1, int(max_value + 1)))
