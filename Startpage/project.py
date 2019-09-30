@@ -191,7 +191,7 @@ def main():
     d['Количество'][0] = kolvopics[0]
     d['Количество'][1] = kolvopics[1]
     d['Количество'][6] = kolvopics[2]'''
-    return result
+    return result.result
 if __name__ == "__main__":
     # execute only if run as a script
     main()
