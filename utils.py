@@ -392,10 +392,10 @@ def analitica(land,success,start,end,complete):
     data_names = list(data.keys())
     data_values = list(data.values())
 
-    d = {'Источник': data_names, 'Количество': ['?' for x in data_values], 'Трафикфакт': [x[0] for x in data_values],
+    d = {'Источник': data_names, 'Количество': ['—' for x in data_values], 'Трафикфакт': [x[0] for x in data_values],
          'Конверсия': [str(int(x[1] / x[0] * 100)) + '%' if x[0] > 0 else x[0] for x in data_values],
-         'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['?' for x in data_values],
-         'Бюджетфакт': ['?' for x in data_values]}
+         'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['—' for x in data_values],
+         'Бюджетфакт': ['—' for x in data_values]}
 
     '''colvodneylist = colvodneyforday(start, stop, service, urltoLanding)
     d['Количество'][7] = colvodneylist[0]
