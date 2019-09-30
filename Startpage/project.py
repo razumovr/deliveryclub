@@ -124,6 +124,7 @@ def main():
     #df=connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',datastart)
 
     time.sleep(25)
+    print("REZULT"*100)
     print(result.result)
     print(result1.result)
     print(result2.result)
