@@ -450,6 +450,51 @@
         opacity: 0;
     }
 
+    .header {
+        background: #27272c;
+        height: 80px;
+    }
+    .header .container {
+        width: 1270px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: inherit;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .header .container a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    .logo a {
+        display: block;
+        background: url(https://changellenge.com/local/templates/main/assets/images/svg/logo.svg) center no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
+        width: 202px;
+        height: 28px;
+        position: relative;
+        outline: none;
+        margin-left: 0;
+    }
+    .logo p {
+        margin: 0 0 0 30px;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 23px;
+    }
+
 </style>
 
 <div class="big-container">
@@ -483,4 +528,5 @@
         <button type="submit" class="btn">Отправить &gt;&gt;</button>
     </form>
 </div>
+
 {% endblock %}

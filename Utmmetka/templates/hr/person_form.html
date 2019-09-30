@@ -2,16 +2,19 @@
 
 {% block content %}
 
-
-  <form action="pagenext" method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" novalidate>
-    {% csrf_token %}
-    <table>
-        {{ form.country }}
-        {{ form.city }}
-    </table>
-    <button type="submit">Далее</button>
-     <a href="{% url 'person_changelist' %}">Назад</a>
-  </form>
+<div class="container">
+    <form action="pagenext" method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" novalidate>
+        <div class="options">
+            {% csrf_token %}
+        </div>
+        <table>
+            {{ form.country }}
+            {{ form.city }}
+        </table>
+        <button type="submit">Далее</button>
+        <a href="{% url 'person_changelist' %}">Назад</a>
+    </form>
+</div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
