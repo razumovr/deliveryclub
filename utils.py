@@ -243,7 +243,6 @@ def colvodneyforday(start,stop,urlland):
     )
 
     data_namestraf = list(itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding].values))
-    print(data_namestraf)
     kolvodneyWEB = 0
     qqq = []
     # print(data_namestraf)
@@ -284,10 +283,7 @@ def colvodneyforday(start,stop,urlland):
                 break
             else:
                 pass
-
-    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,k]
-
-def kolvopicsfunct(k):
+    #PICS
     unikalkarry = []
     digestarray = []
     telegaarray = []
@@ -307,8 +303,8 @@ def kolvopicsfunct(k):
 
     max_value = 0
     for n in unikalkarry:
-        if n > max_value:
-            max_value = n
+        if float(n) > max_value:
+            max_value = float(n)
     if max_value == 1:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, int(max_value + 1)),
                                         max_distances=np.arange(1, int(max_value + 1)))
@@ -320,8 +316,8 @@ def kolvopicsfunct(k):
 
     max_value = 0
     for n in digestarray:
-        if n > max_value:
-            max_value = n
+        if float(n) > max_value:
+            max_value = float(n)
     if max_value == 1:
         lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, int(max_value + 1)),
                                       max_distances=np.arange(1, int(max_value + 1)))
@@ -333,8 +329,8 @@ def kolvopicsfunct(k):
 
     max_value = 0
     for n in telegaarray:
-        if n > max_value:
-            max_value = n
+        if float(n) > max_value:
+            max_value = float(n)
     if max_value == 1:
         lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, int(max_value + 1)),
                                       max_distances=np.arange(1, int(max_value + 1)))
@@ -344,9 +340,10 @@ def kolvopicsfunct(k):
         lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, int(max_value)),
                                       max_distances=np.arange(1, int(max_value)))
 
+    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,len(lenUNIKALKA), len(lenDIGEST), len(lenTELEGA)]
 
 
-    return [len(lenUNIKALKA),len(lenDIGEST),len(lenTELEGA)]
+
 
 def analitica(land,success,start,end,complete):
 
