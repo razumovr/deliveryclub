@@ -4,13 +4,13 @@
 
 <div class="container">
     <form action="pagenext" method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" novalidate>
-        <div class="options">
+        <!--<div class="options">-->
             {% csrf_token %}
-        </div>
-        <table>
+        <!--</div>-->
+        <div class="options">
             {{ form.country }}
             {{ form.city }}
-        </table>
+        </div>
         <button type="submit">Далее</button>
         <a href="{% url 'person_changelist' %}">Назад</a>
     </form>
