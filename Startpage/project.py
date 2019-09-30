@@ -41,7 +41,7 @@ def main():
     result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
 
     try:
-        infopartenrilist=infopartnerip('https://1.changellenge.com/supply-chain'))
+        infopartenrilist=infopartnerip('https://1.changellenge.com/supply-chain')
         '''d['Количество'][3] = infopartenrilist[0]
         d['Бюджетфакт'][3] = infopartenrilist[1]'''
     except:
