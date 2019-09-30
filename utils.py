@@ -318,7 +318,7 @@ def colvodneyforday(start,stop,urlland):
     else:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, int(max_value)),
                                         max_distances=np.arange(1, int(max_value)))
-
+ '''
     max_value = 0
     for n in digestarray:
         if float(n) > max_value:
@@ -330,7 +330,7 @@ def colvodneyforday(start,stop,urlland):
         lenDIGEST = []
     else:
         lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, int(max_value)),
-                                      max_distances=np.arange(1, int(max_value)))
+                                      max_distances=np.arange(1, int(max_value)))'''
     print("LOOK2"*100)
     print(lenDIGEST)
     print(len(lenDIGEST))
