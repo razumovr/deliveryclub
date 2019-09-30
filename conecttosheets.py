@@ -91,7 +91,7 @@ def connect(sheetnumber):
     return sheet
 
 
-def connectsheet(sheetnumber,datastart):
+def connectsheet(sheetnumber,datastart,landing):
     gs = Connection()
     gs.connect()
     utm = UTMtable(gs.service,keyurl(sheetnumber))
@@ -131,7 +131,16 @@ def connectsheet(sheetnumber,datastart):
         else:
             pass
     sheet = pd.DataFrame(np.array(df[1:]), columns=df[0])
-    return sheet
+    d={}
+    for i in range(len(sheet['Проект'])):
+        if sheet['Ссылка на лендинг'][i] == landing:
+            d['Трафикфакт'] = sheet['Клики факт'][i]
+            d['Бюджетплан'] = sheet['Бюджет план'][i]
+            d['Бюджетфакт'] = sheet['Бюджет факт'][i]
+            d['Конверсия'] = str(int((int(d['Регистрациифакт'][7]) / int(d['Трафикфакт'][7]) * 100))) + '%'
+        else:
+            pass
+    return d
 
 
 
