@@ -2,28 +2,80 @@
 
 
 {% block content %}
-  <p>
-    <a href="{% url 'url_add' %}">Add utm</a>
-  </p>
+<style>
+    body {
+        margin: 0;
+        background: #dfe3e4;
+    }
 
-  <table border="1">
-    <thead>
+    .container {
+        width: 700px;
+        margin: 80px auto 40px auto;
+        background: #ffffff;
+        padding: 25px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+    }
 
-    </thead>
-    <tbody>
-    {% if people.last is not None %}
+    .buttons-group {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        font-size: 20px;
+    }
+
+    .buttons-group a {
+        font-size: 20px;
+        display: inline-block;
+        border: 1px solid #be1c18;
+        padding: 5px 50px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+        background: #be1c18;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .header .container {
+        width: 1270px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: inherit;
+        box-shadow: none;
+        padding: 0;
+    }
+</style>
+<div class="container">
+    <table border="1">
+        <thead>
+
+        </thead>
+        <tbody>
+        {% if people.last is not None %}
         <tr>
-          <td>{{  people.last.person.country }}</td>
-          <td>{{  people.last.person.city }}</td>
-          <td>{{  people.last.utmname }}</td>
+            <td>{{  people.last.person.country }}</td>
+            <td>{{  people.last.person.city }}</td>
+            <td>{{  people.last.utmname }}</td>
         </tr>
-    {% else %}
+        {% else %}
         <tr>
-          <td colspan="4">No  utm in the database. <a href="{% url 'url_add' %}">Add the first utm</a>.</td>
+            <td colspan="4">No  utm in the database. <a href="{% url 'url_add' %}">Add the first utm</a>.</td>
         </tr>
-    {% endif %}
+        {% endif %}
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
+    <div class="buttons-group">
+        <a href="{% url 'url_add' %}">Add utm</a>
+    </div>
+</div>
 
 {% endblock %}
