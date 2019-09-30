@@ -122,7 +122,7 @@ def googlesheets(slovartraf,completeurl):
         elif 'google / cpc' in ii or 'youtube / instream' in ii or 'yandex / cpc' in ii:
             slovaritog['Контекстная реклама'][1] += 1
         else:
-            slovaritog['Пока все остальное'][1] += 1
+            slovaritog['Органика и неопознанный трафик'][1] += 1
 
     for i in slovartraf:
         if 'email / generalbase' in i or 'mailchimp' in i:
@@ -146,7 +146,7 @@ def googlesheets(slovartraf,completeurl):
         elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
             slovaritog['Контекстная реклама'][0] += slovartraf[i]
         else:
-            slovaritog['Пока все остальное'][0] += slovartraf[i]
+            slovaritog['Органика и неопознанный трафик'][0] += slovartraf[i]
     print("Sheets")
     return slovaritog
 
@@ -183,7 +183,7 @@ def googleapi(slovartraf,df,successurl):
         elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
             slovaritog['Контекстная реклама'][1] += slovar[i]
         else:
-            slovaritog['Пока все остальное'][1] += slovar[i]
+            slovaritog['Органика и неопознанный трафик'][1] += slovar[i]
 
     for i in slovartraf:
         if 'email / generalbase' in i or 'mailchimp' in i:
@@ -207,7 +207,7 @@ def googleapi(slovartraf,df,successurl):
         elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
             slovaritog['Контекстная реклама'][0] += slovartraf[i]
         else:
-            slovaritog['Пока все остальное'][0] += slovartraf[i]
+            slovaritog['Органика и неопознанный трафик'][0] += slovartraf[i]
     print("API")
     return slovaritog
 #ENDRETURNTABLIZAFROMANALITICA
