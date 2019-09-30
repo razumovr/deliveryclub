@@ -81,51 +81,51 @@ def main():
     
     dictItog=result.result
     try:
-    dictItog['Количество'][7]=result1.result[0]
+        dictItog['Количество'][7]=result1.result[0]
     except:
         pass
     try:
-    dictItog['Количество'][8]=result1.result[1]
+        dictItog['Количество'][8]=result1.result[1]
     except:
         pass
     try:
-    dictItog['Количество'][9]=result1.result[2]
+        dictItog['Количество'][9]=result1.result[2]
     except:
         pass
     try:
-    dictItog['Количество'][0]=result1.result[3]
+        dictItog['Количество'][0]=result1.result[3]
     except:
         pass
     try:
-    dictItog['Количество'][1]=result1.result[4]
+        dictItog['Количество'][1]=result1.result[4]
     except:
         pass
     try:
-    dictItog['Количество'][6]=result1.result[5]
+        dictItog['Количество'][6]=result1.result[5]
     except:
         pass
     try:
-    dictItog['Трафикфакт'][7]=result2['Трафикфакт']
+        dictItog['Трафикфакт'][7]=result2['Трафикфакт']
     except:
         pass
     try:
-    dictItog['Бюджетплан'][7]=result2['Бюджетплан']
+        dictItog['Бюджетплан'][7]=result2['Бюджетплан']
     except:
         pass
     try:
-    dictItog['Бюджетфакт'][7]=result2['Бюджетфакт']
+        dictItog['Бюджетфакт'][7]=result2['Бюджетфакт']
     except:
         pass
     try:
-    dictItog['Количество'][3]=infopartenrilist[0]
+        dictItog['Количество'][3]=infopartenrilist[0]
     except:
         pass
     try:
-    dictItog['Бюджетфакт'][3]=infopartenrilist[1]
+        dictItog['Бюджетфакт'][3]=infopartenrilist[1]
     except:
         pass
     try:
-    dictItog['Количество'][2]=SMMcount
+        dictItog['Количество'][2]=SMMcount
     except:
         pass
                            
