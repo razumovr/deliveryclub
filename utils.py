@@ -307,7 +307,7 @@ def colvodneyforday(start,stop,urlland):
             max_value = n
     print("LOOOK"*100)
     print(unikalkarry)
-    print(type(unikalkarry[2])
+    print(type(unikalkarry[2]))
     print(max_value)
     print(type(max_value))
     if max_value == 1:
