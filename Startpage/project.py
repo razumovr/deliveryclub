@@ -71,7 +71,7 @@ def main():
     except:
         pass
     SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
-    time.sleep(10)
+    time.sleep(5)
     print("REZULT"*100)
     print(result.result)
     print(result1.result)
