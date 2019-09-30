@@ -402,7 +402,7 @@ def analitica(land,success,start,end,complete):
 
     panda=pd.DataFrame(data=d)
     pd.set_option('display.max_columns', 700)
-    print(panda)
+    #print(panda)
     return d
 
 
