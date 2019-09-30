@@ -133,12 +133,15 @@ def connectsheet(sheetnumber,datastart,landing):
     sheet = pd.DataFrame(np.array(df[1:]), columns=df[0])
     d={}
     for i in range(len(sheet['Проект'])):
-        if sheet['Ссылка на лендинг'][i] == landing:
-            d['Трафикфакт'] = sheet['Клики факт'][i]
-            d['Бюджетплан'] = sheet['Бюджет план'][i]
-            d['Бюджетфакт'] = sheet['Бюджет факт'][i]
-            d['Конверсия'] = str(int((int(d['Регистрациифакт'][7]) / int(d['Трафикфакт'][7]) * 100))) + '%'
-        else:
+        try:
+            if sheet['Ссылка на лендинг'][i] == landing:
+                d['Трафикфакт'] = sheet['Клики факт'][i]
+                d['Бюджетплан'] = sheet['Бюджет план'][i]
+                d['Бюджетфакт'] = sheet['Бюджет факт'][i]
+                d['Конверсия'] = str(int((int(d['Регистрациифакт'][i]) / int(d['Трафикфакт'][i]) * 100))) + '%'
+            else:
+                pass
+        except:
             pass
     return d
 
