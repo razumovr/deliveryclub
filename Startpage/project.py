@@ -69,8 +69,8 @@ def main():
         d['Бюджетфакт'][3] = infopartenrilist[1]'''
     except:
         pass
-    SMMcount=SMMcountfunct(start,stop,str(landing[0].heshteg))
-    time.sleep(15)
+    SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
+    time.sleep(10)
     print("REZULT"*100)
     print(result.result)
     print(result1.result)
