@@ -310,8 +310,8 @@ def colvodneyforday(start,stop,urlland):
     print(max_value)
     print(type(max_value))
     if max_value == 1:
-        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value + 1),
-                                        max_distances=np.arange(1, max_value + 1))
+        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, float(max_value + 1)),
+                                        max_distances=np.arange(1, float(max_value + 1)))
     elif max_value == 0:
         lenUNIKALKA = []
     else:
