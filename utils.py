@@ -303,10 +303,11 @@ def colvodneyforday(start,stop,urlland):
 
     max_value = 0
     for n in unikalkarry:
-        if int(n) > max_value:
-            max_value = int(n)
+        if n > max_value:
+            max_value = n
     print("LOOOK"*100)
     print(unikalkarry)
+    print(type(unikalkarry[2])
     print(max_value)
     print(type(max_value))
     if max_value == 1:
