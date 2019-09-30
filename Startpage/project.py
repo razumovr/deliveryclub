@@ -129,9 +129,9 @@ def main():
     except:
         pass
     a=[]
-    for i in range(len(d['Трафикфакт'])):
-        if int(d['Количество'][i])!=0:
-            a.append(int(int(d['Трафикфакт'][i]) / int(d['Количество'][i])))
+    for i in range(len(dictItog['Трафикфакт'])):
+        if int(dictItog['Количество'][i])!=0:
+            a.append(int(int(dictItog['Трафикфакт'][i]) / int(dictItog['Количество'][i])))
         else:
             a.append('-')
     dictItog["Сила"]=a
