@@ -304,8 +304,8 @@ def colvodneyforday(start,stop,urlland):
 
     max_value = 0
     for n in unikalkarry:
-        if n > max_value:
-            max_value = n
+        if int(n) > max_value:
+            max_value = int(n)
     if max_value == 1:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, int(max_value + 1)),
                                         max_distances=np.arange(1, int(max_value + 1)))
@@ -317,8 +317,8 @@ def colvodneyforday(start,stop,urlland):
 
     max_value = 0
     for n in digestarray:
-        if n > max_value:
-            max_value = n
+        if int(n) > max_value:
+            max_value = int(n)
     if max_value == 1:
         lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, int(max_value + 1)),
                                       max_distances=np.arange(1, int(max_value + 1)))
@@ -330,8 +330,8 @@ def colvodneyforday(start,stop,urlland):
 
     max_value = 0
     for n in telegaarray:
-        if n > max_value:
-            max_value = n
+        if int(n) > max_value:
+            max_value = int(n)
     if max_value == 1:
         lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, int(max_value + 1)),
                                       max_distances=np.arange(1, int(max_value + 1)))
