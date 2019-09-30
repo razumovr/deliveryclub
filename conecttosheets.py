@@ -138,7 +138,6 @@ def connectsheet(sheetnumber,datastart,landing):
                 d['Трафикфакт'] = sheet['Клики факт'][i]
                 d['Бюджетплан'] = sheet['Бюджет план'][i]
                 d['Бюджетфакт'] = sheet['Бюджет факт'][i]
-                d['Конверсия'] = str(int((int(d['Регистрациифакт'][i]) / int(d['Трафикфакт'][i]) * 100))) + '%'
             else:
                 pass
         except:
