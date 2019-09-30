@@ -339,7 +339,7 @@ def kolvopicsfunct(k):
 
     return [len(lenUNIKALKA),len(lenDIGEST),len(lenTELEGA)]
 
-def analitica(land,success,start,end,complete,):
+def analitica(land,success,start,end,complete):
 
 
     credentials = GoogleCredentials(access_token, client_id, client_secret, refresh_token, 3920,
