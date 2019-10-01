@@ -10,7 +10,7 @@
     }
 
     .container {
-        width: 960px;
+        width: 700px;
         margin: 80px auto 40px auto;
         background: #ffffff;
         padding: 25px;
@@ -48,13 +48,14 @@
     }
     .form-item i {
         position: absolute;
-        bottom: 18px;
-        left: 20px;
-        font-size: 25px;
+        bottom: 12px;
+        left: 15px;
+        font-size: 20px;
+        color: #be1c18;
     }
     .form-item i.fa-info-circle {
         left: auto;
-        right: 20px;
+        right: 15px;
         cursor: pointer;
     }
     .form-item i.fa-info-circle p {
@@ -100,7 +101,7 @@
     }
     .form-input {
         width: calc(100% - 70px);
-        height: 45px;
+        height: 30px;
         padding: 5px 15px 5px 50px;
         border: 2px solid #9f9f9f;
         -webkit-border-radius: 15px;
@@ -495,6 +496,39 @@
         font-size: 23px;
     }
 
+    .buttons-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buttons-group button {
+        font-size: 20px;
+        border: 1px solid #be1c18;
+        padding: 5px 50px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+        background: #be1c18;
+        color: #ffffff;
+        cursor: pointer;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    .buttons-group button:hover {
+        -webkit-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+        background: #ffffff;
+        color: #be1c18;
+    }
+
+
+
 </style>
 
 <div class="big-container">
@@ -525,7 +559,9 @@
             </i>
             <span class="form-label">Ввести URL - лендинга</span>
         </div>
-        <button type="submit" class="btn">Отправить &gt;&gt;</button>
+        <div class="buttons-group">
+            <button type="submit" class="next">Далее</button>
+        </div>
     </form>
 </div>
 
