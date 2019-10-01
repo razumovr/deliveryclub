@@ -122,7 +122,91 @@
         color: #be1c18;
         font-size: 22px;
     }
+
+    .big-container {
+        width: 1270px;
+        margin: 0 auto;
+    }
+
+    .links {
+        display: flex;
+        margin-top: 50px;
+    }
+    .links a {
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .links a:hover {
+        width: 150px;
+        justify-content: left;
+    }
+    .links__home a {
+        background: #be1c18;
+        border-radius: 200px;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        border: 1px solid #be1c18;
+    }
+    .links__home a img {
+        margin: 4px 0 0 5px;
+    }
+    .links__home a p {
+        margin: 8px 0 0 10px;
+        color: #ffffff;
+        white-space: nowrap;
+    }
+    .links__return a {
+        background: transparent;
+        border-radius: 200px;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        border: 1px solid #be1c18;
+        margin-left: 10px;
+        -webkit-background-size: 25px;
+        background-size: 25px;
+        background-position: 6px 5px;
+    }
+    .links__return a img {
+        margin: 5px 0 0 6px;
+    }
+    .links__return a p {
+        margin: 8px 0 0 10px;
+        color: #ffffff;
+        white-space: nowrap;
+    }
+    .links__return a:hover {
+        background: #be1c18 url(https://changellenge.com/local/templates/main/assets/images/service/back-arrow-white.png) no-repeat 6px 5px;
+        -webkit-background-size: 25px;
+        background-size: 25px;
+    }
+    .links__return a:hover img {
+        opacity: 0;
+    }
 </style>
+<div class="big-container">
+<div class="links">
+    <div class="links__home">
+        <a href="/">
+            <img src="https://changellenge.com/local/templates/main/assets/images/service/home.png" alt="Home" width="25" height="25">
+            <p>На главную</p>
+        </a>
+    </div>
+    <div class="links__return">
+        <a href="/utmgenerator/hr/pageurl/">
+            <img src="https://changellenge.com/local/templates/main/assets/images/service/back-arrow.png" alt="Home" width="25" height="25">
+            <p>Вернуться</p>
+        </a>
+    </div>
+</div>
+</div>
 <div class="container">
     <h2>Генерация UTM-метки. Шаг 2</h2>
     <form action="pagenext" method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" novalidate>
