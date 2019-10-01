@@ -214,20 +214,20 @@ def index3(request):
         person = Person.objects.last()
         a = checkform(str(Person.objects.last().country), str(Person.objects.last().city))
         if a == 1:
-            utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],None,None)
-	    fetcher = urllib2.urlopen('https://clck.ru/--?url=' + utmname)
-	    clickmename = fetcher.read().decode("utf-8")
-	    Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],person=person,utmname=utmname,urlname=str(Urlname.objects.last().name),clickmename=clickmename)
+            utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,request.POST['utm_campaign'], None, None)
+            fetcher = urllib2.urlopen('https://clck.ru/--?url=' + utmname)
+            clickmename = fetcher.read().decode("utf-8")
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'], person=person, utmname=utmname,urlname=str(Urlname.objects.last().name), clickmename=clickmename)
         elif a == 2:
-            utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],None)
+            utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,request.POST['utm_campaign'], request.POST['utm_term'], None)
             fetcher = urllib2.urlopen('https://clck.ru/--?url=' + utmname)
             clickmename = fetcher.read().decode("utf-8")
-	    Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],person=person,utmname=utmname,urlname=str(Urlname.objects.last().name),clickmename=clickmename)
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'], utm_term=request.POST['utm_term'],person=person, utmname=utmname, urlname=str(Urlname.objects.last().name),clickmename=clickmename)
         elif a == 3:
-            utmname=utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city),a,request.POST['utm_campaign'],request.POST['utm_term'],request.POST['utm_content'])
+            utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,request.POST['utm_campaign'], request.POST['utm_term'], request.POST['utm_content'])
             fetcher = urllib2.urlopen('https://clck.ru/--?url=' + utmname)
             clickmename = fetcher.read().decode("utf-8")
-	    Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'],utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person,utmname=utmname,urlname=str(Urlname.objects.last().name),clickmename=clickmename)
+            Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'], utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person, utmname=utmname,urlname=str(Urlname.objects.last().name), clickmename=clickmename)
     return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
 
 
