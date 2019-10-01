@@ -128,6 +128,7 @@ def main():
         dictItog['Количество'][2]=SMMcount
     except:
         pass
+    print(dictItog)
     a=[]
     for i in range(len(dictItog['Трафикфакт'])):
         if int(dictItog['Количество'][i])!=0:
