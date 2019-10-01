@@ -154,7 +154,7 @@
         <div id="long-link" class="textarea">http://1.changellenge.com?utm_source=vk&amp;utm_medium=spb&amp;utm_campaign=post&amp;utm_term=455</div>
     </div>
     <div class="buttons-group" style="justify-content: center;">
-        <a href="#" id="copylong">Скопировать</a>
+        <a href="#" id="copylong" onclick="return false;">Скопировать</a>
     </div>
 </div>
 <div class="container no-shadow" style="margin-top: 0">
@@ -167,28 +167,48 @@
     </div>
     <div class="buttons-group">
         <a href="javascript:void(0);" onclick="javascript:history.go(-1);" class="trans"><< Назад</a>
-        <a href="#" id="copyshot" class="backcolor">Скопировать</a>
+        <a href="#" id="copyshot" class="backcolor" onclick="return false">Скопировать</a>
         <a href="/utmgenerator/hr/pageurl/" class="backcolor">Сгенерировать еще</a>
     </div>
 </div>
 <script>
-    function copyToClipboard(elementId) {
-        var aux = document.createElement("input");
-        aux.setAttribute("value", document.getElementById(elementId).innerHTML);
-        document.body.appendChild(aux);
-        aux.select();
-        document.execCommand("copy");
-        document.body.removeChild(aux);
-    }
+    let copyLong = document.querySelector('#copylong')
+    copyLong.addEventListener('click', function() {
+        var emailLink = document.querySelector('#long-link');
+        var range = document.createRange();
+        range.selectNode(emailLink);
+        window.getSelection().addRange(range);
 
-    copylong.onclick = function() {
-        copyToClipboard('long-link')
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copy email command was ' + msg);
+        } catch(err) {
+            console.log('Oops, unable to copy');
+        }
+        window.getSelection().removeAllRanges();
+
         return false
-    }
-    copyshot.onclick = function() {
-        copyToClipboard('shot-link')
+    })
+
+    let copyShot = document.querySelector('#copyshot')
+    copyShot.addEventListener('click', function() {
+        var emailLink = document.querySelector('#shot-link');
+        var range = document.createRange();
+        range.selectNode(emailLink);
+        window.getSelection().addRange(range);
+
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copy email command was ' + msg);
+        } catch(err) {
+            console.log('Oops, unable to copy');
+        }
+        window.getSelection().removeAllRanges();
+
         return false
-    }
+    })
 </script>
 
 </body>
