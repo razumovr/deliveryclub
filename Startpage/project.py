@@ -134,7 +134,7 @@ def main():
         if int(dictItog['Количество'][i])!=0:
             a.append(int(int(dictItog['Трафикфакт'][i]) / int(dictItog['Количество'][i])))
         else:
-            a.append('-')
+            a.append('—')
     dictItog["Сила"]=a
                            
     return dictItog
