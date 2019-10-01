@@ -53,67 +53,62 @@
         box-shadow: none;
         padding: 0;
     }
-
-    table {
-        table-layout: fixed;
-        margin-bottom: 30px;
-    }
-    table thead {
-        background: #be1c18;
-        color: #ffffff;
-    }
-    table thead tr {
-        height: 50px;
-    }
-    table tbody {
-        background: #e2e2e2;
-    }
-    table td, table th {
-        width: 20%;
-    }
-    table td:last-child, table th:last-child {
-        width: 60%;
-    }
-    table td:last-child p, table th:last-child p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: calc(100% - 30px);
-    }
-    table td p, table th p {
-        margin: 0;
-        padding: 10px 15px;
-    }
 </style>
+<div class="container no-shadow">
+    <h2>Проверьте введенные значения и скопируйте готовую UTM-метку</h2>
+</div>
 <div class="container">
-    <table width="100%">
-        <thead>
-            <tr>
-                <th>Откуда</th>
-                <th>Как именно</th>
-                <th>Полученная ссылка</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% if people.last is not None %}
-        <tr>
-            <td><p>{{  people.last.person.country }}</p></td>
-            <td><p>{{  people.last.person.city }}</p></td>
-            <td><p>{{  people.last.utmname }}</p></td>
-               <td>{{  people.last.urlname }}</td>
-            <td>{{  people.last.clickmename }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4">No  utm in the database. <a href="{% url 'url_add' %}">Add the first utm</a>.</td>
-        </tr>
-        {% endif %}
-
-        </tbody>
-    </table>
+    <h3>Для лендинга:</h3>
+    <p>{{  people.last.urlname }}</p>
+</div>
+<div class="container">
+    <h3>Для источника:</h3>
+    <p>{{  people.last.person.country }}</p>
+</div>
+<div class="container">
+    <h3>Уточнение:</h3>
+    <p>{{  people.last.person.city }}</p>
+</div>
+<div class="container no-shadow">
+    <p>Проверьте введенные значения и скопируйте готовую UTM-метку</p>
+    <textarea name="link" id="" cols="30" rows="10">{{  people.last.utmname }}</textarea>
     <div class="buttons-group">
-        <a href="{% url 'url_add' %}">Add utm</a>
+        <a href="#">Скопировать</a>
     </div>
 </div>
+<div class="container no-shadow">
+    <p>Короткая ссылка</p>
+    <textarea name="link-short" id="" cols="30" rows="10">{{  people.last.clickmename }}</textarea>
+    <div class="buttons-group">
+        <a href="#" onclick="history.back();">Назад</a>
+        <a href="#">Скопировать</a>
+        <a href="{% url 'url_add' %}">Сгенерировать еще</a>
+    </div>
+</div>
+    <!--<table width="100%">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>Откуда</th>-->
+                <!--<th>Как именно</th>-->
+                <!--<th>Полученная ссылка</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--{% if people.last is not None %}-->
+        <!--<tr>-->
+            <!--<td><p>{{  people.last.person.country }}</p></td>-->
+            <!--<td><p>{{  people.last.person.city }}</p></td>-->
+            <!--<td><p>{{  people.last.utmname }}</p></td>-->
+           <!--<td>{{  people.last.urlname }}</td>-->
+            <!--<td>{{  people.last.clickmename }}</td>-->
+        <!--</tr>-->
+        <!--{% else %}-->
+        <!--<tr>-->
+            <!--<td colspan="4">No  utm in the database. <a href="{% url 'url_add' %}">Add the first utm</a>.</td>-->
+        <!--</tr>-->
+        <!--{% endif %}-->
+
+        <!--</tbody>-->
+    <!--</table>-->
 
 {% endblock %}
