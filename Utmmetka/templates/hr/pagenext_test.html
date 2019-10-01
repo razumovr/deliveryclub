@@ -1,8 +1,13 @@
-{% extends 'base.html' %}
-
-
-{% block content %}
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 <style>
     h2 {
         margin: 0 0 15px 5px;
@@ -78,32 +83,31 @@
 </style>
 <div class="container">
     <h2>Генерация UTM-метки. Шаг 3</h2>
-    <form action="https://deliveryclub.herokuapp.com/utmgenerator/hr/add/utmupdate" id="personForm"
-          role="form" method="POST">
-        {% csrf_token %}
+    <form action="https://deliveryclub.herokuapp.com/utmgenerator/hr/add/utmupdate" id="personForm" role="form" method="POST">
+        <input type="hidden" name="csrfmiddlewaretoken" value="0yoDd69QY54mhoxYXDxJcJUq8Wj1rVkxImmt4fnB7PylqCwrvYSh8avQ3i4taDs5">
 
         <div class="group">
             <div class="group__single">
-                <p>{{ nameinsertfirst }}</p>
+                введите дату выхода (в формате 28082019)
             </div>
             <div class="group__single">
-                {{ form.utm_campaign }}
-            </div>
-        </div>
-        <div class="group">
-            <div class="group__single">
-                <p>{{ nameinsertsecond }}</p>
-            </div>
-            <div class="group__single">
-                {{ form.utm_term }}
+                <input type="text" name="utm_campaign" class="t-input js-tilda-rule   t-input_pvis" data="" -="" tilda="" req="1" style="color:#000000; border:1px solid #000000;  " maxlength="300" required="" id="id_utm_campaign">
             </div>
         </div>
         <div class="group">
             <div class="group__single">
-                <p>{{ nameinsertthird }}</p>
+
             </div>
             <div class="group__single">
-                {{ form.utm_content }}
+
+            </div>
+        </div>
+        <div class="group">
+            <div class="group__single">
+
+            </div>
+            <div class="group__single">
+
             </div>
         </div>
         <div class="buttons-group">
@@ -111,13 +115,12 @@
         </div>
     </form>
 </div>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     $('.group').find('input').attr('placeholder', 'Введите текст в поле')
 </script>
-{% endblock %}
 
-
-
-
-
+</body>
+</html>
