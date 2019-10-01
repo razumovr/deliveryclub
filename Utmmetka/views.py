@@ -13,6 +13,7 @@ from django.shortcuts import redirect
 import pandas as pd
 import re
 import cyrtranslit
+import urllib.request as urllib2
 
 gs = Connection()
 gs.connect()
