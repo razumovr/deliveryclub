@@ -3,7 +3,11 @@
 {% if form.errors %}
 <div class="bg"></div>
 <div class="alert">
-    <p>Your username and password didn't match. Please try again.</p>
+    <h3><i class="fas fa-exclamation-triangle"></i> Ошибка авторизации</h3>
+    <p>Не удалось авторизоваться в системе. Возможно вы неправильно ввели логин или пароль. Попробуйте еще раз.</p>
+    <div class="buttons-group">
+        <button type="submit" class="next">Ок, попробую</button>
+    </div>
 </div>
 {% endif %}
 <div class="container">
