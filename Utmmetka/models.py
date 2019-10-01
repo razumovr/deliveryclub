@@ -36,3 +36,5 @@ class Firstvar(models.Model):
     utm_term=models.CharField(max_length=300,null=True)
     utm_content=models.CharField(max_length=300,null=True)
     utmname=models.CharField(max_length=300,null=True)
+    urlname = models.CharField(max_length=300, null=True)
+    clickmename = models.CharField(max_length=300, null=True)
