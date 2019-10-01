@@ -6,15 +6,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/login-style.css">
+    <script src="https://kit.fontawesome.com/8b80a9f534.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
+<style>
+    .login-form__inputs {
+        position: relative;
+    }
+    .login-form__inputs i {
+        position: absolute;
+        right: 15px;
+        bottom: 11px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
 <div class="container">
     <form method="post" class="login-form" action="/users/login/"> <input type="hidden" name="csrfmiddlewaretoken" value="gq5CUf59EdyIzDTMt35zSyhS0Nrk4X7vG0vVamuCsm7jgmoHFp8Ye2hegTC9Mtee">
         <h3>Авторизация</h3>
         <div class="login-form__inputs">
             <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus="" required="" id="id_username"></p>
             <p><label for="id_password">Password:</label> <input type="password" name="password" required="" id="id_password"></p>
+            <i class="fas fa-eye"></i>
         </div>
         <button name="submit">Войти >></button>
         <input type="hidden" name="next" value="/">
@@ -23,5 +37,19 @@
         </p>
     </form>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let tmp = true
+    $('.login-form__inputs i').click(function() {
+        if (tmp === true) {
+            $(this).css('color', '#be1c18')
+            $('.login-form__inputs').find('#id_password').attr('type', 'text')
+        } else {
+            $(this).css('color', '#000000')
+            $('.login-form__inputs').find('#id_password').attr('type', 'password')
+        }
+        tmp = !tmp
+    })
+</script>
 </body>
 </html>

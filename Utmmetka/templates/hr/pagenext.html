@@ -72,6 +72,27 @@
         color: #be1c18;
     }
 
+    .buttons-group a {
+        display: inline-block;
+        text-decoration: none;
+        color: #be1c18;
+        border: 1px solid #be1c18;
+        padding: 5px 50px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    .buttons-group a:hover {
+        color: #ffffff;
+        background: #be1c18;
+    }
+
     p {
         font-size: 18px;
     }
@@ -190,6 +211,7 @@
             </div>
         </div>
         <div class="buttons-group">
+            <a href="#" onclick="history.back();" class="prev">Назад</a>
             <button type="submit" class="next">Далее</button>
         </div>
     </form>
