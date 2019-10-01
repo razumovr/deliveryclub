@@ -6,7 +6,7 @@
     <h3><i class="fas fa-exclamation-triangle"></i> Ошибка авторизации</h3>
     <p>Не удалось авторизоваться в системе. Возможно вы неправильно ввели логин или пароль. Попробуйте еще раз.</p>
     <div class="buttons-group">
-        <button type="submit" class="next">Ок, попробую</button>
+        <button type="submit" class="next close">Ок, попробую</button>
     </div>
 </div>
 {% endif %}
@@ -140,4 +140,12 @@
         </p>
     </form>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $('.alert').find('.close').click(function() {
+        $('.bg').addClass('hide')
+        $('.alert').addClass('hide')
+    })
+</script>
 {% endblock content %}
