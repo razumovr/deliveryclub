@@ -396,7 +396,12 @@ def analitica(land,success,start,end,complete):
          'Конверсия': [str(int(x[1] / x[0] * 100)) + '%' if x[0] > 0 else x[0] for x in data_values],
          'Регистрациифакт': [x[1] for x in data_values], 'Бюджетплан': ['—' for x in data_values],
          'Бюджетфакт': ['—' for x in data_values]}
-
+    vuz = 0
+    set_data_valuestraf = set(data_namestraf)
+    for i in set_data_valuestraf:
+        if 'vuz-' in i or 'vuz_' in i:
+            vuz += 1
+    d['Количество'][5] = vuz
     '''colvodneylist = colvodneyforday(start, stop, service, urltoLanding)
     d['Количество'][7] = colvodneylist[0]
     d['Количество'][8] = colvodneylist[1]
