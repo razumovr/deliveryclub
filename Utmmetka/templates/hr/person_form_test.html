@@ -10,13 +10,27 @@
     <title>Document</title>
 </head>
 <body>
+<style>
+    .options__single label {
+        color: #44484b;
+        font-size: 17px;
+        padding-left: 5px;
+    }
+    h2 {
+        margin: 0 0px 15px 5px;
+        color: #be1c18;
+        font-size: 22px;
+    }
+</style>
 <div class="container">
+    <h2>Генерация UTM-метки. Шаг 2</h2>
     <form action="pagenext" method="post" id="personForm" data-cities-url="/utmgenerator/hr/ajax/load-cities/"
           novalidate="">
         <input type="hidden" name="csrfmiddlewaretoken"
                value="cwzVYq9LZ9kQBq68hyb5x6OolB53XNeGV9jepomZrmW7ZOluNSZz631nndTSHjE3">
         <div class="options">
             <div class="options__single">
+                <label for="id_country">Выберите источник, в котором будет размещена ссылка</label>
                 <i class="fas fa-globe"></i>
                 <select name="country" required="" id="id_country">
                     <option value="" selected="">---------</option>
@@ -41,6 +55,7 @@
                 <i class="fas fa-arrow-up"></i>
             </div>
             <div class="options__single">
+                <label for="id_city">Уточните свой выбор</label>
                 <i class="fas fa-city"></i>
                 <select name="city" required="" id="id_city">
                     <option value="">---------</option>

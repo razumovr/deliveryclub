@@ -2,59 +2,49 @@
 
 
 {% block content %}
-    <form action="https://deliveryclub.herokuapp.com/utmgenerator/hr/add/utmupdate" id="personForm" name="form77738328" role="form"  method="POST"  data-formactiontype="2" data-inputbox=".t-input-group">
 
-	  			        	            	                <input type="hidden" name="formservices[]" value="1be168af8a85a264fd9ec3577b14281e" class="js-formaction-services">
+<style>
+    h2 {
+        margin: 0 0 15px 5px;
+        color: #be1c18;
+        font-size: 22px;
+    }
+</style>
+<div class="container">
+    <h2>Генерация UTM-метки. Шаг 3</h2>
+    <form action="https://deliveryclub.herokuapp.com/utmgenerator/hr/add/utmupdate" id="personForm"
+          role="form" method="POST">
+        {% csrf_token %}
 
-
-            <div class="js-successbox t-form__successbox t-text t-text_md" style="display:none;"></div>
-
-            <div class="t-form__inputsbox">
-
-
-            <div class="t-input-group t-input-group_nm" data-input-lid="1494858943227">
-                              <div class="t-input-block" style="position: relative; overflow: hidden;">
-
-
-                                      {% csrf_token %}
-
-                                  {{ nameinsertfirst }}
-                                  {{ form.utm_campaign }}
-
-                                  {{ nameinsertsecond }}
-                                  {{ form.utm_term }}
-
-                                  {{ nameinsertthird }}
-                                  {{ form.utm_content }}
-
-
-                    <div class="t-input-error"></div>
-          </div>
-      </div
-
-
-
-
-
-
-	        </div>
-
-
-
-
-
-         <div class="t-form__submit">
-                    <button type="submit" class="t-submit" style="color:#ffffff;background-color:#000000;">Отправить &gt;&gt;</button>
-                </div>
-
+        <div class="group">
+            <div class="group__single">
+                {{ nameinsertfirst }}
             </div>
-
-
-
-
-
-
-</form>
+            <div class="group__single">
+                {{ form.utm_campaign }}
+            </div>
+        </div>
+        <div class="group">
+            <div class="group__single">
+                {{ nameinsertsecond }}
+            </div>
+            <div class="group__single">
+                {{ form.utm_term }}
+            </div>
+        </div>
+        <div class="group">
+            <div class="group__single">
+                {{ nameinsertthird }}
+            </div>
+            <div class="group__single">
+                {{ form.utm_content }}
+            </div>
+        </div>
+        <div class="buttons-group">
+            <button type="submit" class="next">Далее</button>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
 
