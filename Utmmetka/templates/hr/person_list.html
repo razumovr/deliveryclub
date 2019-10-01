@@ -10,21 +10,29 @@
 
     .container {
         width: 700px;
-        margin: 80px auto 40px auto;
+        margin: 20px auto;
         background: #ffffff;
-        padding: 25px;
+        padding: 15px;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
-        -webkit-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+    }
+
+    .container.no-shadow {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        background: transparent;
+        width: 730px;
     }
 
     .buttons-group {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         font-size: 20px;
     }
 
@@ -53,9 +61,69 @@
         box-shadow: none;
         padding: 0;
     }
+
+    h2 {
+        margin: 0;
+        color: #be1c18;
+        font-size: 22px;
+    }
+
+    h3, p {
+        margin: 0;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    h3 {
+        margin-bottom: 10px;
+    }
+
+    .textarea-block {
+        position: relative;
+    }
+
+    .textarea {
+        border: 1px solid #000000;
+        padding: 15px 45px;
+        border-radius: 15px;
+        font-size: 18px;
+        background: #ffffff;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .textarea-block i {
+        position: absolute;
+        font-size: 25px;
+        color: #be1c18;
+        top: 15px;
+        left: 10px;
+    }
+
+    .buttons-group .trans {
+        background: #ffffff;
+        color: #be1c18;
+    }
+
+    .buttons-group .trans:hover {
+        -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+    }
+
+    .backcolor:hover {
+        background: #ffffff;
+        color: #be1c18;
+        -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+    }
+
 </style>
 <div class="container no-shadow">
-    <h2>Проверьте введенные значения и скопируйте готовую UTM-метку</h2>
+    <h2>Ваша UTM-метка готова</h2>
 </div>
 <div class="container">
     <h3>Для лендинга:</h3>
@@ -69,46 +137,48 @@
     <h3>Уточнение:</h3>
     <p>{{  people.last.person.city }}</p>
 </div>
-<div class="container no-shadow">
+<div class="container no-shadow" style="margin-bottom: 0;">
     <p>Проверьте введенные значения и скопируйте готовую UTM-метку</p>
-    <textarea name="link" id="" cols="30" rows="10">{{  people.last.utmname }}</textarea>
-    <div class="buttons-group">
-        <a href="#">Скопировать</a>
+    <div class="textarea-block">
+        <i class="fas fa-link" aria-hidden="true"></i>
+        <div id="long-link" class="textarea">{{  people.last.utmname }}</div>
+    </div>
+    <div class="buttons-group" style="justify-content: center;">
+        <a href="#" id="copylong">Скопировать</a>
     </div>
 </div>
-<div class="container no-shadow">
+<div class="container no-shadow" style="margin-top: 0">
     <p>Короткая ссылка</p>
-    <textarea name="link-short" id="" cols="30" rows="10">{{  people.last.clickmename }}</textarea>
+    <div class="textarea-block">
+        <div class="textarea-block">
+            <i class="fas fa-link" aria-hidden="true"></i>
+            <div id="shot-link" class="textarea">{{  people.last.clickmename }}</div>
+        </div>
+    </div>
     <div class="buttons-group">
-        <a href="#" onclick="history.back();">Назад</a>
-        <a href="#">Скопировать</a>
-        <a href="{% url 'url_add' %}">Сгенерировать еще</a>
+        <a href="#" onclick="history.back();" class="trans"><< Назад</a>
+        <a href="#" id="copyshot" class="backcolor">Скопировать</a>
+        <a href="/utmgenerator/hr/pageurl/" class="backcolor">Сгенерировать еще</a>
     </div>
 </div>
-    <!--<table width="100%">-->
-        <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>Откуда</th>-->
-                <!--<th>Как именно</th>-->
-                <!--<th>Полученная ссылка</th>-->
-            <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--{% if people.last is not None %}-->
-        <!--<tr>-->
-            <!--<td><p>{{  people.last.person.country }}</p></td>-->
-            <!--<td><p>{{  people.last.person.city }}</p></td>-->
-            <!--<td><p>{{  people.last.utmname }}</p></td>-->
-           <!--<td>{{  people.last.urlname }}</td>-->
-            <!--<td>{{  people.last.clickmename }}</td>-->
-        <!--</tr>-->
-        <!--{% else %}-->
-        <!--<tr>-->
-            <!--<td colspan="4">No  utm in the database. <a href="{% url 'url_add' %}">Add the first utm</a>.</td>-->
-        <!--</tr>-->
-        <!--{% endif %}-->
+<script>
+    function copyToClipboard(elementId) {
+        var aux = document.createElement("input");
+        aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+    }
 
-        <!--</tbody>-->
-    <!--</table>-->
+    copylong.onclick = function() {
+        copyToClipboard('long-link')
+        return false
+    }
+    copyshot.onclick = function() {
+        copyToClipboard('shot-link')
+        return false
+    }
+</script>
 
 {% endblock %}
