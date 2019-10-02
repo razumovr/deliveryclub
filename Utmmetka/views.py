@@ -215,7 +215,8 @@ def index3(request):
         person = Person.objects.last()
         a = checkform(str(Person.objects.last().country), str(Person.objects.last().city))
         if a == 1:
-            utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,encodeurl = urllib.parse.quote(utmname)
+            utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,request.POST['utm_campaign'], None, None)
+            encodeurl = urllib.parse.quote(utmname)
             fetcher = urllib2.urlopen('https://clck.ru/--?url=' + encodeurl)
             clickmename = fetcher.read().decode()
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'], person=person, utmname=utmname,urlname=str(Urlname.objects.last().name), clickmename=clickmename)
