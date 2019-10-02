@@ -19,7 +19,8 @@ from datetime import date, timedelta
 import scipy.signal as sg
 import numpy as np
 
-from .conecttosheets import connect
+
+from conecttosheets import connect
 
 def hellow(a):
     print("HEllowWORLTZ")
