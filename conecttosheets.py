@@ -76,6 +76,7 @@ def keyurl(sheetnumber):
 def connect(sheetnumber):
     gs = Connection()
     gs.connect()
+    print(keyurl(sheetnumber))
     utm = UTMtable(gs.service,keyurl(sheetnumber))
     utm.getSheets()
     df = utm.tables
