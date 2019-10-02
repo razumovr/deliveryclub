@@ -369,13 +369,14 @@ def analitica(land,success,start,end,complete):
     #POMENYAT
     urltoLanding=uelgenerator(land)
     urltoSuccess = uelgenerator(success)
+    urltoCimplete=uelgenerator(complete)
     data_namestraf = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values))
     data_valuestraf = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:uniquePageviews']].values))
     print(data_namestraf)
     slovartraf = dict(zip(data_namestraf, data_valuestraf))
-    data = googlesheets(slovartraf,complete)
+    data = googlesheets(slovartraf,urltoCimplete)
     '''try:
         # POMENYAT
         data = googlesheets(slovartraf,complete)
