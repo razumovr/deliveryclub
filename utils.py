@@ -20,7 +20,7 @@ import scipy.signal as sg
 import numpy as np
 
 
-from conecttosheets import connect
+
 
 
 #ANALITIKA
@@ -83,65 +83,7 @@ def uelgenerator(string):
 
 
 #RERURNTALIZAFROMANALITICA
-def googlesheets(slovartraf,completeurl):
-    df=connect(completeurl)
-    df['new_col'] = df['utm_source'] + ' / ' + df['utm_medium']
-    a = df.dropna(subset=[list(df)[0]])
-    newdf = a[['utm_source', 'utm_medium', 'utm_campaign', 'new_col']]
-    slovaritog = {'Уникальная': [0, 0], 'Дайджест': [0, 0], 'SMM репостов': [0, 0],
-                  'Инфопартнеры': [0, 0], 'Рассылка из юнисендера': [0, 0], 'Промо в вузах': [0, 0], 'Телеграм': [0, 0],
-                  'Таргетинг': [0, 0],
-                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Органика и неопознанный трафик': [0, 0]}
-    for i in list(newdf['new_col']):
-        ii = str(i)
-        if 'generalbase' in ii or 'mailchimp' in ii:
-            slovaritog['Уникальная'][1] += 1
-        elif 'digest' in ii or 'Digest' in ii:
-            slovaritog['Дайджест'][1] += 1
-        elif 'vk-wall' in ii or 'vk_wall' in ii:
-            slovaritog['SMM репостов'][1] += 1
-        elif 'ip-' in ii or 'ip_' in ii:
-            slovaritog['Инфопартнеры'][1] += 1
-        elif 'mail' in ii or 'email' in ii or 'Unisender' in ii or 'unisender' in ii or 'utm_source' in ii or 'UniSender' in ii:
-            slovaritog['Рассылка из юнисендера'][1] += 1
-        elif 'vuz-' in ii or 'vuz_' in ii:
-            slovaritog['Промо в вузах'][1] += 1
-        elif 'tg /' in ii or 'Tg /' in ii:
-            slovaritog['Телеграм'][1] += 1
-        elif 'vk / target' in ii or 'vk / targetpost' in ii or 'vk / target-story' in ii or 'insta / target' in ii or 'insta / targetpost' in ii or 'insta / target-story' in ii or 'fb / target' in ii or 'fb / targetpost' in ii:
-            slovaritog['Таргетинг'][1] += 1
-        elif 'cl-site' in ii or 'Сl-site' in ii or 'cl_site' in ii or 'Сl_site' in ii:
-            slovaritog['Веб-страница и слайдер'][1] += 1
-        elif 'google / cpc' in ii or 'youtube / instream' in ii or 'yandex / cpc' in ii:
-            slovaritog['Контекстная реклама'][1] += 1
-        else:
-            slovaritog['Органика и неопознанный трафик'][1] += 1
 
-    for i in slovartraf:
-        if 'email / generalbase' in i or 'mailchimp' in i:
-            slovaritog['Уникальная'][0] += slovartraf[i]
-        elif 'digest' in i or 'Digest' in i:
-            slovaritog['Дайджест'][0] += slovartraf[i]
-        elif 'vk-wall' in i or 'vk_wall' in i:
-            slovaritog['SMM репостов'][0] += slovartraf[i]
-        elif 'ip-' in i or 'ip_' in i:
-            slovaritog['Инфопартнеры'][0] += slovartraf[i]
-        elif 'mail' in i or 'email' in i or 'Unisender' in i or 'unisender' in i or 'utm_source' in i or 'UniSender' in i:
-            slovaritog['Рассылка из юнисендера'][0] += slovartraf[i]
-        elif 'vuz-' in i or 'vuz_' in i:
-            slovaritog['Промо в вузах'][0] += slovartraf[i]
-        elif 'tg /' in i or 'Tg /' in i:
-            slovaritog['Телеграм'][0] += slovartraf[i]
-        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i:
-            slovaritog['Таргетинг'][0] += slovartraf[i]
-        elif 'cl-site' in i or 'Сl-site' in i or 'cl_site' in i or 'Сl_site' in i:
-            slovaritog['Веб-страница и слайдер'][0] += slovartraf[i]
-        elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
-            slovaritog['Контекстная реклама'][0] += slovartraf[i]
-        else:
-            slovaritog['Органика и неопознанный трафик'][0] += slovartraf[i]
-    print("Sheets")
-    return slovaritog
 
 
 def googleapi(slovartraf,df,successurl):
@@ -376,14 +318,7 @@ def analitica(land,success,start,end,complete):
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:uniquePageviews']].values))
     print(data_namestraf)
     slovartraf = dict(zip(data_namestraf, data_valuestraf))
-    data = googlesheets(slovartraf,urltoCimplete)
-    '''try:
-        # POMENYAT
-        data = googlesheets(slovartraf,complete)
-        print('1')
-    except:
-        data = googleapi(slovartraf,df,urltoSuccess)
-        print('2')'''
+    data = googleapi(slovartraf,df,urltoSuccess)
     data_names = list(data.keys())
     data_values = list(data.values())
 
