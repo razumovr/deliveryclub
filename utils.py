@@ -20,12 +20,8 @@ import scipy.signal as sg
 import numpy as np
 
 
-from conecttosheets import connect
+from .conecttosheets import connect
 
-def hellow(a):
-    print("HEllowWORLTZ")
-    print(a)
-    return a
 
 #ANALITIKA
 def get_report(analytics, start_date, end_date, view_id, metrics, dimensions):
@@ -379,13 +375,14 @@ def analitica(land,success,start,end,complete):
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:uniquePageviews']].values))
     print(data_namestraf)
     slovartraf = dict(zip(data_namestraf, data_valuestraf))
-    try:
+    data = googlesheets(slovartraf,complete)
+    '''try:
         # POMENYAT
         data = googlesheets(slovartraf,complete)
         print('1')
     except:
         data = googleapi(slovartraf,df,urltoSuccess)
-        print('2')
+        print('2')'''
     data_names = list(data.keys())
     data_values = list(data.values())
 
