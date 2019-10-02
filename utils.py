@@ -19,6 +19,8 @@ from datetime import date, timedelta
 import scipy.signal as sg
 import numpy as np
 
+from .conecttosheets import connect
+
 def hellow(a):
     print("HEllowWORLTZ")
     print(a)
@@ -85,12 +87,6 @@ def uelgenerator(string):
 
 #RERURNTALIZAFROMANALITICA
 def googlesheets(slovartraf,completeurl):
-    '''scope = ['https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        '/Users/ruslan/Downloads/My Project-fe4805e9d102.json', scope)
-    gc = gspread.authorize(credentials)
-    sht = gc.open_by_url(completeurl).sheet1
-    df = get_as_dataframe(sht, header=0)'''
     df=connect(completeurl)
     df['new_col'] = df['utm_source'] + ' / ' + df['utm_medium']
     a = df.dropna(subset=[list(df)[0]])
