@@ -20,7 +20,7 @@ import scipy.signal as sg
 import numpy as np
 
 
-from .conecttosheets import connect
+from conecttosheets import connect
 
 
 #ANALITIKA
@@ -396,14 +396,7 @@ def analitica(land,success,start,end,complete):
         if 'vuz-' in i or 'vuz_' in i:
             vuz += 1
     d['Количество'][5] = vuz
-    '''colvodneylist = colvodneyforday(start, stop, service, urltoLanding)
-    d['Количество'][7] = colvodneylist[0]
-    d['Количество'][8] = colvodneylist[1]
-    d['Количество'][9] = colvodneylist[2]
-    kolvopics = kolvopicsfunct(colvodneylist[3])
-    d['Количество'][0] = kolvopics[0]
-    d['Количество'][1] = kolvopics[1]
-    d['Количество'][6] = kolvopics[2]'''
+
 
 
     panda=pd.DataFrame(data=d)
