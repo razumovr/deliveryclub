@@ -197,12 +197,12 @@ def index2(request):
         d['nameinsertsecond']=b[1]
         d['nameinsertthird'] = b[2]
     else:
-        utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,None, None, None)
+	utmname = utmnamecreate(str(Person.objects.last().country), str(Person.objects.last().city), a,None, None, None)
 	encodeurl=urllib.parse.quote(utmname)
-        fetcher = urllib2.urlopen('https://clck.ru/--?url=' + encodeurl)
-        clickmename = fetcher.read().decode()
-        Firstvar.objects.create(person=person,utmname=utmname,urlname=str(Urlname.objects.last().name),clickmename=clickmename)
-        return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
+	fetcher = urllib2.urlopen('https://clck.ru/--?url=' + encodeurl)
+	clickmename = fetcher.read().decode()
+	Firstvar.objects.create(person=person,utmname=utmname,urlname=str(Urlname.objects.last().name),clickmename=clickmename)
+	return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
 
     return render(request,'hr/pagenext.html',d)
 
