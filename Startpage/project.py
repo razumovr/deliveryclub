@@ -58,6 +58,7 @@ def main():
 
     q = Queue(connection=conn)
     q1 = Queue(connection=conn)
+    a=analitica(str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
     #q2targeting = Queue(connection=conn)
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
     result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
