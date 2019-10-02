@@ -13,10 +13,10 @@ import datetime
 
 from rq import Queue
 from worker import conn
-from utils import analitica,hellow,colvodneyforday
+from utils import analitica,colvodneyforday
 
 
-from conecttosheets import connect,connectsheet,connectIP
+from conecttosheets import connectsheet,connectIP
 
 
 
