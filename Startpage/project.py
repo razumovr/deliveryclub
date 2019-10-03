@@ -1,6 +1,5 @@
 from .models import Langing
 
-
 import pandas as pd
 
 import gspread
