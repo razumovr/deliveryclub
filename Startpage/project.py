@@ -92,13 +92,12 @@ def main():
 
     q = Queue(connection=conn)
     q1 = Queue(connection=conn)
+    q2 = Queue(connection=conn)
+    
     #q2targeting = Queue(connection=conn)
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
     result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
-    try:
-        connecttocomplete = googlesheets('https://docs.google.com/spreadsheets/d/1vJYsn-Ah5zGNb6-wtmXDT-xpujWUW68eKl0mygCwy3s/edit#gid=1302194187')
-    except:
-        connecttocomplete={}
+    connecttocomplete = q2.enqueue(googlesheets,str(landing[0].complete)
     try:
         result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
@@ -173,7 +172,6 @@ def main():
         dictItog['Количество'][2]=SMMcount
     except:
         pass
-    print(dictItog)
     a=[]
     for i in range(len(dictItog['Трафикфакт'])):
         if int(dictItog['Количество'][i])!=0:
@@ -181,6 +179,7 @@ def main():
         else:
             a.append('—')
     dictItog["Сила"]=a
+    print(dictItog)
                            
     return dictItog
 if __name__ == "__main__":
