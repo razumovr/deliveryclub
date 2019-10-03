@@ -88,6 +88,7 @@ def SMMcountfunct(start,stop,heshteg):
 
 def main():
     landing = Langing.objects.all()
+    dictItog={}
 
 
     q = Queue(connection=conn)
