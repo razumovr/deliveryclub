@@ -117,10 +117,11 @@ def main():
     print(SMMcount)
     
     dictItog=result.result
-    if bool(connecttocomplete) ==True:
+    connecttocompleteresult=connecttocomplete.result
+    if bool(connecttocompleteresult) ==True:
         regfactnomer=0
         for i in dictItog['Источник']:
-            dictItog['Регистрациифакт'][regfactnomer]=connecttocomplete[i]
+            dictItog['Регистрациифакт'][regfactnomer]=connecttocompleteresult[i]
             regfactnomer+=1
     else:
         pass
