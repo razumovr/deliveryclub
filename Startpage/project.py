@@ -54,7 +54,7 @@ def SMMcountfunct(start,stop,heshteg):
 
 def main():
     landing = Langing.objects.all()
-    result2 = connect('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384')
+    result2 = connect('https://docs.google.com/spreadsheets/d/1vJYsn-Ah5zGNb6-wtmXDT-xpujWUW68eKl0mygCwy3s/edit#gid=1302194187')
     print(result2)
 
     '''q = Queue(connection=conn)
