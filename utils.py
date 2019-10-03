@@ -281,7 +281,7 @@ def colvodneyforday(start,stop,urlland):
 
 
 
-def analitica(land,success,start,end,complete):
+def analitica(land,success,start,end):
 
 
     credentials = GoogleCredentials(access_token, client_id, client_secret, refresh_token, 3920,
@@ -311,7 +311,6 @@ def analitica(land,success,start,end,complete):
     #POMENYAT
     urltoLanding=uelgenerator(land)
     urltoSuccess = uelgenerator(success)
-    urltoCimplete=uelgenerator(complete)
     data_namestraf = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:sourceMedium']].values))
     data_valuestraf = list(
