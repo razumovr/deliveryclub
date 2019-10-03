@@ -95,10 +95,10 @@ def main():
     q2 = Queue(connection=conn)
     
     #q2targeting = Queue(connection=conn)
-    result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
-    result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
+    '''result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
+    result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))'''
     connecttocomplete = q2.enqueue(googlesheets,str(landing[0].complete))
-    try:
+    '''try:
         result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
         pass
@@ -114,10 +114,12 @@ def main():
     print(result1.result)
     print(result2)
     print(infopartenrilist)
-    print(SMMcount)
+    print(SMMcount)'''
+    time.sleep(20)
+    print("URA"*100)
     print(connecttocomplete.result)
     
-    dictItog=result.result
+    '''dictItog=result.result
     connecttocompleteresult=connecttocomplete.result
     if bool(connecttocompleteresult) ==True:
         regfactnomer=0
@@ -181,7 +183,7 @@ def main():
         else:
             a.append('—')
     dictItog["Сила"]=a
-    print(dictItog)
+    print(dictItog)'''
                            
     return dictItog
 if __name__ == "__main__":
