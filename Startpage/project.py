@@ -179,12 +179,15 @@ def main():
     print(dictItog)
     print('-'*100)
     a=[]
-    for i in range(len(dictItog['Трафикфакт'])):
-        if int(dictItog['Количество'][i])!=0:
-            a.append(int(int(dictItog['Трафикфакт'][i]) / int(dictItog['Количество'][i])))
-        else:
-            a.append('—')
-    dictItog["Сила"]=a
+    try:
+        for i in range(len(dictItog['Трафикфакт'])):
+            if int(dictItog['Количество'][i])!=0:
+                a.append(int(int(dictItog['Трафикфакт'][i]) / int(dictItog['Количество'][i])))
+            else:
+                a.append('—')
+        dictItog["Сила"]=a
+    except:
+        pass
     print(dictItog)
                            
     return dictItog
