@@ -18,7 +18,41 @@ from utils import analitica,colvodneyforday
 
 from conecttosheets import connectsheet,connectIP,connect
 
+def googlesheets(completeurl):
+    df=connect(completeurl)
+    df['new_col'] = df['utm_source'] + ' / ' + df['utm_medium']
+    a = df.dropna(subset=[list(df)[0]])
+    newdf = a[['utm_source', 'utm_medium', 'utm_campaign', 'new_col']]
+    slovaritog = {'Уникальная': 0, 'Дайджест': 0, 'SMM репостов': 0,
+                  'Инфопартнеры':0, 'Рассылка из юнисендера': 0, 'Промо в вузах': 0, 'Телеграм': 0,
+                  'Таргетинг': 0,
+                  'Веб-страница и слайдер': 0, 'Контекстная реклама': 0, 'Органика и неопознанный трафик': 0}
+    for i in list(newdf['new_col']):
+        ii = str(i)
+        if 'generalbase' in ii or 'mailchimp' in ii:
+            slovaritog['Уникальная'] += 1
+        elif 'digest' in ii or 'Digest' in ii:
+            slovaritog['Дайджест'] += 1
+        elif 'vk-wall' in ii or 'vk_wall' in ii:
+            slovaritog['SMM репостов'] += 1
+        elif 'ip-' in ii or 'ip_' in ii:
+            slovaritog['Инфопартнеры'] += 1
+        elif 'mail' in ii or 'email' in ii or 'Unisender' in ii or 'unisender' in ii or 'utm_source' in ii or 'UniSender' in ii:
+            slovaritog['Рассылка из юнисендера'] += 1
+        elif 'vuz-' in ii or 'vuz_' in ii:
+            slovaritog['Промо в вузах'] += 1
+        elif 'tg /' in ii or 'Tg /' in ii:
+            slovaritog['Телеграм'] += 1
+        elif 'vk / target' in ii or 'vk / targetpost' in ii or 'vk / target-story' in ii or 'insta / target' in ii or 'insta / targetpost' in ii or 'insta / target-story' in ii or 'fb / target' in ii or 'fb / targetpost' in ii:
+            slovaritog['Таргетинг'] += 1
+        elif 'cl-site' in ii or 'Сl-site' in ii or 'cl_site' in ii or 'Сl_site' in ii:
+            slovaritog['Веб-страница и слайдер'] += 1
+        elif 'google / cpc' in ii or 'youtube / instream' in ii or 'yandex / cpc' in ii:
+            slovaritog['Контекстная реклама'] += 1
+        else:
+            slovaritog['Органика и неопознанный трафик'] += 1
 
+    return slovaritog
 
 def infopartnerip(urlland):
     dfip=connectIP('https://docs.google.com/spreadsheets/d/1WmDnz3794uoU_h7ho_hOPMISUA2CdXt_UA_8L9pcJ-s/edit?pli=1#gid=0')
@@ -54,20 +88,24 @@ def SMMcountfunct(start,stop,heshteg):
 
 def main():
     landing = Langing.objects.all()
-    result2 = connect('https://docs.google.com/spreadsheets/d/1vJYsn-Ah5zGNb6-wtmXDT-xpujWUW68eKl0mygCwy3s/edit#gid=1302194187')
-    print(result2)
 
-    '''q = Queue(connection=conn)
+
+    q = Queue(connection=conn)
     q1 = Queue(connection=conn)
     #q2targeting = Queue(connection=conn)
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
     result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
-    #result2 = q2targeting.enqueue(connectsheet,'https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
-    result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
+    try:
+        connecttocomplete = googlesheets('https://docs.google.com/spreadsheets/d/1vJYsn-Ah5zGNb6-wtmXDT-xpujWUW68eKl0mygCwy3s/edit#gid=1302194187')
+    except:
+        connecttocomplete={}
+    try:
+        result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
+    except:
+        pass
 
     try:
         infopartenrilist=infopartnerip('https://1.changellenge.com/supply-chain')
-
     except:
         pass
     SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
@@ -80,6 +118,11 @@ def main():
     print(SMMcount)
     
     dictItog=result.result
+    if bool(connecttocomplete) ==True:
+        for i in dictItog:
+            dictItog[i]=connecttocomplete[i]
+    else:
+        pass
     try:
         dictItog['Количество'][7]=result1.result[0]
     except:
@@ -137,7 +180,7 @@ def main():
             a.append('—')
     dictItog["Сила"]=a
                            
-    return dictItog'''
+    return dictItog
 if __name__ == "__main__":
     # execute only if run as a script
     main()
