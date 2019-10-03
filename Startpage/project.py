@@ -182,7 +182,7 @@ def main():
         else:
             a.append('—')
     dictItog["Сила"]=a
-    print(dictItog)'''
+    print(dictItog)
                            
     return dictItog
 if __name__ == "__main__":
