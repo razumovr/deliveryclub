@@ -115,6 +115,7 @@ def main():
     print(result2)
     print(infopartenrilist)
     print(SMMcount)
+    print(connecttocomplete.result)
     
     dictItog=result.result
     connecttocompleteresult=connecttocomplete.result
