@@ -98,7 +98,7 @@ def main():
     #q2targeting = Queue(connection=conn)
     '''result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
     result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))'''
-    connecttocomplete = q2.enqueue(googlesheets,str(landing[0].complete))
+    connecttocomplete = googlesheets(str(landing[0].complete))
     '''try:
         result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
@@ -116,9 +116,8 @@ def main():
     print(result2)
     print(infopartenrilist)
     print(SMMcount)'''
-    time.sleep(20)
     print("URA"*100)
-    print(connecttocomplete.result)
+    print(connecttocomplete)
     
     '''dictItog=result.result
     connecttocompleteresult=connecttocomplete.result
