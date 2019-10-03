@@ -100,7 +100,7 @@ def main():
     try:
         connecttocomplete = googlesheets(str(landing[0].complete))
     except:
-        pass
+        connecttocomplete={}
     try:
         result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
