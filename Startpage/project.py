@@ -16,7 +16,7 @@ from worker import conn
 from utils import analitica,colvodneyforday
 
 
-from conecttosheets import connectsheet,connectIP
+from conecttosheets import connectsheet,connectIP,connect
 
 
 
@@ -54,9 +54,10 @@ def SMMcountfunct(start,stop,heshteg):
 
 def main():
     landing = Langing.objects.all()
+    result2 = connect('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384')
+    print(result2)
 
-
-    q = Queue(connection=conn)
+    '''q = Queue(connection=conn)
     q1 = Queue(connection=conn)
     #q2targeting = Queue(connection=conn)
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end),str(landing[0].complete))
@@ -66,8 +67,7 @@ def main():
 
     try:
         infopartenrilist=infopartnerip('https://1.changellenge.com/supply-chain')
-        '''d['Количество'][3] = infopartenrilist[0]
-        d['Бюджетфакт'][3] = infopartenrilist[1]'''
+
     except:
         pass
     SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
@@ -137,7 +137,7 @@ def main():
             a.append('—')
     dictItog["Сила"]=a
                            
-    return dictItog
+    return dictItog'''
 if __name__ == "__main__":
     # execute only if run as a script
     main()
