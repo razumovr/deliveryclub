@@ -103,13 +103,17 @@ def main():
     try:
         result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
-        pass
+        result2={}
 
     try:
         infopartenrilist=infopartnerip('https://1.changellenge.com/supply-chain')
     except:
-        pass
-    SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
+        infopartenrilist={}
+        
+    try:
+        SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
+    except:
+        SMMcount=0
     #time.sleep(5)
     print("REZULT"*100)
     print(result.result)
