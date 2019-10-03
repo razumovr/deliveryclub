@@ -106,7 +106,7 @@ def main():
         result2={}
 
     try:
-        infopartenrilist=infopartnerip('https://1.changellenge.com/supply-chain')
+        infopartenrilist=infopartnerip('str(landing[0].land)')
     except:
         infopartenrilist={}
         
