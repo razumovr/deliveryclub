@@ -119,8 +119,10 @@ def main():
     
     dictItog=result.result
     if bool(connecttocomplete) ==True:
-        for i in dictItog:
-            dictItog[i]=connecttocomplete[i]
+        regfactnomer=0
+        for i in dictItog['Источник']:
+            dictItog['Регистрациифакт'][regfactnomer]=connecttocomplete[i]
+            regfactnomer+=1
     else:
         pass
     try:
