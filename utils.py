@@ -117,7 +117,7 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Веб-страница и слайдер'][1] += slovar[i]
         elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
             slovaritog['Контекстная реклама'][1] += slovar[i]
-        elif '(direct) / (none)' in i or 'referral' in i:
+        elif '(direct) / (none)' in i or 'referral' in i or 'organic' in i:
             slovaritog['Органика'][1] += slovar[i]
         else:
             slovaritog['Неопознанный трафик'][1] += slovar[i]
