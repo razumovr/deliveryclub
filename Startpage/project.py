@@ -194,13 +194,13 @@ def main():
         pass
     #ITOGO
     dictItog['Источник'].append('Итого')
-    dictItog['Количество'].append('-')
-    dictItog['Сила'].append('-')
+    dictItog['Количество'].append('—')
+    dictItog['Сила'].append('—')
     dictItog['Трафикфакт'].append(sum(dictItog['Трафикфакт']))
     dictItog['Регистрациифакт'].append(sum(dictItog['Регистрациифакт']))
     dictItog['Конверсия'].append(str(int(dictItog['Регистрациифакт'][-1]/dictItog['Трафикфакт'][-1]*100))+'%')
-    dictItog['Бюджетплан'].append('-')
-    dictItog['Бюджетфакт'].append('-')
+    dictItog['Бюджетплан'].append('—')
+    dictItog['Бюджетфакт'].append('—')
     print(dictItog)
                            
     return dictItog
