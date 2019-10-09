@@ -194,6 +194,7 @@ def colvodneyforday(start,stop,urlland):
     kolvodneyWEB = 0
     kolvodneyKONTEKST = 0
     kolvodnetTARGETING = 0
+    kolvodneyORGANICA=0
     k = []
     for i in range(len(qqq)):
         k.append(list(itertools.chain.from_iterable(qqq[i])))
@@ -219,6 +220,13 @@ def colvodneyforday(start,stop,urlland):
                     k[i][j]) or 'insta / target-story' in str(k[i][j]) or 'fb / target' in str(
                     k[i][j]) or 'fb / targetpost' in str(k[i][j]):
                 kolvodnetTARGETING += 1
+                break
+            else:
+                pass
+    for i in range(len(k)):
+        for j in range(len(k[i])):
+            if '(direct) / (none)' in str(k[i][j]) or 'referral' in str(k[i][j]) or 'organic' in str(k[i][j]):
+                kolvodneyORGANICA += 1
                 break
             else:
                 pass
@@ -280,7 +288,7 @@ def colvodneyforday(start,stop,urlland):
         lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, max_value),
                                       max_distances=np.arange(1, max_value))
 
-    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,len(lenUNIKALKA), len(lenDIGEST), len(lenTELEGA)]
+    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,kolvodneyORGANICA,len(lenUNIKALKA), len(lenDIGEST), len(lenTELEGA)]
 
 
 
