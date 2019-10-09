@@ -192,6 +192,13 @@ def main():
         dictItog["Сила"]=a
     except:
         pass
+    #ITOGO
+    d['Источник'].append('Итого')
+    d['Количество'].append('-')
+    d['Сила'].append('-')
+    d['Трафикфакт'].append(sum(d['Трафикфакт']))
+    d['Регистрациифакт'].append(sum(d['Регистрациифакт']))
+    d['Конверсия'].append(str(int(d['Регистрациифакт'][-1]/d['Трафикфакт'][-1]*100))+'%')
     print(dictItog)
                            
     return dictItog
