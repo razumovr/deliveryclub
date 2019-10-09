@@ -25,8 +25,6 @@ def googlesheets(completeurl):
                   'Инфопартнеры':0, 'Рассылка из юнисендера': 0, 'Промо в вузах': 0, 'Телеграм': 0,
                   'Таргетинг': 0,
                   'Веб-страница и слайдер': 0, 'Контекстная реклама': 0, 'Органика':0, 'Неопознанный трафик': 0}
-    print('HEY'*1000)
-    print(list(newdf['new_col']))
     for i in list(newdf['new_col']):
         ii = str(i)
         if 'generalbase' in ii or 'mailchimp' in ii:
@@ -49,7 +47,7 @@ def googlesheets(completeurl):
             slovaritog['Веб-страница и слайдер'] += 1
         elif 'google / cpc' in ii or 'youtube / instream' in ii or 'yandex / cpc' in ii:
             slovaritog['Контекстная реклама'] += 1
-        elif '' in i:
+        elif ' / ' in i:
             slovaritog['Органика'] += 1
         else:
             slovaritog['Неопознанный трафик'] += 1
