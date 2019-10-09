@@ -25,6 +25,8 @@ def googlesheets(completeurl):
                   'Инфопартнеры':0, 'Рассылка из юнисендера': 0, 'Промо в вузах': 0, 'Телеграм': 0,
                   'Таргетинг': 0,
                   'Веб-страница и слайдер': 0, 'Контекстная реклама': 0, 'Органика':0, 'Неопознанный трафик': 0}
+    print('HEY'*1000)
+    print(list(newdf['new_col']))
     for i in list(newdf['new_col']):
         ii = str(i)
         if 'generalbase' in ii or 'mailchimp' in ii:
