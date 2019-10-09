@@ -47,7 +47,7 @@ def googlesheets(completeurl):
             slovaritog['Веб-страница и слайдер'] += 1
         elif 'google / cpc' in ii or 'youtube / instream' in ii or 'yandex / cpc' in ii:
             slovaritog['Контекстная реклама'] += 1
-        elif ' / ' in i:
+        elif i==' / ':
             slovaritog['Органика'] += 1
         else:
             slovaritog['Неопознанный трафик'] += 1
