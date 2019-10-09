@@ -108,7 +108,7 @@ def main():
         result2={}
 
     try:
-        infopartenrilist=infopartnerip('str(landing[0].land)')
+        infopartenrilist=infopartnerip(str(landing[0].land))
     except:
         infopartenrilist={}
         
