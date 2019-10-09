@@ -95,7 +95,7 @@ def googleapi(slovartraf,df,successurl):
     slovaritog = {'Уникальная': [0, 0], 'Дайджест': [0, 0], 'SMM репостов': [0, 0],
                   'Инфопартнеры': [0, 0], 'Рассылка из юнисендера': [0, 0], 'Промо в вузах': [0, 0], 'Телеграм': [0, 0],
                   'Таргетинг': [0, 0],
-                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Органика и неопознанный трафик': [0, 0]}
+                  'Веб-страница и слайдер': [0, 0], 'Контекстная реклама': [0, 0], 'Органика':[0,0], 'Неопознанный трафик': [0, 0]}
     for i in slovar:
         if 'generalbase' in i or 'mailchimp' in i:
             slovaritog['Уникальная'][1] += slovar[i]
@@ -117,8 +117,10 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Веб-страница и слайдер'][1] += slovar[i]
         elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
             slovaritog['Контекстная реклама'][1] += slovar[i]
+        elif '(direct) / (none)' in i or 'referral' in i:
+            slovaritog['Органика'][1] += slovar[i]
         else:
-            slovaritog['Органика и неопознанный трафик'][1] += slovar[i]
+            slovaritog['Неопознанный трафик'][1] += slovar[i]
 
     for i in slovartraf:
         if 'email / generalbase' in i or 'mailchimp' in i:
@@ -141,8 +143,10 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Веб-страница и слайдер'][0] += slovartraf[i]
         elif 'google / cpc' in i or 'youtube / instream' in i or 'yandex / cpc' in i:
             slovaritog['Контекстная реклама'][0] += slovartraf[i]
+        elif '(direct) / (none)' in i or 'referral' in i:
+            slovaritog['Органика'][0] += slovartraf[i]
         else:
-            slovaritog['Органика и неопознанный трафик'][0] += slovartraf[i]
+            slovaritog['Неопознанный трафик'][0] += slovartraf[i]
     print("API")
     return slovaritog
 #ENDRETURNTABLIZAFROMANALITICA
