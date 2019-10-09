@@ -132,6 +132,7 @@ def main():
         for i in dictItog['Источник']:
             dictItog['Регистрациифакт'][regfactnomer]=connecttocompleteresult[i]
             regfactnomer+=1
+        dictItog['Конверсия']=[str(int(d['Регистрациифакт'][i]/d['Трафикфакт'][i]*100))+'%' for i in range(len(d['Источник']))]
     else:
         pass
     try:
