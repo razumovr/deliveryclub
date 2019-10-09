@@ -148,15 +148,19 @@ def main():
     except:
         pass
     try:
-        dictItog['Количество'][0]=result1.result[3]
+        dictItog['Количество'][10]=result1.result[3]
     except:
         pass
     try:
-        dictItog['Количество'][1]=result1.result[4]
+        dictItog['Количество'][0]=result1.result[4]
     except:
         pass
     try:
-        dictItog['Количество'][6]=result1.result[5]
+        dictItog['Количество'][1]=result1.result[5]
+    except:
+        pass
+    try:
+        dictItog['Количество'][6]=result1.result[6]
     except:
         pass
     try:
