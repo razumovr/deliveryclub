@@ -193,14 +193,14 @@ def main():
     except:
         pass
     #ITOGO
-    d['Источник'].append('Итого')
-    d['Количество'].append('-')
-    d['Сила'].append('-')
-    d['Трафикфакт'].append(sum(d['Трафикфакт']))
-    d['Регистрациифакт'].append(sum(d['Регистрациифакт']))
-    d['Конверсия'].append(str(int(d['Регистрациифакт'][-1]/d['Трафикфакт'][-1]*100))+'%')
-    d['Бюджетплан'].append('-')
-    d['Бюджетфакт'].append('-')
+    dictItog['Источник'].append('Итого')
+    dictItog['Количество'].append('-')
+    dictItog['Сила'].append('-')
+    dictItog['Трафикфакт'].append(sum(dictItog['Трафикфакт']))
+    dictItog['Регистрациифакт'].append(sum(dictItog['Регистрациифакт']))
+    dictItog['Конверсия'].append(str(int(dictItog['Регистрациифакт'][-1]/dictItog['Трафикфакт'][-1]*100))+'%')
+    dictItog['Бюджетплан'].append('-')
+    dictItog['Бюджетфакт'].append('-')
     print(dictItog)
                            
     return dictItog
