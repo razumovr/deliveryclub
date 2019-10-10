@@ -132,7 +132,7 @@ def main():
         for i in dictItog['Источник']:
             dictItog['Регистрациифакт'][regfactnomer]=connecttocompleteresult[i]
             regfactnomer+=1
-        dictItog['Конверсия']=[str(int(dictItog['Регистрациифакт'][i]/dictItog['Трафикфакт'][i]*100))+'%' for i in range(len(dictItog['Источник']))]
+        dictItog['Конверсия']=[str(int(dictItog['Регистрациифакт'][i]/dictItog['Трафикфакт'][i]*100))+'%' if dictItog['Трафикфакт'][i]!=0 else '0%' for i in range(len(dictItog['Источник']))]
     else:
         pass
     try:
@@ -205,7 +205,10 @@ def main():
     dictItog['Сила'].append('—')
     dictItog['Трафикфакт'].append(sum([int(item) for item in dictItog['Трафикфакт']]))
     dictItog['Регистрациифакт'].append(sum([int(item) for item in dictItog['Регистрациифакт']]))
-    dictItog['Конверсия'].append(str(int(dictItog['Регистрациифакт'][-1]/dictItog['Трафикфакт'][-1]*100))+'%')
+    if dictItog['Трафикфакт'][-1]!=0:
+        dictItog['Конверсия'].append(str(int(dictItog['Регистрациифакт'][-1]/dictItog['Трафикфакт'][-1]*100))+'%')
+    else:
+        dictItog['Конверсия'].append('0%')
     dictItog['Бюджетплан'].append('—')
     dictItog['Бюджетфакт'].append('—')
     print(dictItog)
