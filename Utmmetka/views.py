@@ -60,8 +60,8 @@ def insertinsql():
                 p+=1
             j+=1'''
 #CONNECT TO posgresql
-'''
-    url = urlparse.urlparse(os.environ['http://127.0.0.1:62950/browser/'])
+
+    url = urlparse.urlparse(os.environ['DATABASE_URL'])
     dbname = url.path[1:]
     user = url.username
     password = url.password
@@ -100,7 +100,7 @@ def insertinsql():
                     "INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " + str(j) + ")")
                 p += 1
             j += 1
-'''
+
 
 class PersonListView(ListView):
     model = Firstvar
