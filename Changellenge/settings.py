@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'Changellenge.wsgi.application'
+WSGI_APPLICATION = 'Changellenge.wsgi.application'
 
 
 # Database
