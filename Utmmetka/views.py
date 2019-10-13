@@ -42,7 +42,7 @@ def insertinsql():
     except:
         pass
 #CONNECT TO  sql
-    '''
+
     import sqlite3 as lite
     con = lite.connect('db.sqlite3')
     j=1
@@ -58,7 +58,9 @@ def insertinsql():
             for jj in k[i][1:]:
                 cur.execute("INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " +str(j) +")")
                 p+=1
-            j+=1'''
+            j+=1
+#CL
+'''
 #CONNECT TO posgresql
 
     url = urlparse.urlparse(os.environ['DATABASE_URL'])
@@ -99,7 +101,7 @@ def insertinsql():
                 cur.execute(
                     "INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " + str(j) + ")")
                 p += 1
-            j += 1
+            j += 1'''
 
 
 class PersonListView(ListView):
