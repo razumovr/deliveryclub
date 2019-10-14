@@ -10,6 +10,7 @@ import os
 import psycopg2
 from django.shortcuts import redirect
 
+
 import pandas as pd
 import re
 import cyrtranslit
