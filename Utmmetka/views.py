@@ -17,6 +17,7 @@ import cyrtranslit
 import urllib.request as urllib2
 import urllib.parse
 
+
 gs = Connection()
 gs.connect()
 utm = UTMtable(gs.service)
