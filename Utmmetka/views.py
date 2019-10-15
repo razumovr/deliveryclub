@@ -67,6 +67,8 @@ def insertinsql():
         cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
         cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
         cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_firstvar\" alter column \"urlname\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_firstvar\" alter column \"clickmename\" type character varying(300);")
         cur.execute("alter table \"Utmmetka_urlname\" alter column \"name\" type character varying(300);")
         cur.execute("alter table \"Startpage_langing\" alter column \"land\" type character varying(300);")
         cur.execute("alter table \"Startpage_langing\" alter column \"success\" type character varying(300);")
