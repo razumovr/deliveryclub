@@ -10,11 +10,13 @@ import os
 import psycopg2
 from django.shortcuts import redirect
 
+
 import pandas as pd
 import re
 import cyrtranslit
 import urllib.request as urllib2
 import urllib.parse
+
 
 gs = Connection()
 gs.connect()
@@ -41,45 +43,66 @@ def insertinsql():
         Firstvar.objects.all().delete()
     except:
         pass
-    url = urlparse.urlparse(os.environ['DATABASE_URL'])
-    dbname = url.path[1:]
-    user = url.username
-    password = url.password
-    host = url.hostname
-    port = url.port
-    con = psycopg2.connect(
-        dbname=dbname,
-        user=user,
-        password=password,
-        host=host,
-        port=port
-    )
-    con.set_session(readonly=False)
-    cur = con.cursor()
-    cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_campaign\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")
-    cur.execute("alter table \"Utmmetka_urlname\" alter column \"name\" type character varying(300);")
-    cur.execute("alter table \"Startpage_langing\" alter column \"land\" type character varying(300);")
-    cur.execute("alter table \"Startpage_langing\" alter column \"success\" type character varying(300);")
-    cur.execute("alter table \"Startpage_langing\" alter column \"complete\" type character varying(300);")
 
-    j = 1
-    p = 1
-    with con:
+    try:
+        #CONNECT TO posgresql
+        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+        dbname = url.path[1:]
+        user = url.username
+        password = url.password
+        host = url.hostname
+        port = url.port
+        con = psycopg2.connect(
+            dbname=dbname,
+            user=user,
+            password=password,
+            host=host,
+            port=port
+        )
+        con.set_session(readonly=False)
         cur = con.cursor()
-        global c
-        for i in c:
-            cur.execute("INSERT INTO  \"Utmmetka_country\" VALUES(" + str(j) + ", '" + str(i) + "')")
-            global k
-            for jj in k[i][1:]:
-                cur.execute(
-                    "INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " + str(j) + ")")
-                p += 1
-            j += 1
+        cur.execute("alter table \"Utmmetka_country\" alter column \"name\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_city\" alter column \"name\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_campaign\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_term\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utm_content\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_firstvar\" alter column \"utmname\" type character varying(300);")
+        cur.execute("alter table \"Utmmetka_urlname\" alter column \"name\" type character varying(300);")
+        cur.execute("alter table \"Startpage_langing\" alter column \"land\" type character varying(300);")
+        cur.execute("alter table \"Startpage_langing\" alter column \"success\" type character varying(300);")
+        cur.execute("alter table \"Startpage_langing\" alter column \"complete\" type character varying(300);")
+
+        j = 1
+        p = 1
+        with con:
+            cur = con.cursor()
+            global c
+            for i in c:
+                cur.execute("INSERT INTO  \"Utmmetka_country\" VALUES(" + str(j) + ", '" + str(i) + "')")
+                global k
+                for jj in k[i][1:]:
+                    cur.execute(
+                        "INSERT INTO  \"Utmmetka_city\" VALUES(" + str(p) + ", '" + str(jj[0]) + "', " + str(j) + ")")
+                    p += 1
+                j += 1
+    except:
+        # CONNECT TO  sql
+        import sqlite3 as lite
+        con = lite.connect('db.sqlite3')
+        j = 1
+        p = 1
+        with con:
+            cur = con.cursor()
+            for (table_name,) in cur:
+                print(table_name)
+            for i in c:
+                cur.execute("INSERT INTO  Utmmetka_country VALUES(" + str(j) + ", '" + str(i) + "')")
+                for jj in k[i][1:]:
+                    cur.execute(
+                        "INSERT INTO  Utmmetka_city VALUES(" + str(p) + ", '" + str(jj[0]) + "', " + str(j) + ")")
+                    p += 1
+                j += 1
+
 
 
 class PersonListView(ListView):
@@ -205,7 +228,7 @@ def index2(request):
         fetcher = urllib2.urlopen('https://clck.ru/--?url=' + encodeurl)
         clickmename = fetcher.read().decode()
         Firstvar.objects.create(person=person, utmname=utmname, urlname=str(Urlname.objects.last().name),clickmename=clickmename)
-        return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
+        return redirect('/utmgenerator')
     
     return render(request, 'hr/pagenext.html', d)
 
@@ -232,7 +255,7 @@ def index3(request):
             fetcher = urllib2.urlopen('https://clck.ru/--?url=' + encodeurl)
             clickmename = fetcher.read().decode()
             Firstvar.objects.create(utm_campaign=request.POST['utm_campaign'], utm_term=request.POST['utm_term'],utm_content=request.POST['utm_content'], person=person, utmname=utmname,urlname=str(Urlname.objects.last().name), clickmename=clickmename)
-    return redirect('https://deliveryclub.herokuapp.com/utmgenerator')
+    return redirect('/utmgenerator')
 
 
 def inserturl(request):
@@ -248,6 +271,6 @@ def inserturl2(request):
         form = UrlForm(request.POST)
         form.save()
 
-    return redirect('https://deliveryclub.herokuapp.com/utmgenerator/hr/add/')
+    return redirect('/utmgenerator/hr/add/')
 
 
