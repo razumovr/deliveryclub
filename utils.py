@@ -182,7 +182,7 @@ def colvodneyforday(start,stop,urlland):
     )
 
     data_namestraf = list(itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding].values))
-    kolvodneyWEB = 0
+
     qqq = []
     # print(data_namestraf)
     for j in datedelta:
@@ -206,6 +206,7 @@ def colvodneyforday(start,stop,urlland):
                 break
             else:
                 pass
+
     for i in range(len(k)):
         for j in range(len(k[i])):
             if 'google / cpc' in str(k[i][j]) or 'youtube / instream' in str(k[i][j]) or 'yandex / cpc' in str(k[i][j]):
@@ -234,6 +235,7 @@ def colvodneyforday(start,stop,urlland):
     unikalkarry = []
     digestarray = []
     telegaarray = []
+
     # lif 'digest' in i or 'Digest' in i:
     #  elif 'tg /' in i or 'Tg /' in i:
     for i in range(len(k)):
@@ -252,6 +254,9 @@ def colvodneyforday(start,stop,urlland):
     for n in unikalkarry:
         if n > max_value:
             max_value = n
+    print('Look3'*300)
+    print(unikalkarry)
+    print(max_value)
     if max_value == 1:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value + 1),
                                         max_distances=np.arange(1, max_value + 1))
@@ -260,7 +265,9 @@ def colvodneyforday(start,stop,urlland):
     else:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value),
                                         max_distances=np.arange(1, max_value))
-
+        print("PIPOK")
+    print('Look4'*300)
+    print(lenUNIKALKA)
     max_value = 0
     for n in digestarray:
         if n > max_value:

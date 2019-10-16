@@ -90,7 +90,9 @@ def main():
     landing = Langing.objects.all()
     dictItog={}
 
-
+    a=colvodneyforday(str(landing[0].start),str(landing[0].end),str(landing[0].land))
+    print("Look"*300)
+    print(a)
     q = Queue(connection=conn)
     q1 = Queue(connection=conn)
     q2 = Queue(connection=conn)
