@@ -324,12 +324,12 @@
                             tmp = true
                         }
                     }
+                    if (!tmp) {
+                        alert('Неверно введенный город, проверьте правильность')
+                        return false
+                    }
                 }
             })
-            if (!tmp) {
-                alert('Неверно введенный город, проверьте правильность')
-                return false
-            }
         })
 
         function isValidUrl(url)
