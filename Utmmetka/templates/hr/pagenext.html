@@ -304,8 +304,9 @@
                         }
                     }
                 })
+                let input = $(this).find('input')
                 $('button.next').click(function() {
-                    if (!$(this).find('input').hasClass('success')) {
+                    if (!input.hasClass('success')) {
                         alert('Введена неверная ссылка')
                         return false
                     }
