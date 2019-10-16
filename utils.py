@@ -20,7 +20,7 @@ import scipy.signal as sg
 import numpy as np
 
 
-
+from sys import platform
 
 
 #ANALITIKA
@@ -243,11 +243,20 @@ def colvodneyforday(start,stop,urlland):
     for i in range(len(k)):
         for j in range(len(k[i])):
             if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
-                unikalkarry.append(int(k[i][j - 2]))
+                if platform == "darwin":
+                    unikalkarry.append(int(k[i][j +1]))
+                else:
+                    unikalkarry.append(int(k[i][j -2]))
             elif 'digest' in str(k[i][j]) or 'Digest' in str(k[i][j]):
-                digestarray.append(int(k[i][j - 2]))
+                if platform == "darwin":
+                    digestarray.append(int(k[i][j +1]))
+                else:
+                    digestarray.append(int(k[i][j -2]))
             elif 'tg /' in str(k[i][j]) or 'Tg /' in str(k[i][j]):
-                telegaarray.append(int(k[i][j - 2]))
+                if platform == "darwin":
+                    telegaarray.append(int(k[i][j +1]))
+                else:
+                    telegaarray.append(int(k[i][j -2]))
             else:
                 pass
     #  if 'generalbase' in ii or 'mailchimp' in ii:
