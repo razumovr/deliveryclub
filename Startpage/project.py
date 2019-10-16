@@ -41,7 +41,7 @@ def googlesheets(completeurl):
             slovaritog['Промо в вузах'] += 1
         elif 'tg /' in ii or 'Tg /' in ii:
             slovaritog['Телеграм'] += 1
-        elif 'vk / target' in ii or 'vk / targetpost' in ii or 'vk / target-story' in ii or 'insta / target' in ii or 'insta / targetpost' in ii or 'insta / target-story' in ii or 'fb / target' in ii or 'fb / targetpost' in ii:
+        elif 'vk / target' in ii or 'vk / targetpost' in ii or 'vk / target-story' in ii or 'insta / target' in ii or 'insta / targetpost' in ii or 'insta / target-story' in ii or 'fb / target' in ii or 'fb / targetpost' in ii or 'target' in ii:
             slovaritog['Таргетинг'] += 1
         elif 'cl-site' in ii or 'Сl-site' in ii or 'cl_site' in ii or 'Сl_site' in ii:
             slovaritog['Веб-страница и слайдер'] += 1
