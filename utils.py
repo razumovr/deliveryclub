@@ -238,8 +238,6 @@ def colvodneyforday(start,stop,urlland):
 
     # lif 'digest' in i or 'Digest' in i:
     #  elif 'tg /' in i or 'Tg /' in i:
-    print('Look2' * 300)
-    print(k)
     for i in range(len(k)):
         for j in range(len(k[i])):
             if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
@@ -265,9 +263,7 @@ def colvodneyforday(start,stop,urlland):
     for n in unikalkarry:
         if n > max_value:
             max_value = n
-    print('Look3'*300)
-    print(unikalkarry)
-    print(max_value)
+
     if max_value == 1:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value + 1),
                                         max_distances=np.arange(1, max_value + 1))
@@ -276,9 +272,7 @@ def colvodneyforday(start,stop,urlland):
     else:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value),
                                         max_distances=np.arange(1, max_value))
-        print("PIPOK")
-    print('Look4'*300)
-    print(lenUNIKALKA)
+
     max_value = 0
     for n in digestarray:
         if n > max_value:
