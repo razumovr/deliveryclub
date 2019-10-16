@@ -111,7 +111,7 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Промо в вузах'][1] += slovar[i]
         elif 'tg /' in i or 'Tg /' in i:
             slovaritog['Телеграм'][1] += slovar[i]
-        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i:
+        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i or 'target' in i:
             slovaritog['Таргетинг'][1] += slovar[i]
         elif 'cl-site' in i or 'Сl-site' in i or 'cl_site' in i or 'Сl_site' in i:
             slovaritog['Веб-страница и слайдер'][1] += slovar[i]
@@ -137,7 +137,7 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Промо в вузах'][0] += slovartraf[i]
         elif 'tg /' in i or 'Tg /' in i:
             slovaritog['Телеграм'][0] += slovartraf[i]
-        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i:
+        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i or 'target' in i:
             slovaritog['Таргетинг'][0] += slovartraf[i]
         elif 'cl-site' in i or 'Сl-site' in i or 'cl_site' in i or 'Сl_site' in i:
             slovaritog['Веб-страница и слайдер'][0] += slovartraf[i]
