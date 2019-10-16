@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1224acc-1ee2-42ec-9ae1-a9709b79dc88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Startpage/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/Startpage/project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/token.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vk_config.v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/vk_config.v2.json" afterDir="false" />
-    </list>
+    <list default="true" id="f1224acc-1ee2-42ec-9ae1-a9709b79dc88" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +59,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="257" column="21" selection-start-line="257" selection-start-column="21" selection-end-line="257" selection-end-column="21" />
+            <state relative-caret-position="540">
+              <caret line="268" column="22" lean-forward="true" selection-start-line="268" selection-start-column="22" selection-end-line="268" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -218,7 +212,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -306,8 +299,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="257" column="21" selection-start-line="257" selection-start-column="21" selection-end-line="257" selection-end-column="21" />
+        <state relative-caret-position="540">
+          <caret line="268" column="22" lean-forward="true" selection-start-line="268" selection-start-column="22" selection-end-line="268" selection-end-column="22" />
         </state>
       </provider>
     </entry>

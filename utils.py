@@ -238,6 +238,8 @@ def colvodneyforday(start,stop,urlland):
 
     # lif 'digest' in i or 'Digest' in i:
     #  elif 'tg /' in i or 'Tg /' in i:
+    print('Look2' * 300)
+    print(k)
     for i in range(len(k)):
         for j in range(len(k[i])):
             if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
