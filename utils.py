@@ -20,7 +20,7 @@ import scipy.signal as sg
 import numpy as np
 
 
-
+from sys import platform
 
 
 #ANALITIKA
@@ -111,7 +111,7 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Промо в вузах'][1] += slovar[i]
         elif 'tg /' in i or 'Tg /' in i:
             slovaritog['Телеграм'][1] += slovar[i]
-        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i:
+        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i or 'target' in i:
             slovaritog['Таргетинг'][1] += slovar[i]
         elif 'cl-site' in i or 'Сl-site' in i or 'cl_site' in i or 'Сl_site' in i:
             slovaritog['Веб-страница и слайдер'][1] += slovar[i]
@@ -137,7 +137,7 @@ def googleapi(slovartraf,df,successurl):
             slovaritog['Промо в вузах'][0] += slovartraf[i]
         elif 'tg /' in i or 'Tg /' in i:
             slovaritog['Телеграм'][0] += slovartraf[i]
-        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i:
+        elif 'vk / target' in i or 'vk / targetpost' in i or 'vk / target-story' in i or 'insta / target' in i or 'insta / targetpost' in i or 'insta / target-story' in i or 'fb / target' in i or 'fb / targetpost' in i or 'target' in i:
             slovaritog['Таргетинг'][0] += slovartraf[i]
         elif 'cl-site' in i or 'Сl-site' in i or 'cl_site' in i or 'Сl_site' in i:
             slovaritog['Веб-страница и слайдер'][0] += slovartraf[i]
@@ -182,7 +182,7 @@ def colvodneyforday(start,stop,urlland):
     )
 
     data_namestraf = list(itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding].values))
-    kolvodneyWEB = 0
+
     qqq = []
     # print(data_namestraf)
     for j in datedelta:
@@ -206,6 +206,7 @@ def colvodneyforday(start,stop,urlland):
                 break
             else:
                 pass
+
     for i in range(len(k)):
         for j in range(len(k[i])):
             if 'google / cpc' in str(k[i][j]) or 'youtube / instream' in str(k[i][j]) or 'yandex / cpc' in str(k[i][j]):
@@ -234,16 +235,26 @@ def colvodneyforday(start,stop,urlland):
     unikalkarry = []
     digestarray = []
     telegaarray = []
+
     # lif 'digest' in i or 'Digest' in i:
     #  elif 'tg /' in i or 'Tg /' in i:
     for i in range(len(k)):
         for j in range(len(k[i])):
             if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
-                unikalkarry.append(int(k[i][j - 2]))
+                if platform == "darwin":
+                    unikalkarry.append(int(k[i][j +1]))
+                else:
+                    unikalkarry.append(int(k[i][j -2]))
             elif 'digest' in str(k[i][j]) or 'Digest' in str(k[i][j]):
-                digestarray.append(int(k[i][j - 2]))
+                if platform == "darwin":
+                    digestarray.append(int(k[i][j +1]))
+                else:
+                    digestarray.append(int(k[i][j -2]))
             elif 'tg /' in str(k[i][j]) or 'Tg /' in str(k[i][j]):
-                telegaarray.append(int(k[i][j - 2]))
+                if platform == "darwin":
+                    telegaarray.append(int(k[i][j +1]))
+                else:
+                    telegaarray.append(int(k[i][j -2]))
             else:
                 pass
     #  if 'generalbase' in ii or 'mailchimp' in ii:
@@ -252,6 +263,7 @@ def colvodneyforday(start,stop,urlland):
     for n in unikalkarry:
         if n > max_value:
             max_value = n
+
     if max_value == 1:
         lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value + 1),
                                         max_distances=np.arange(1, max_value + 1))
