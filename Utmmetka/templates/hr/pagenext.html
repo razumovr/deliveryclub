@@ -327,10 +327,14 @@
                     }
                     if (!tmp) {
                         alert('Неверно введенный город, проверьте правильность')
-                        return false
                     }
+                } else {
+                    tmp = true
                 }
             })
+            if (!tmp) {
+                return false
+            }
         })
 
         function isValidUrl(url)
