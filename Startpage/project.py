@@ -94,7 +94,7 @@ def main():
     dictItog={}
 
 
-    q = Queue('low',connection=conn)
+    q = Queue(connection=conn)
     #q1 = Queue('low2', connection=conn)
 
 
