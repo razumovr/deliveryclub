@@ -232,20 +232,23 @@
         })
 
         $('button.next').click(function() {
-            let tmp = false
+            let tmp
             $('.group').each(function() {
                 let text = $(this).find('.group__single p.text').text()
                 if (text === 'введите город базы') {
+                    tmp = false
                     $(this).find('input').val()
                     for (var i = 0; i < array.length; i++) {
                         if (array[i] === $(this).find('input').val()) {
                             tmp = true
                         }
                     }
+                    if (!tmp) {
+                        alert('Неверно введенный город, проверьте правильность')
+                    }
                 }
             })
             if (!tmp) {
-                alert('Неверно введенный город, проверьте правильность')
                 return false
             }
         })
