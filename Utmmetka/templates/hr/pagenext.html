@@ -315,7 +315,7 @@
         })
 
         $('button.next').click(function() {
-            let tmp
+            let tmp = true
             $('.group').each(function() {
                 let text = $(this).find('.group__single p.text').text()
                 if (text === 'введите город базы') {
