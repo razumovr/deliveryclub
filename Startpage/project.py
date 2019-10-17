@@ -94,12 +94,12 @@ def main():
     dictItog={}
 
 
-    q = Queue('low',connection=conn)
-    q1 = Queue('low2', connection=conn)
+    q = Queue(connection=conn)
+    #q1 = Queue('low2', connection=conn)
 
 
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end))
-    result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
+    result1 = q.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
     try:
         connecttocomplete = googlesheets(str(landing[0].complete))
     except:
