@@ -93,10 +93,7 @@ def main():
     landing = Langing.objects.all()
     dictItog={}
 
-
     q = Queue(connection=conn)
-    #q1 = Queue('low2', connection=conn)
-
 
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end))
     result1 = q.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
