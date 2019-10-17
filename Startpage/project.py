@@ -11,7 +11,7 @@ import datetime
 
 from rq import Queue
 from worker import conn
-from utils import analitica,colvodneyforday
+from Startpage.utils import analitica,colvodneyforday
 
 
 from conecttosheets import connectsheet,connectIP,connect
