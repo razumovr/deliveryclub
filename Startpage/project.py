@@ -16,6 +16,7 @@ from utils import analitica,colvodneyforday
 
 from conecttosheets import connectsheet,connectIP,connect
 
+
 def googlesheets(completeurl):
     df=connect(completeurl)
     df['new_col'] = df['utm_source'] + ' / ' + df['utm_medium']
@@ -86,16 +87,17 @@ def SMMcountfunct(start,stop,heshteg):
 
     return len(idreposts)
 
+
+
 def main():
     landing = Langing.objects.all()
     dictItog={}
 
 
-    q = Queue(connection=conn)
-    q1 = Queue(connection=conn)
-    #q2 = Queue(connection=conn)
-    
-    #q2targeting = Queue(connection=conn)
+    q = Queue('low',connection=conn)
+    q1 = Queue('low2', connection=conn)
+
+
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end))
     result1 = q1.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
     try:
