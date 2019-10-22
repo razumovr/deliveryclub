@@ -97,31 +97,39 @@ def connectsheet(sheetnumber,datastart,landing):
     gs.connect()
     utm = UTMtable(gs.service,keyurl(sheetnumber))
     utm.getSheets()
-    df = utm.tables[19]
-    if datastart[:7] == '2019-05':
-        df = utm.tables[16]
+    df = utm.tables[15]
+    if datastart[:7] == '2019-04':
+        df = utm.tables[15]+utm.tables[16]+utm.tables[17]
+    elif datastart[:7] == '2019-05':
+        df = utm.tables[15]+utm.tables[16]+utm.tables[17]
     elif datastart[:7] == '2019-06':
-        df = utm.tables[17]
+        df = utm.tables[16]+utm.tables[17]+utm.tables[18]
     elif datastart[:7]=='2019-07':
-        df = utm.tables[18]
+        df = utm.tables[17]+utm.tables[18]+utm.tables[19]
     elif datastart[:7]=='2019-08':
-        pass
+        df = utm.tables[18]+utm.tables[19]+utm.tables[20]
     elif datastart[:7]=='2019-09':
-        df = utm.tables[20]
+        df = utm.tables[19] + utm.tables[20]+utm.tables[21]
     elif datastart[:7]=='2019-10':
-        df = utm.tables[21]
+        df = utm.tables[20] + utm.tables[21]+utm.tables[22]
     elif datastart[:7]=='2019-11':
-        df = utm.tables[22]
+        df = utm.tables[21] + utm.tables[22]+utm.tables[23]
     elif datastart[:7]=='2019-12':
-        df = utm.tables[23]
+        df = utm.tables[22] + utm.tables[23]+utm.tables[24]
     elif datastart[:7]=='2020-01':
-        df = utm.tables[24]
+        df = utm.tables[23]+utm.tables[24]+utm.tables[25]
     elif datastart[:7]=='2020-02':
-        df = utm.tables[25]
+        df = utm.tables[24] + utm.tables[25]+utm.tables[26]
     elif datastart[:7]=='2020-03':
-        df = utm.tables[26]
-    #Poprevit nado so vremenem
-
+        df = utm.tables[25] + utm.tables[26]+utm.tables[27]
+    elif datastart[:7]=='2020-04':
+        df = utm.tables[26] + utm.tables[27]+utm.tables[28]
+    elif datastart[:7]=='2020-05':
+        df = utm.tables[27]+utm.tables[28]+utm.tables[29]
+    elif datastart[:7]=='2020-06':
+        df = utm.tables[28] + utm.tables[29]+utm.tables[30]
+    elif datastart[:7]=='2020-07':
+        df = utm.tables[29] + utm.tables[30]+utm.tables[31]    #Poprevit nado so vremenem
 
     for i in range(len(df)):
         if len(df[i]) < len(df[0]):
@@ -143,6 +151,7 @@ def connectsheet(sheetnumber,datastart,landing):
                 pass
         except:
             pass
+
     return d
 
 

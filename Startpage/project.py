@@ -101,10 +101,12 @@ def main():
         connecttocomplete = googlesheets(str(landing[0].complete))
     except:
         connecttocomplete={}
+
     try:
         result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
         result2={}
+    print(result2)
 
     try:
         infopartenrilist=infopartnerip(str(landing[0].land))
@@ -211,8 +213,9 @@ def main():
     dictItog['Бюджетплан'].append('—')
     dictItog['Бюджетфакт'].append('—')
     print(dictItog)
-                           
+    dictItog={}
     return dictItog
+
 if __name__ == "__main__":
     # execute only if run as a script
     main()

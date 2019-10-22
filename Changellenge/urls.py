@@ -23,6 +23,4 @@ urlpatterns = [
     path('utmgenerator/', RedirectView.as_view(pattern_name='person_changelist'), name='home'),
     path('utmgenerator/hr/', include('Utmmetka.urls')),
     path('users/', include('users.urls', namespace='users')),
-
-
 ]
