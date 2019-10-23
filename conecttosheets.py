@@ -129,7 +129,7 @@ def connectsheet(sheetnumber,datastart,landing):
     elif datastart[:7]=='2020-06':
         df = utm.tables[28] + utm.tables[29]+utm.tables[30]
     elif datastart[:7]=='2020-07':
-        df = utm.tables[29] + utm.tables[30]+utm.tables[31]    #Poprevit nado so vremenem
+        df = utm.tables[29] + utm.tables[30]+utm.tables[31]
 
     for i in range(len(df)):
         if len(df[i]) < len(df[0]):

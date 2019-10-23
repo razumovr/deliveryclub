@@ -8,6 +8,8 @@ from gspread_dataframe import get_as_dataframe
 import vk_api
 import time
 import datetime
+import re
+
 
 from rq import Queue
 from worker import conn
@@ -55,16 +57,35 @@ def googlesheets(completeurl):
 
     return slovaritog
 
-def infopartnerip(urlland):
+def infopartnerip(urlland,start,stop):
     dfip=connectIP('https://docs.google.com/spreadsheets/d/1WmDnz3794uoU_h7ho_hOPMISUA2CdXt_UA_8L9pcJ-s/edit?pli=1#gid=0')
-    costdf = dfip[dfip.values == urlland].loc[:, 'Стоимость ']
-    ipKOLICHESTVO = len(costdf)
-    sumcostdf = 0
+    costdf = dfip[dfip.values == urlland].loc[:,['Дата выдачи','Стоимость ']]
+    datedelta = []
+    d1 = datetime.date(int(start[:4]), int(start[5:7]), int(start[8:10]))
+    d2 = datetime.date(int(stop[:4]), int(stop[5:7]), int(stop[8:10]))
+
+
+    # this will give you a list containing all of the dates
+    dd = [d1 + datetime.timedelta(days=x) for x in range((d2 - d1).days + 1)]
+    for x in dd:
+        datedelta.append(str(x))
+
+    for i in range(len(datedelta)):
+        datedelta[i]=datetime.date(int(datedelta[i][:4]), int(datedelta[i][5:7]), int(datedelta[i][8:10])).strftime("%d.%m.%Y")
+
+    costdfprice=[]
     for i in costdf.index:
-        sumcostdf += int(costdf[i])
+        if costdf.loc[i,'Дата выдачи'] in datedelta:
+            costdfprice.append(costdf.loc[i,'Стоимость '])
+    costdfpriceinint = [int(item) for item in costdfprice if item.isdigit()==True]
+    ipKOLICHESTVO = len(costdfprice)
+    sumcostdf = sum(costdfpriceinint)
     return [ipKOLICHESTVO,sumcostdf]
 
-def SMMcountfunct(start,stop,heshteg):
+
+
+def SMMcountfunct(start,stop,urlland):
+    '''
     s1 = start[-2:] + '/' + start[-5:-3] + '/' + start[0:4]
     unixtime1 = time.mktime(datetime.datetime.strptime(s1, "%d/%m/%Y").timetuple())
     s2 = stop[-2:] + '/' + stop[-5:-3] + '/' + stop[0:4]
@@ -77,9 +98,36 @@ def SMMcountfunct(start,stop,heshteg):
     newwww = []
     for i in range(len(SMMM['items'])):
         if SMMM['items'][i]['date'] > int(unixtime1) and SMMM['items'][i]['date'] < int(unixtime2):
-            newwww.append(SMMM['items'][i]['id'])
+            newwww.append(SMMM['items'][i]['id'])'''
+
+
+    dfip=connectIP('https://docs.google.com/spreadsheets/d/1WBPvHdGxyaqzFwKAskt_CFq9rTdMGHnQMc-Dr9MVNwE/edit#gid=0')
+    costdf = dfip[dfip.values == urlland].loc[:,['Дата старта промо','Ссылка на пост']]
+    datedelta = []
+    d1 = datetime.date(int(start[:4]), int(start[5:7]), int(start[8:10]))
+    d2 = datetime.date(int(stop[:4]), int(stop[5:7]), int(stop[8:10]))
+
+
+    # this will give you a list containing all of the dates
+    dd = [d1 + datetime.timedelta(days=x) for x in range((d2 - d1).days + 1)]
+    for x in dd:
+        datedelta.append(str(x))
+
+    for i in range(len(datedelta)):
+        datedelta[i]=datetime.date(int(datedelta[i][:4]), int(datedelta[i][5:7]), int(datedelta[i][8:10])).strftime("%d.%m.%Y")
+
+    urltopost=[]
+    for i in costdf.index:
+        if costdf.loc[i,'Дата старта промо'] in datedelta:
+            numberpost=re.search(r'[_].+',costdf.loc[i,'Ссылка на пост']).group(0)[1:]
+            if numberpost.isdigit():
+                urltopost.append(int(numberpost))
+
+    vk_session = vk_api.VkApi('+79055106387', '#rr7363446909250797rr##')
+    vk_session.auth()
+    vk = vk_session.get_api()
     idreposts = []
-    for i in newwww:
+    for i in urltopost:
         slova = vk.wall.getReposts(owner_id=-25758, post_id=i, count=1000)
         for i in range(len(slova['items'])):
             if slova['items'][i]['from_id'] < 0:
@@ -103,25 +151,27 @@ def main():
         connecttocomplete={}
 
     try:
-        result2 = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
+        connecttargeting = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
     except:
-        result2={}
-    print(result2)
+        connecttargeting={}
+
 
     try:
-        infopartenrilist=infopartnerip(str(landing[0].land))
+        infopartenrilist=infopartnerip(str(landing[0].land),str(landing[0].start),str(landing[0].end))
     except:
         infopartenrilist={}
-        
+
+
     try:
-        SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].heshteg))
+        SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].land))
     except:
         SMMcount=0
     #time.sleep(5)
+
     print("REZULT"*100)
     print(result.result)
     print(result1.result)
-    print(result2)
+    print(connecttargeting)
     print(infopartenrilist)
     print(SMMcount)
     print(connecttocomplete)
@@ -136,6 +186,7 @@ def main():
         dictItog['Конверсия']=[str(int(dictItog['Регистрациифакт'][i]/dictItog['Трафикфакт'][i]*100))+'%' if dictItog['Трафикфакт'][i]!=0 else '0%' for i in range(len(dictItog['Источник']))]
     else:
         pass
+        
     try:
         dictItog['Количество'][7]=result1.result[0]
     except:
@@ -165,15 +216,15 @@ def main():
     except:
         pass
     try:
-        dictItog['Трафикфакт'][7]=result2['Трафикфакт']
+        dictItog['Трафикфакт'][7]=connecttargeting['Трафикфакт']
     except:
         pass
     try:
-        dictItog['Бюджетплан'][7]=result2['Бюджетплан']
+        dictItog['Бюджетплан'][7]=connecttargeting['Бюджетплан']
     except:
         pass
     try:
-        dictItog['Бюджетфакт'][7]=result2['Бюджетфакт']
+        dictItog['Бюджетфакт'][7]=connecttargeting['Бюджетфакт']
     except:
         pass
     try:
@@ -213,7 +264,7 @@ def main():
     dictItog['Бюджетплан'].append('—')
     dictItog['Бюджетфакт'].append('—')
     print(dictItog)
-    dictItog={}
+
     return dictItog
 
 if __name__ == "__main__":

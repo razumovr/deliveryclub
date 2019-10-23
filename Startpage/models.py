@@ -6,7 +6,6 @@ class Langing(models.Model):
     start=models.CharField(max_length=300)
     end=models.CharField(max_length=300)
     complete=models.CharField(max_length=300)
-    heshteg=models.CharField(max_length=300)
 
 
 

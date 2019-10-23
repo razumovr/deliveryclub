@@ -4,7 +4,7 @@ from django.forms import ModelForm,TextInput
 class LangingForm(ModelForm):
     class Meta:
         model=Langing
-        fields=['land','success','start','end','complete','heshteg',]
+        fields=['land','success','start','end','complete']
         widgets={'land':TextInput(attrs={'class': 'form-input',
                                          'name':'компания'
                                          }
@@ -23,7 +23,5 @@ class LangingForm(ModelForm):
                                           'name': 'компания'
                                           }
                                    ),
-                 'heshteg': TextInput(attrs={'class': 'form-input',
-                                             'name': 'компания'
-                                             })
+
                  }
