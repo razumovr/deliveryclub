@@ -44,7 +44,7 @@ def insertinsql():
     except:
         pass
 
-    '''try:
+    try:
         #CONNECT TO posgresql
         url = urlparse.urlparse(os.environ['DATABASE_URL'])
         dbname = url.path[1:]
@@ -106,7 +106,7 @@ def insertinsql():
                 j += 1
 
 
-'''
+
 class PersonListView(ListView):
     model = Firstvar
     print(type(model))
