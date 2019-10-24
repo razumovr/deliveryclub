@@ -19,11 +19,30 @@ from Startpage.utils import analitica,colvodneyforday
 from conecttosheets import connectsheet,connectIP,connect
 
 
-def googlesheets(completeurl):
+def googlesheets(completeurl,start,stop):
     df=connect(completeurl)
     df['new_col'] = df['utm_source'] + ' / ' + df['utm_medium']
     a = df.dropna(subset=[list(df)[0]])
-    newdf = a[['utm_source', 'utm_medium', 'utm_campaign', 'new_col']]
+    newdf = a[['sended','utm_source', 'utm_medium', 'utm_campaign', 'new_col']]
+
+
+    datedelta = []
+    d1 = datetime.date(int(start[:4]), int(start[5:7]), int(start[8:10]))
+    d2 = datetime.date(int(stop[:4]), int(stop[5:7]), int(stop[8:10]))
+
+
+    dd = [d1 + datetime.timedelta(days=x) for x in range((d2 - d1).days + 1)]
+    for x in dd:
+        datedelta.append(str(x))
+
+
+
+    #DELETE DATES
+    for i in newdf['sended']:
+        if i[:10] in datedelta or i=='':
+            newdf=newdf.drop(newdf.index[newdf['sended']==i])
+
+
     slovaritog = {'Уникальная': 0, 'Дайджест': 0, 'SMM репостов': 0,
                   'Инфопартнеры':0, 'Рассылка из юнисендера': 0, 'Промо в вузах': 0, 'Телеграм': 0,
                   'Таргетинг': 0,
@@ -146,9 +165,10 @@ def main():
     result = q.enqueue(analitica,str(landing[0].land),str(landing[0].success),str(landing[0].start),str(landing[0].end))
     result1 = q.enqueue(colvodneyforday,str(landing[0].start),str(landing[0].end),str(landing[0].land))
     try:
-        connecttocomplete = googlesheets(str(landing[0].complete))
+        connecttocomplete = googlesheets(str(landing[0].complete),str(landing[0].start),str(landing[0].end))
     except:
         connecttocomplete={}
+
 
     try:
         connecttargeting = connectsheet('https://docs.google.com/spreadsheets/d/1lcHMPIw1AtzKx3DoFAVp_JDi2Cb_-DbP9krjtD7c69Q/edit#gid=237212384',str(landing[0].start),str(landing[0].land))
@@ -264,7 +284,6 @@ def main():
     dictItog['Бюджетплан'].append('—')
     dictItog['Бюджетфакт'].append('—')
     print(dictItog)
-
     return dictItog
 
 if __name__ == "__main__":
