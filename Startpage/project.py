@@ -39,7 +39,7 @@ def googlesheets(completeurl,start,stop):
 
     #DELETE DATES
     for i in newdf['sended']:
-        if i[:10] in datedelta or i=='':
+        if i[:10] in datedelta or i!='':
             pass
         else:
             newdf=newdf.drop(newdf.index[newdf['sended']==i])
