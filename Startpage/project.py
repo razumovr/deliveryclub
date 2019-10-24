@@ -39,11 +39,11 @@ def googlesheets(completeurl,start,stop):
 
     #DELETE DATES
     for i in newdf['sended']:
-        if i[:10] in datedelta or i!='':
+        if i[:10] in datedelta or i==' ':
             pass
         else:
             newdf=newdf.drop(newdf.index[newdf['sended']==i])
-
+    print(newdf)
 
     slovaritog = {'Уникальная': 0, 'Дайджест': 0, 'SMM репостов': 0,
                   'Инфопартнеры':0, 'Рассылка из юнисендера': 0, 'Промо в вузах': 0, 'Телеграм': 0,
