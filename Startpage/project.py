@@ -179,6 +179,8 @@ def main():
 
 
     try:
+        
+        
         infopartenrilist=infopartnerip(str(landing[0].land),str(landing[0].start),str(landing[0].end))
     except:
         infopartenrilist={}

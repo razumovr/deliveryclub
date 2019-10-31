@@ -242,17 +242,17 @@ def colvodneyforday(start,stop,urlland):
         for j in range(len(k[i])):
             if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
                 if platform == "darwin":
-                    unikalkarry.append(int(k[i][j +1]))
+                    unikalkarry.append(int(k[i][j -2]))
                 else:
                     unikalkarry.append(int(k[i][j -2]))
             elif 'digest' in str(k[i][j]) or 'Digest' in str(k[i][j]):
                 if platform == "darwin":
-                    digestarray.append(int(k[i][j +1]))
+                    digestarray.append(int(k[i][j -2]))
                 else:
                     digestarray.append(int(k[i][j -2]))
             elif 'tg /' in str(k[i][j]) or 'Tg /' in str(k[i][j]):
                 if platform == "darwin":
-                    telegaarray.append(int(k[i][j +1]))
+                    telegaarray.append(int(k[i][j -2]))
                 else:
                     telegaarray.append(int(k[i][j -2]))
             else:
