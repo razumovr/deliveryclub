@@ -91,6 +91,24 @@ def connect(sheetnumber):
     sheet = pd.DataFrame(np.array(df[0][1:]), columns=df[0][0])
     return sheet
 
+def connect_new_funnel(sheetnumber):
+    gs = Connection()
+    gs.connect()
+    print(keyurl(sheetnumber))
+    utm = UTMtable(gs.service,keyurl(sheetnumber))
+    utm.getSheets()
+    df = utm.tables
+    for i in range(len(df[0])):
+        if len(df[0][i]) < len(df[0][0]):
+            while len(df[0][i]) != len(df[0][0]):
+                df[0][i].append('(not set)')
+        elif len(df[0][i]) > len(df[0][0]):
+            df[0][i] = df[0][i][:len(df[0][0])]
+        else:
+            pass
+    sheet = pd.DataFrame(np.array(df[0][1:]), columns=df[0][0])
+    return sheet
+
 
 def connectsheet(sheetnumber,datastart,landing):
     gs = Connection()
@@ -147,6 +165,8 @@ def connectsheet(sheetnumber,datastart,landing):
                 d['Трафикфакт'] = sheet['Клики факт'][i]
                 d['Бюджетплан'] = sheet['Бюджет план'][i]
                 d['Бюджетфакт'] = sheet['Бюджет факт'][i]
+                d['Регистрациифакт'] = sheet['Регистрации \nфакт'][i]
+                d['Конверсия'] = sheet['Конверсия'][i]
             else:
                 pass
         except:

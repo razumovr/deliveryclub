@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+
+    <title>Funnel!</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+</head>
+
+<body>
+
+
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="/"></a>
+            <p>Marketing Automation Lab</p>
+        </div>
+        <div class="logout">
+            {% if user.is_authenticated %}
+            <a href="{% url 'users:logout' %}">Выход</a>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<h1>1 column</h1>
+{% for source in Источник %}
+{{source}}
+{% endfor %}
+<h1>2 column</h1>
+
+{% for kan in Количество %}
+{{kan}}
+{% endfor %}
+<h1>3 column</h1>
+{% for kan in Сила %}
+{{kan}}
+{% endfor %}
+<h1>4 column</h1>
+{% for kan in Трафикфакт %}
+{{kan}}
+{% endfor %}
+<h1>5 column</h1>
+{% for kan in Конверсия %}
+{{kan}}
+{% endfor %}
+<h1>6 column</h1>
+{% for kan in Регистрациифакт %}
+{{kan}}
+{% endfor %}
+<h1>7 column</h1>
+{% for kan in Бюджетплан %}
+{{kan}}
+{% endfor %}
+<h1>8 column</h1>
+{% for kan in Бюджетфакт %}
+{{kan}}
+{% endfor %}
+
+
+
+
+
+</body>
+</html>
