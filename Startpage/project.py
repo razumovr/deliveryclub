@@ -823,7 +823,7 @@ def main_for_new_funnel():
         SMMcount = SMMcountfunct(str(landing[0].start), str(landing[0].end), str(landing[0].land))
     except:
         SMMcount = 0
-    time.sleep(15)
+    #time.sleep(15)
 
     print("!" * 100)
     print(result.result)
