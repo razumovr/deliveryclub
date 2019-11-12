@@ -829,105 +829,7 @@ def colvodneyforday_new_funnel(start,stop,urlland):
         mas = []
         for j in range(len(anew)):
             if type(anew[j])==str:
-                if 'all / changellenge / unical-promo' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / generalbase' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / digest' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment-mailchimp' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / cup' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / it' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / engineers' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / oil' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / business' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / partials' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / external' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / kp' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / old-external' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / fin' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / manager' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / analytic' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / spb' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / siberia' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / ural' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / volga' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / dv' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / kz' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / last-year' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / alumni' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / school' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / toolkit' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / segment / internship' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / hr-digest / cold' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'email / hr-digest / warm' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / global / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / spb / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / siberia / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / ural / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / volga / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / kz / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / global / digest' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / global / cups' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / global / vacancy' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / global / events' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'vk / global / article' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'post / (not set)' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'tg / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'tg / digest' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'youtube / video' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'fb / post' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'fb / post / aa' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'twitter / post / aa' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'inst / bio' in anew[j]:
-                    mas.append(anew[j - 1])
-                elif 'inst / stories' in anew[j]:
+                if i in anew[j]:
                     mas.append(anew[j - 1])
                 elif 'ip /' in anew[j] and 'banner /' in anew[j]:
                     mas.append(anew[j - 1])
@@ -993,6 +895,7 @@ def colvodneyforday_new_funnel(start,stop,urlland):
                     mas.append(anew[j - 1])
                 elif 'external-lidgen / cpc / premium' in anew[j]:
                     mas.append(anew[j - 1])
+
         for n in mas:
             if n > max_value:
                 max_value = n
@@ -1276,6 +1179,7 @@ def colvodneyforday_new_funnel(start,stop,urlland):
         em['google / cpm / general'] += tizer28
         em['youtube / cpm / general'] += tizer29
 
+    print(em)
     return em
 
 
