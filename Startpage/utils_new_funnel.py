@@ -738,6 +738,7 @@ def colvodneyforday_new_funnel(start,stop,urlland):
         k.append(list(itertools.chain.from_iterable(qqq[i])))
 
 
+
     anew = list(itertools.chain.from_iterable(k))
     em = {
         'all / changellenge / unical-promo': 0,
@@ -828,7 +829,105 @@ def colvodneyforday_new_funnel(start,stop,urlland):
         mas = []
         for j in range(len(anew)):
             if type(anew[j])==str:
-                if i in anew[j]:
+                if 'all / changellenge / unical-promo' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / generalbase' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / digest' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment-mailchimp' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / cup' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / it' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / engineers' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / oil' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / business' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / partials' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / external' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / kp' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / old-external' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / fin' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / manager' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / analytic' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / spb' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / siberia' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / ural' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / volga' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / dv' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / kz' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / last-year' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / alumni' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / school' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / toolkit' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / segment / internship' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / hr-digest / cold' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'email / hr-digest / warm' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / global / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / spb / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / siberia / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / ural / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / volga / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / kz / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / global / digest' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / global / cups' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / global / vacancy' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / global / events' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'vk / global / article' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'post / (not set)' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tg / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tg / digest' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'youtube / video' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'fb / post' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'fb / post / aa' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'twitter / post / aa' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'inst / bio' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'inst / stories' in anew[j]:
                     mas.append(anew[j - 1])
                 elif 'ip /' in anew[j] and 'banner /' in anew[j]:
                     mas.append(anew[j - 1])
@@ -880,6 +979,20 @@ def colvodneyforday_new_funnel(start,stop,urlland):
                     mas.append(anew[j - 1])
                 elif 'vuz /' in anew[j] and 'roadshow /' in anew[j]:
                     mas.append(anew[j - 1])
+                elif 'smi /' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tlm / email / external' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tlm / email / partials' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tlm / email / last-year' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tlm / email' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'tlm / reg' in anew[j]:
+                    mas.append(anew[j - 1])
+                elif 'external-lidgen / cpc / premium' in anew[j]:
+                    mas.append(anew[j - 1])
         for n in mas:
             if n > max_value:
                 max_value = n
@@ -925,7 +1038,7 @@ def colvodneyforday_new_funnel(start,stop,urlland):
     em['youtube / cpm / general']=0
     em['(direct) / (none)']=0
 
-    for i in anew:
+    '''for i in anew:
         if type(i)==str:
             if 'target / vk / tizer' in i:
                 em['target / vk / tizer'] +=1
@@ -976,118 +1089,193 @@ def colvodneyforday_new_funnel(start,stop,urlland):
             elif 'youtube / cpm' in i and 'brand' in i:
                 em['youtube / cpm / general'] +=1
             #elif '(direct) / (none)' in i or 'referral' in i or 'organic' in i:
+             #   em['(direct) / (none)'] +=1'''
+
+    for i in range(len(k)):
+        tizer = 0
+        tizer1 = 0
+        tizer2 = 0
+        tizer3 = 0
+        tizer4 = 0
+        tizer5 = 0
+        tizer6 = 0
+        tizer7 = 0
+        tizer8 = 0
+        tizer9 = 0
+        tizer10 = 0
+        tizer11 = 0
+        tizer12 = 0
+        tizer13 = 0
+        tizer14 = 0
+        tizer15 = 0
+        tizer16 = 0
+        tizer17 = 0
+        tizer18 = 0
+        tizer19 = 0
+        tizer20 = 0
+        tizer21 = 0
+        tizer22 = 0
+        tizer23 = 0
+        tizer24 = 0
+        tizer25 = 0
+        tizer26 = 0
+        tizer27 = 0
+        tizer28 = 0
+        tizer29 = 0
+        for j in range(len(k[i])):
+            if 'target / vk / tizer' in str(k[i][j]):
+                tizer += 1
+            elif 'target / vk / post' in str(k[i][j]):
+                tizer1 += 1
+            elif 'target / vk / story' in str(k[i][j]):
+                tizer2 += 1
+            elif 'target / insta / post' in str(k[i][j]):
+                tizer3 += 1
+            elif 'target / insta / story' in str(k[i][j]):
+                tizer4 += 1
+            elif 'target / fb / story' in str(k[i][j]):
+                tizer5 += 1
+            elif 'target / fb / post' in str(k[i][j]):
+                tizer6 += 1
+            elif 'target / fb / leadform' in str(k[i][j]):
+                tizer7 += 1
+            elif 'target / vk / leadform' in str(k[i][j]):
+                tizer8 += 1
+            elif 'cl-site / main / slider' in str(k[i][j]):
+                tizer9 += 1
+            elif 'cl-site / main / events' in str(k[i][j]):
+                tizer10 += 1
+            elif 'cl-site / main / education' in str(k[i][j]):
+                tizer11 += 1
+            elif 'cl-site / main / champs' in str(k[i][j]):
+                tizer12 += 1
+            elif 'cl-site / push' in str(k[i][j]):
+                tizer13 += 1
+            elif 'cl-site / page / events' in str(k[i][j]):
+                tizer14 += 1
+            elif 'cl-site / page / education' in str(k[i][j]):
+                tizer15 += 1
+            elif 'cl-site / page / champs' in str(k[i][j]):
+                tizer16 += 1
+            elif 'cl-site / page / vacancy' in str(k[i][j]):
+                tizer17 += 1
+            elif 'cl-site / popup / desktop' in str(k[i][j]):
+                tizer18 += 1
+            elif 'cl-site / popup / mobile' in str(k[i][j]):
+                tizer19 += 1
+            elif 'cl-site / main / personal' in str(k[i][j]):
+                tizer20 += 1
+            elif 'yandex / cpc' in str(k[i][j]) and 'brand' in str(k[i][j]):
+                tizer21 += 1
+            elif 'yandex / cpm' in str(k[i][j]) and 'brand' in str(k[i][j]):
+                tizer22 += 1
+            elif 'yandex / cpc' in str(k[i][j]) and 'general' in str(k[i][j]):
+                tizer23 += 1
+            elif 'yandex / cpm' in str(k[i][j]) and 'general' in str(k[i][j]):
+                tizer24 += 1
+            elif 'google / cpc' in str(k[i][j]) and 'brand' in str(k[i][j]):
+                tizer25 += 1
+            elif 'google / cpm' in str(k[i][j]) and 'brand' in str(k[i][j]):
+                tizer26 += 1
+            elif 'google / cpc' in str(k[i][j]) and 'general' in str(k[i][j]):
+                tizer27 += 1
+            elif 'google / cpm' in str(k[i][j]) and 'general' in str(k[i][j]):
+                tizer28 += 1
+            elif 'youtube / cpm' in str(k[i][j]) and 'brand' in str(k[i][j]):
+                tizer29 += 1
+            #elif '(direct) / (none)' in i or 'referral' in i or 'organic' in i:
              #   em['(direct) / (none)'] +=1
+        if tizer > 1:
+            tizer = 1
+        if tizer1 > 1:
+            tizer1 = 1
+        if tizer2 > 1:
+            tizer2 = 1
+        if tizer3 > 1:
+            tizer3 = 1
+        if tizer4 > 1:
+            tizer4 = 1
+        if tizer5 > 1:
+            tizer5 = 1
+        if tizer6 > 1:
+            tizer6 = 1
+        if tizer7 > 1:
+            tizer7 = 1
+        if tizer8 > 1:
+            tizer8 = 1
+        if tizer9 > 1:
+            tizer9 = 1
+        if tizer10 > 1:
+            tizer10 = 1
+        if tizer11 > 1:
+            tizer11 = 1
+        if tizer12 > 1:
+            tizer12 = 1
+        if tizer13 > 1:
+            tizer13 = 1
+        if tizer14 > 1:
+            tizer14 = 1
+        if tizer15 > 1:
+            tizer15 = 1
+        if tizer16 > 1:
+            tizer16 = 1
+        if tizer17 > 1:
+            tizer17 = 1
+        if tizer18 > 1:
+            tizer18 = 1
+        if tizer19 > 1:
+            tizer19 = 1
+        if tizer20 > 1:
+            tizer20 = 1
+        if tizer21 > 1:
+            tizer21 = 1
+        if tizer22 > 1:
+            tizer22 = 1
+        if tizer23 > 1:
+            tizer23 = 1
+        if tizer24 > 1:
+            tizer24 = 1
+        if tizer25 > 1:
+            tizer25 = 1
+        if tizer26 > 1:
+            tizer26 = 1
+        if tizer27 > 1:
+            tizer27 = 1
+        if tizer28 > 1:
+            tizer28 = 1
+        if tizer29 > 1:
+            tizer29 = 1
+        em['target / vk / tizer'] += tizer
+        em['target / vk / post'] += tizer1
+        em['target / vk / story'] += tizer2
+        em['target / insta / post'] += tizer3
+        em['target / insta / story'] += tizer4
+        em['target / fb / story']+= tizer5
+        em['target / fb / post'] += tizer6
+        em['target / fb / leadform'] += tizer7
+        em['target / vk / leadform'] += tizer8
+        em['cl-site / main / slider'] += tizer9
+        em['cl-site / main / events'] += tizer10
+        em['cl-site / main / education'] += tizer11
+        em['cl-site / main / champs'] += tizer12
+        em['cl-site / push'] += tizer13
+        em['cl-site / page / event'] += tizer14
+        em['cl-site / page / education'] += tizer15
+        em['cl-site / page / champs'] += tizer16
+        em['cl-site / page / vacancy'] += tizer17
+        em['cl-site / popup / desktop'] += tizer18
+        em['cl-site / popup / mobile'] += tizer19
+        em['cl-site / main / personal'] += tizer20
+        em['yandex / cpc / brand'] += tizer21
+        em['yandex / cpm / brand'] += tizer22
+        em['yandex / cpc / general'] += tizer23
+        em['yandex / cpm / general'] += tizer24
+        em['google / cpc / brand'] += tizer25
+        em['google / cpm / brand'] += tizer26
+        em['google / cpc / general'] += tizer27
+        em['google / cpm / general'] += tizer28
+        em['youtube / cpm / general'] += tizer29
 
-
-    '''
-    
-    kolvodneyWEB = 0
-    kolvodneyKONTEKST = 0
-    kolvodnetTARGETING = 0
-    kolvodneyORGANICA=0
-    for i in range(len(k)):
-        for j in range(len(k[i])):
-            if 'cl-site' in str(k[i][j]) or 'Сl-site' in str(k[i][j]) or 'cl_site' in str(k[i][j]) or 'Сl_site' in str(
-                    k[i][j]):
-                kolvodneyWEB += 1
-                break
-            else:
-                pass
-
-    for i in range(len(k)):
-        for j in range(len(k[i])):
-            if 'google / cpc' in str(k[i][j]) or 'youtube / instream' in str(k[i][j]) or 'yandex / cpc' in str(k[i][j]):
-                kolvodneyKONTEKST += 1
-                break
-            else:
-                pass
-    for i in range(len(k)):
-        for j in range(len(k[i])):
-            if 'vk / target' in str(k[i][j]) or 'vk / targetpost' in str(k[i][j]) or 'vk / target-story' in str(
-                    k[i][j]) or 'insta / target' in str(k[i][j]) or 'insta / targetpost' in str(
-                    k[i][j]) or 'insta / target-story' in str(k[i][j]) or 'fb / target' in str(
-                    k[i][j]) or 'fb / targetpost' in str(k[i][j]):
-                kolvodnetTARGETING += 1
-                break
-            else:
-                pass
-    for i in range(len(k)):
-        for j in range(len(k[i])):
-            if '(direct) / (none)' in str(k[i][j]) or 'referral' in str(k[i][j]) or 'organic' in str(k[i][j]):
-                kolvodneyORGANICA += 1
-                break
-            else:
-                pass
-    #PICS
-    unikalkarry = []
-    digestarray = []
-    telegaarray = []
-
-    # lif 'digest' in i or 'Digest' in i:
-    #  elif 'tg /' in i or 'Tg /' in i:
-    for i in range(len(k)):
-        for j in range(len(k[i])):
-            if 'generalbase' in str(k[i][j]) or 'mailchimp' in str(k[i][j]):
-                if platform == "darwin":
-                    unikalkarry.append(int(k[i][j -2]))
-                else:
-                    unikalkarry.append(int(k[i][j -2]))
-            elif 'digest' in str(k[i][j]) or 'Digest' in str(k[i][j]):
-                if platform == "darwin":
-                    digestarray.append(int(k[i][j -2]))
-                else:
-                    digestarray.append(int(k[i][j -2]))
-            elif 'tg /' in str(k[i][j]) or 'Tg /' in str(k[i][j]):
-                if platform == "darwin":
-                    telegaarray.append(int(k[i][j -2]))
-                else:
-                    telegaarray.append(int(k[i][j -2]))
-            else:
-                pass
-    #  if 'generalbase' in ii or 'mailchimp' in ii:
-
-    max_value = 0
-    for n in unikalkarry:
-        if n > max_value:
-            max_value = n
-
-    if max_value == 1:
-        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value + 1),
-                                        max_distances=np.arange(1, max_value + 1))
-    elif max_value == 0:
-        lenUNIKALKA = []
-    else:
-        lenUNIKALKA = sg.find_peaks_cwt(unikalkarry, np.arange(1, max_value),
-                                        max_distances=np.arange(1, max_value))
-
-    max_value = 0
-    for n in digestarray:
-        if n > max_value:
-            max_value = n
-    if max_value == 1:
-        lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, max_value + 1),
-                                      max_distances=np.arange(1, max_value + 1))
-    elif max_value == 0:
-        lenDIGEST = []
-    else:
-        lenDIGEST = sg.find_peaks_cwt(digestarray, np.arange(1, max_value),
-                                      max_distances=np.arange(1,max_value))
-
-
-    max_value = 0
-    for n in telegaarray:
-        if n > max_value:
-            max_value = n
-    if max_value == 1:
-        lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, max_value + 1),
-                                      max_distances=np.arange(1, max_value + 1))
-    elif max_value == 0:
-        lenTELEGA = []
-    else:
-        lenTELEGA = sg.find_peaks_cwt(telegaarray, np.arange(1, max_value),
-                                      max_distances=np.arange(1, max_value))
-
-    return [kolvodnetTARGETING,kolvodneyWEB,kolvodneyKONTEKST,kolvodneyORGANICA,len(lenUNIKALKA), len(lenDIGEST), len(lenTELEGA)]'''
     return em
 
 
