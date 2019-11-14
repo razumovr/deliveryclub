@@ -170,7 +170,7 @@ def googlesheets_new_funnel(completeurl,start,stop):
         elif 'email / segment-mailchimp' in i:
             slovaritog['Рассылка по сборному сегементу через mailchimp (например, те кто кликал на стажировки)'] += 1
         elif 'email / segment' in i:
-            slovaritog['Рассылка по сборной базе под конкретный проект (например, ИТшники из Уфы, 3-4 курс)'] += 1
+            slovaritog['Рассылка по сборной базе под конкретный проект (например, ИТшники из Уфы, 3-4 курс) или Рассылка по базе партнера чемпионата '] += 1
         elif 'email / segment / cup' in i:
             slovaritog['рассылка по базе кейсеров'] += 1
         elif 'email / segment / it' in i:
@@ -867,8 +867,9 @@ def main_for_new_funnel():
             if 'таргетинг' in i:
                 indexnumber=dictItog['Источник'].index(i)
                 break
+
         dictItog['Источник']=dictItog['Источник'][:indexnumber]+['Таргетинг общая информация']+dictItog['Источник'][indexnumber:]
-        dictItog['Количество']=dictItog['Количество'][:indexnumber]+['—']+dictItog['Количество'][indexnumber:]
+        dictItog['Количество']=dictItog['Количество'][:indexnumber]+[0]+dictItog['Количество'][indexnumber:]
         dictItog['Сила']=dictItog['Сила'][:indexnumber]+['—']+dictItog['Сила'][indexnumber:]
         dictItog['Трафикфакт']=dictItog['Трафикфакт'][:indexnumber]+[connecttargeting['Трафикфакт']]+dictItog['Трафикфакт'][indexnumber:]
         dictItog['Регистрациифакт']=dictItog['Регистрациифакт'][:indexnumber]+[connecttargeting['Регистрациифакт']]+dictItog['Регистрациифакт'][indexnumber:]
@@ -883,11 +884,17 @@ def main_for_new_funnel():
             if 'инфопартнеры:' in i:
                 indexnumber=dictItog['Источник'].index(i)
                 break
+
+        number_infopartenrilist_in_dict = 0
+        for i in dictItog['Источник']:
+            if 'инфопартнеры:' in i:
+                number_infopartenrilist_in_dict+=1
+
         dictItog['Источник']=dictItog['Источник'][:indexnumber]+['Инфопартнеры общая информация']+dictItog['Источник'][indexnumber:]
         dictItog['Количество']=dictItog['Количество'][:indexnumber]+[infopartenrilist[0]]+dictItog['Количество'][indexnumber:]
+        dictItog['Трафикфакт']=dictItog['Трафикфакт'][:indexnumber]+[sum([int(x) for x in dictItog['Трафикфакт'][indexnumber:indexnumber+number_infopartenrilist_in_dict]])]+dictItog['Трафикфакт'][indexnumber:]
         dictItog['Сила']=dictItog['Сила'][:indexnumber]+['—']+dictItog['Сила'][indexnumber:]
-        dictItog['Трафикфакт']=dictItog['Трафикфакт'][:indexnumber]+['—']+dictItog['Трафикфакт'][indexnumber:]
-        dictItog['Регистрациифакт']=dictItog['Регистрациифакт'][:indexnumber]+['—']+dictItog['Регистрациифакт'][indexnumber:]
+        dictItog['Регистрациифакт']=dictItog['Регистрациифакт'][:indexnumber]+[sum([int(x) for x in dictItog['Регистрациифакт'][indexnumber:indexnumber+number_infopartenrilist_in_dict]])]+dictItog['Регистрациифакт'][indexnumber:]
         dictItog['Бюджетплан']=dictItog['Бюджетплан'][:indexnumber]+['—']+dictItog['Бюджетплан'][indexnumber:]
         dictItog['Бюджетфакт']=dictItog['Бюджетфакт'][:indexnumber]+[infopartenrilist[1]]+dictItog['Бюджетфакт'][indexnumber:]
         dictItog['Конверсия']=dictItog['Конверсия'][:indexnumber]+['—']+dictItog['Конверсия'][indexnumber:]
@@ -898,15 +905,34 @@ def main_for_new_funnel():
             if 'SMM:' in i:
                 indexnumber=dictItog['Источник'].index(i)
                 break
+
+        number_SMM_in_dict = 0
+        for i in dictItog['Источник']:
+            if 'SMM:' in i:
+                number_SMM_in_dict+=1
+
         dictItog['Источник']=dictItog['Источник'][:indexnumber]+['SMM общая информация']+dictItog['Источник'][indexnumber:]
         dictItog['Количество']=dictItog['Количество'][:indexnumber]+[SMMcount]+dictItog['Количество'][indexnumber:]
+        dictItog['Трафикфакт']=dictItog['Трафикфакт'][:indexnumber]+[sum([int(x) for x in dictItog['Трафикфакт'][indexnumber:indexnumber+number_SMM_in_dict]])]+dictItog['Трафикфакт'][indexnumber:]
         dictItog['Сила']=dictItog['Сила'][:indexnumber]+['—']+dictItog['Сила'][indexnumber:]
-        dictItog['Трафикфакт']=dictItog['Трафикфакт'][:indexnumber]+['—']+dictItog['Трафикфакт'][indexnumber:]
-        dictItog['Регистрациифакт']=dictItog['Регистрациифакт'][:indexnumber]+['—']+dictItog['Регистрациифакт'][indexnumber:]
+        dictItog['Регистрациифакт']=dictItog['Регистрациифакт'][:indexnumber]+[sum([int(x) for x in dictItog['Регистрациифакт'][indexnumber:indexnumber+number_SMM_in_dict]])]+dictItog['Регистрациифакт'][indexnumber:]
         dictItog['Бюджетплан']=dictItog['Бюджетплан'][:indexnumber]+['—']+dictItog['Бюджетплан'][indexnumber:]
         dictItog['Бюджетфакт']=dictItog['Бюджетфакт'][:indexnumber]+['—']+dictItog['Бюджетфакт'][indexnumber:]
         dictItog['Конверсия']=dictItog['Конверсия'][:indexnumber]+['—']+dictItog['Конверсия'][indexnumber:]
 
+    #Сила
+    a=[]
+    try:
+        for i in range(len(dictItog['Трафикфакт'])):
+            if int(dictItog['Количество'][i])!=0:
+                a.append(int(int(dictItog['Трафикфакт'][i]) / int(dictItog['Количество'][i])))
+            else:
+                a.append('—')
+        dictItog["Сила"]=a
+    except:
+        pass
+
+    print(dictItog)
 
     return dictItog
 

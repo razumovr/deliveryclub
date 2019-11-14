@@ -222,7 +222,7 @@ def googleapi(slovartraf,df,successurl):
         elif 'email / segment-mailchimp' in i:
             slovaritog['Рассылка по сборному сегементу через mailchimp (например, те кто кликал на стажировки)'][1] += slovar[i]
         elif 'email / segment' in i:
-            slovaritog['Рассылка по сборной базе под конкретный проект (например, ИТшники из Уфы, 3-4 курс)'][1] += slovar[i]
+            slovaritog['Рассылка по сборной базе под конкретный проект (например, ИТшники из Уфы, 3-4 курс) или Рассылка по базе партнера чемпионата '][1] += slovar[i]
         elif 'email / segment / cup' in i:
             slovaritog['рассылка по базе кейсеров'][1] += slovar[i]
         elif 'email / segment / it' in i:
@@ -457,7 +457,7 @@ def googleapi(slovartraf,df,successurl):
         elif 'email / segment-mailchimp' in i:
             slovaritog['Рассылка по сборному сегементу через mailchimp (например, те кто кликал на стажировки)'][0] += slovartraf[i]
         elif 'email / segment' in i:
-            slovaritog['Рассылка по сборной базе под конкретный проект (например, ИТшники из Уфы, 3-4 курс)'][0] += slovartraf[i]
+            slovaritog['Рассылка по сборной базе под конкретный проект (например, ИТшники из Уфы, 3-4 курс) или Рассылка по базе партнера чемпионата '][0] += slovartraf[i]
         elif 'email / segment / cup' in i:
             slovaritog['рассылка по базе кейсеров'][0] += slovartraf[i]
         elif 'email / segment / it' in i:
@@ -941,58 +941,6 @@ def colvodneyforday_new_funnel(start,stop,urlland):
     em['youtube / cpm / general']=0
     em['(direct) / (none)']=0
 
-    '''for i in anew:
-        if type(i)==str:
-            if 'target / vk / tizer' in i:
-                em['target / vk / tizer'] +=1
-            elif 'target / vk / post' in i:
-                em['target / vk / post'] +=1
-            elif 'target / vk / story' in i:
-                em['target / vk / story'] +=1
-            elif 'target / fb / story' in i:
-                em['target / fb / story'] +=1
-            elif 'target / fb / post' in i:
-                em['target / fb / post'] +=1
-            elif 'target / fb / leadform' in i:
-                em['target / fb / leadform'] +=1
-            elif 'target / vk / leadform' in i:
-                em['target / vk / leadform'] +=1
-            elif 'cl-site / main / slider' in i:
-                em['cl-site / main / slider'] +=1
-            elif 'cl-site / main / events' in i:
-                em['cl-site / main / events'] +=1
-            elif 'cl-site / main / education' in i:
-                em['cl-site / main / education'] +=1
-            elif 'cl-site / page / champs' in i:
-                em['cl-site / page / champs'] +=1
-            elif 'cl-site / page / vacancy' in i:
-                em['cl-site / page / vacancy'] +=1
-            elif 'tcl-site / popup / desktop' in i:
-                em['cl-site / popup / desktop'] +=1
-            elif 'cl-site / popup / mobile' in i:
-                em['cl-site / popup / mobile'] +=1
-            elif 'cl-site / main / personal' in i:
-                em['cl-site / main / personal'] +=1
-            elif 'yandex / cpc' in i and 'brand' in i:
-                em['yandex / cpc / brand'] +=1
-            elif 'yandex / cpm' in i and 'brand' in i:
-                em['yandex / cpm / brand'] +=1
-            elif 'yandex / cpc' in i and 'general' in i:
-                em['yandex / cpc / general'] +=1
-            elif 'yandex / cpm' in i and 'general' in i:
-                em['yandex / cpm / general'] +=1
-            elif 'google / cpc' in i and 'brand' in i:
-                em['google / cpc / brand'] +=1
-            elif 'google / cpm' in i and 'brand' in i:
-                em['google / cpm / brand'] +=1
-            elif 'google / cpc' in i and 'general' in i:
-                em['google / cpc / general'] +=1
-            elif 'google / cpm' in i and 'general' in i:
-                em['google / cpm / general'] +=1
-            elif 'youtube / cpm' in i and 'brand' in i:
-                em['youtube / cpm / general'] +=1
-            #elif '(direct) / (none)' in i or 'referral' in i or 'organic' in i:
-             #   em['(direct) / (none)'] +=1'''
 
     for i in range(len(k)):
         tizer = 0
@@ -1025,6 +973,7 @@ def colvodneyforday_new_funnel(start,stop,urlland):
         tizer27 = 0
         tizer28 = 0
         tizer29 = 0
+        tizer30 = 0
         for j in range(len(k[i])):
             if 'target / vk / tizer' in str(k[i][j]):
                 tizer += 1
@@ -1086,6 +1035,8 @@ def colvodneyforday_new_funnel(start,stop,urlland):
                 tizer28 += 1
             elif 'youtube / cpm' in str(k[i][j]) and 'brand' in str(k[i][j]):
                 tizer29 += 1
+            elif '(direct) / (none)' in str(k[i][j]) or 'referral' in str(k[i][j]) or 'organic' in str(k[i][j]):
+                tizer30 += 1
             #elif '(direct) / (none)' in i or 'referral' in i or 'organic' in i:
              #   em['(direct) / (none)'] +=1
         if tizer > 1:
@@ -1148,6 +1099,8 @@ def colvodneyforday_new_funnel(start,stop,urlland):
             tizer28 = 1
         if tizer29 > 1:
             tizer29 = 1
+        if tizer30 > 1:
+            tizer30 = 1
         em['target / vk / tizer'] += tizer
         em['target / vk / post'] += tizer1
         em['target / vk / story'] += tizer2
@@ -1178,8 +1131,8 @@ def colvodneyforday_new_funnel(start,stop,urlland):
         em['google / cpc / general'] += tizer27
         em['google / cpm / general'] += tizer28
         em['youtube / cpm / general'] += tizer29
+        em['(direct) / (none)'] += tizer30
 
-    print(em)
     return em
 
 
