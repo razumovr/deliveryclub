@@ -25,39 +25,61 @@
         </div>
     </div>
 </div>
-<h1>1 column Источник</h1>
-{% for source in Источник %}
-{{source}}
-{% endfor %}
-<h1>2 column Количество</h1>
+<table>
+    <tr>
+        <td>1 column Источник</td>
+        <td>2 column Количество</td>
+        <td>3 column Сила</td>
+        <td>4 column</td>
+        <td>5 column Конверсия</td>
+        <td>6 column Регистрации факт</td>
+        <td>7 column Бюджет план</td>
+        <td>8 column Бюджет факт</td>
+    </tr>
+    {% for source in Источник %}
+    <tr>
+        <td>{{source}}</td>
+    </tr>
+    {% endfor %}
+    {% for kan in Количество %}
+    <tr>
+        <td>{{kan}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<!--<h1>1 column Источник</h1>-->
+<!--{% for source in Источник %}-->
+<!--{{source}}-->
+<!--{% endfor %}-->
+<!--<h1>2 column Количество</h1>-->
 
-{% for kan in Количество %}
-{{kan}}
-{% endfor %}
-<h1>3 column Сила</h1>
-{% for kan in Сила %}
-{{kan}}
-{% endfor Трафик факт%}
-<h1>4 column</h1>
-{% for kan in Трафикфакт %}
-{{kan}}
-{% endfor %}
-<h1>5 column Конверсия</h1>
-{% for kan in Конверсия %}
-{{kan}}
-{% endfor %}
-<h1>6 column Регистрации факт</h1>
-{% for kan in Регистрациифакт %}
-{{kan}}
-{% endfor %}
-<h1>7 column Бюджет план</h1>
-{% for kan in Бюджетплан %}
-{{kan}}
-{% endfor %}
-<h1>8 column Бюджет факт</h1>
-{% for kan in Бюджетфакт %}
-{{kan}}
-{% endfor %}
+<!--{% for kan in Количество %}-->
+<!--{{kan}}-->
+<!--{% endfor %}-->
+<!--<h1>3 column Сила</h1>-->
+<!--{% for kan in Сила %}-->
+<!--{{kan}}-->
+<!--{% endfor Трафик факт%}-->
+<!--<h1>4 column</h1>-->
+<!--{% for kan in Трафикфакт %}-->
+<!--{{kan}}-->
+<!--{% endfor %}-->
+<!--<h1>5 column Конверсия</h1>-->
+<!--{% for kan in Конверсия %}-->
+<!--{{kan}}-->
+<!--{% endfor %}-->
+<!--<h1>6 column Регистрации факт</h1>-->
+<!--{% for kan in Регистрациифакт %}-->
+<!--{{kan}}-->
+<!--{% endfor %}-->
+<!--<h1>7 column Бюджет план</h1>-->
+<!--{% for kan in Бюджетплан %}-->
+<!--{{kan}}-->
+<!--{% endfor %}-->
+<!--<h1>8 column Бюджет факт</h1>-->
+<!--{% for kan in Бюджетфакт %}-->
+<!--{{kan}}-->
+<!--{% endfor %}-->
 
 
 
