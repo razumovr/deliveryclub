@@ -36,16 +36,16 @@
         <td>7 column Бюджет план</td>
         <td>8 column Бюджет факт</td>
     </tr>
-    {% for source in Источник %}
+    {% for source in (Источник, Количество) %}
     <tr>
         <td>{{source}}</td>
     </tr>
     {% endfor %}
-    {% for kan in Количество %}
-    <tr>
-        <td>{{kan}}</td>
-    </tr>
-    {% endfor %}
+    <!--{% for kan in Количество %}-->
+    <!--<tr>-->
+        <!--<td>{{kan}}</td>-->
+    <!--</tr>-->
+    <!--{% endfor %}-->
 </table>
 <!--<h1>1 column Источник</h1>-->
 <!--{% for source in Источник %}-->
