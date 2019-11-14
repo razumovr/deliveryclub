@@ -569,7 +569,7 @@ def main():
         SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].land))
     except:
         SMMcount=0
-    #time.sleep(5)
+    time.sleep(8)
 
     print("REZULT"*100)
     print(result.result)
