@@ -36,7 +36,7 @@
         <td>7 column Бюджет план</td>
         <td>8 column Бюджет факт</td>
     </tr>
-    {% for (source, source2) in (Источник, Количество) %}
+    {% for source, source2 in zip(Источник, Количество) %}
     <tr>
         <td>{{source}}</td>
         <td>{{source2}}</td>
