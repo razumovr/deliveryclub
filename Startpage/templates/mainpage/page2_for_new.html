@@ -153,6 +153,55 @@
     table th, table td {
         padding: 5px 10px;
     }
+
+    .table {
+        display: flex;
+        padding-bottom: 50px;
+    }
+
+    .table .column {
+        width: 10%;
+        border-right: 1px solid #ffffff;
+        background: #dfe3e4;
+    }
+
+    .table .column:first-child {
+        width: 30%;
+    }
+
+    .table .column h2 {
+        margin: 0;
+        min-height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        background: #be1c18;
+        color: #ffffff;
+        padding: 10px 5px;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .table .column p {
+        font-size: 13px;
+        min-height: 45px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .table .column:first-child p {
+        justify-content: left;
+        padding-left: 5px;
+    }
+
+    .table .column:last-child {
+        border: none;
+    }
 </style>
 
 
@@ -189,7 +238,7 @@
 <div class="container">
     <div class="table">
         <div class="column">
-            <h2>1 column Источник</h2>
+            <h2>Источник</h2>
             <div class="column__body">
                 {% for source in Источник %}
                     <p>{{source}}</p>
@@ -197,7 +246,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>2 column Количество</h2>
+            <h2>Количество</h2>
             <div class="column__body">
                 {% for source in Количество %}
                 <p>{{source}}</p>
@@ -205,7 +254,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>3 column Сила</h2>
+            <h2>Сила</h2>
             <div class="column__body">
                 {% for kan in Сила %}
                 <p>{{kan}}</p>
@@ -213,7 +262,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>4 column</h2>
+            <h2>Трафикфакт</h2>
             <div class="column__body">
                 {% for kan in Трафикфакт %}
                 <p>{{kan}}</p>
@@ -221,7 +270,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>5 column Конверсия</h2>
+            <h2>Конверсия</h2>
             <div class="column__body">
                 {% for kan in Конверсия %}
                 <p>{{kan}}</p>
@@ -229,7 +278,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>6 column Регистрации факт</h2>
+            <h2>Регистрации факт</h2>
             <div class="column__body">
                 {% for kan in Регистрациифакт %}
                 <p>{{kan}}</p>
@@ -237,7 +286,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>7 column Бюджет план</h2>
+            <h2>Бюджет план</h2>
             <div class="column__body">
                 {% for kan in Бюджетплан %}
                 <p>{{kan}}</p>
@@ -245,7 +294,7 @@
             </div>
         </div>
         <div class="column">
-            <h2>8 column Бюджет факт</h2>
+            <h2>Бюджет факт</h2>
             <div class="column__body">
                 {% for kan in Бюджетфакт %}
                 <p>{{kan}}</p>
