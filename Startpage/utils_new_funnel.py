@@ -1179,7 +1179,7 @@ def analitica_new_funnel(land,success,start,end):
     data_content = list(
         itertools.chain.from_iterable(df[df['ga:pagePath'] == urltoLanding][['ga:adContent']].values))
     slovartraf = dict(zip([data_namestraf[i]+' / '+ data_compain[i]+' / '+ data_term[i]+' / '+ data_content[i] for i in range(len(data_namestraf))], data_valuestraf))
-    print(slovartraf)
+
 
 
     data = googleapi(slovartraf,df,urltoSuccess)

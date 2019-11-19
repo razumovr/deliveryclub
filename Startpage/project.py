@@ -569,7 +569,7 @@ def main():
         SMMcount=SMMcountfunct(str(landing[0].start),str(landing[0].end),str(landing[0].land))
     except:
         SMMcount=0
-    time.sleep(8)
+    #time.sleep(8)
 
     print("REZULT"*100)
     print(result.result)
@@ -642,8 +642,7 @@ def main():
         dictItog['Количество'][2]=SMMcount
     except:
         pass
-    print(dictItog)
-    print('-'*100)
+
     a=[]
     try:
         for i in range(len(dictItog['Трафикфакт'])):
