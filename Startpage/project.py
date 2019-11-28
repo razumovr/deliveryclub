@@ -10,7 +10,6 @@ import time
 import datetime
 import re
 
-
 from rq import Queue
 from worker import conn
 from Startpage.utils import analitica,colvodneyforday
