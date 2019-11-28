@@ -16,7 +16,6 @@ from Startpage.utils import analitica,colvodneyforday
 from Startpage.utils_new_funnel import analitica_new_funnel,colvodneyforday_new_funnel
 
 
-
 from conecttosheets import connectsheet,connectIP,connect,connect_new_funnel
 
 
