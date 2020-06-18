@@ -488,7 +488,7 @@ def SMMcountfunct(start,stop,urlland):
     unixtime1 = time.mktime(datetime.datetime.strptime(s1, "%d/%m/%Y").timetuple())
     s2 = stop[-2:] + '/' + stop[-5:-3] + '/' + stop[0:4]
     unixtime2 = time.mktime(datetime.datetime.strptime(s2, "%d/%m/%Y").timetuple())
-    vk_session = vk_api.VkApi('+79055106387', '#rr7363446909250797rr##')
+    vk_session = vk_api.VkApi()
     vk_session.auth()
 
     vk = vk_session.get_api()
@@ -521,7 +521,7 @@ def SMMcountfunct(start,stop,urlland):
             if numberpost.isdigit():
                 urltopost.append(int(numberpost))
 
-    vk_session = vk_api.VkApi('+79055106387', '#rr7363446909250797rr##')
+    vk_session = vk_api.VkApi()
     vk_session.auth()
     vk = vk_session.get_api()
     idreposts = []
